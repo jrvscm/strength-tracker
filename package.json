@@ -1,0 +1,23 @@
+{
+  "name": "strength-tracker",
+  "version": "1.0.0",
+  "description": "Strength Tracking App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrvscm/strength-tracker.git"
+  },
+  "keywords": [
+    "node.js"
+  ],
+  "author": "Chris Jarvis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jrvscm/strength-tracker/issues"
+  },
+  "homepage": "https://github.com/jrvscm/strength-tracker#readme"
+}
