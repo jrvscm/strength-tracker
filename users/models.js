@@ -37,16 +37,18 @@ UserSchema.statics.hashPassword = function(password) {
 
 const workoutSchema = mongoose.Schema({	
 	date: {type:Date, default: Date.now},
-	workoutName: {type: String},
-	exercises: {
-		exerciseName: {type: String},
-		muscleGroup: {type: String},
-			sets: {
-				number: {type: Number},
-				weight: {type: Number},
-				notes: {type: String}
-		},
-	},
+	workoutName: String,
+	exercises: [{
+		_id: false,
+		exerciseName: String,
+		muscleGroup: String,
+		sets: [{
+			_id: false,
+			setNumber: Number,
+			setWeight: Number,
+			setNotes: String
+		}]
+	}]		
 });
 
 workoutSchema.methods.apiRepr = function() {
@@ -59,7 +61,7 @@ workoutSchema.methods.apiRepr = function() {
 }
 
 
-const User = mongoose.model('User', UserSchema);
+//const User = mongoose.model('User', UserSchema);
 const Workout = mongoose.model('Workout', workoutSchema);
 
-module.exports = {Workout, User};
+module.exports = {Workout};
