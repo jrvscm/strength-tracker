@@ -35,7 +35,7 @@ app.get('/workouts', (req, res) => {
 });
 
 app.post('/workouts', (req, res) => {
-	const requiredFields = ['exerciseName', 'muscleGroup', 'setNumber', 'setWeight', 'workoutName'];
+	const requiredFields = ['workoutName'];
 	for(let i=0; i<requiredFields.length; i++) {
 		const field = requiredFields[i];
 		if(!(field in req.body)) {
