@@ -6,14 +6,26 @@ const morgan = require('morgan');
 mongoose.Promise = global.Promise;
 
 const{PORT, DATABASE_URL} = require('./config');
+const{User, Workout} = require('./users');
 
 const app = express();
 
+//logging
 app.use(morgan('common'));
+
+//app.use(express.static('public'));
+
 app.use(bodyParser.json());
 
+//app.get('/', (req, res) => {
+	//res.sendFile(__dirname + '/public/index.html');
+//}
+
+
 app.get('/test', (req, res) => {
-	res.json("hello-world");
+		res.json(
+			'hello turds'
+		);
 });
 
 let server;
