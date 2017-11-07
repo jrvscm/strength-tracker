@@ -34,6 +34,68 @@ app.get('/workouts', (req, res) => {
 	});
 });
 
+app.get('/workouts/:id', (req, res) => {
+	Workout
+	.findById(req.params.id)
+	.then(workout => res.json(workout.apiRepr()))
+	.catch(err => {
+		console.error(err);
+		res.status(500).json({ error: 'Something went terribly wrong'});
+	});
+});
+
+app.put('/workouts/:id/exercises', (req, res) => {
+	if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+		res.status(400).json({
+			error: `Request path id and request body id values must match`
+		});
+	}
+	const newExercise = {};
+	const fields = ['exerciseName','muscleGroup'];
+	fields.forEach(field => {
+		if(field in req.body) {
+			newExercise[field] = req.body[field];
+		}
+	});
+
+	Workout
+	.findByIdAndUpdate(req.params.id, 
+		{$push: {exercises: newExercise}, new: true})
+	.then(updatedWorkout => res.status(204).end())
+	.catch(err => res.status(500).json({message: `Something went wrong`}));
+});
+
+app.put('/workouts/:id/exercises/sets', (req, res) => {
+	if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
+		res.status(400).json({
+			error: `Request path id and request body id values must match`
+		});
+	}
+	const newSet = {};
+	const fields = ['setNumber','setWeight', 'setReps', 'setNotes'];
+	fields.forEach(field => {
+		if(field in req.body) {
+			newSet[field] = req.body[field];
+		}
+	});
+
+
+	Workout
+	.findOneAndUpdate({_id: req.params.id, 'exercises.exerciseID': req.body.exerciseID}, 
+            {$push: {'exercises.sets': req.body.sets}}, 
+            {new: true})
+        .then(exercise => {
+        	console.log(exercise)
+		res.status(200).json({exercise})
+		})
+        .catch(err => {
+        console.log(err)
+        res.status(500)
+    });
+
+});
+
+
 app.post('/workouts', (req, res) => {
 	const requiredFields = ['workoutName'];
 	for(let i=0; i<requiredFields.length; i++) {
@@ -48,15 +110,7 @@ app.post('/workouts', (req, res) => {
 	Workout
 	.create({
 		workoutName: req.body.workoutName,
-		exercises: {
-			exerciseName: req.body.exerciseName,
-			muscleGroup: req.body.muscleGroup,
-		sets: {
-			setNumber: req.body.setNumber,
-			setWeight: req.body.setWeight,
-			setNotes: req.body.setNotes
-			}
-		}
+		exercises: req.body.exercises
 	})
 	.then(Workout => res.status(201).json(Workout.apiRepr()))
 	.catch(err => {

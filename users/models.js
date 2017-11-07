@@ -37,18 +37,15 @@ UserSchema.statics.hashPassword = function(password) {
 
 const workoutSchema = mongoose.Schema({	
 	date: {type:Date, default: Date.now},
-	workoutName: String,
-	exercises: [{
-		_id: false,
-		exerciseName: String,
-		muscleGroup: String,
-		sets: [{
-			_id: false,
-			setNumber: Number,
-			setWeight: Number,
-			setNotes: String
-		}]
-	}]		
+	workoutName: {type: String, required: true},
+	exercises: Array
+	//"muscleGroup": type: String,
+	//"exerciseName": type: String
+	//"sets": [
+	//"setNumber": type: number,
+	//"setWeight": type: number,
+	//"setReps": type: number,
+	//"setNotes": type: string		
 });
 
 workoutSchema.methods.apiRepr = function() {
