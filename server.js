@@ -32,6 +32,7 @@ app.use(function(req, res, next) {
 });
 
 app.use(bodyParser.json());
+app.use(express.static('public'));
 
 app.use(passport.initialize());
 passport.use(basicStrategy);
@@ -67,7 +68,7 @@ app.put('/api/workouts/exercises',
 	passport.authenticate('jwt', {session: false}),
 	(req, res) => {
 	User
-	.findOneAndUpdate({userID: req.body.userID}, 
+	.findOne({userID: req.body.userID}, 
 		{$push: {exercises: req.body.exercise}, new: true})
 	.then(updatedWorkout => res.status(204).end())
 	.catch(err => res.status(500).json({message: `Something went wrong`}));
