@@ -1,122 +1,81 @@
+require('dotenv').config();
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const morgan = require('morgan');
+const passport = require('passport');
+const uuid = require('uuid');
+
+const {router: usersRouter} = require('./users');
+const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
 
 mongoose.Promise = global.Promise;
 
 const{PORT, DATABASE_URL} = require('./config');
-const{Workout} = require('./users/models');
+
+const {User} = require('./users/models');
 
 const app = express();
 
 //logging
 app.use(morgan('common'));
 
-//app.use(express.static('public'));
+//CORS
+app.use(function(req, res, next) {
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+	res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+	if (req.method === 'OPTIONS') {
+		return res.send(204);
+	}
+	next();
+});
 
 app.use(bodyParser.json());
 
-//app.get('/', (req, res) => {
-	//res.sendFile(__dirname + '/public/index.html');
-//}
+app.use(passport.initialize());
+passport.use(basicStrategy);
+passport.use(jwtStrategy);
 
+app.use('/api/users/', usersRouter);
+app.use('/api/auth/', authRouter);
 
-app.get('/workouts', (req, res) => {
-	Workout
-	.find()
-	.then(workouts => {
-		res.json(workouts.map(workout => workout.apiRepr()));
-	})
-	.catch(err => {
-		console.error(err);
-		res.status(500).json({error: 'Something went terribly wrong'});
-	});
-});
-
-app.get('/workouts/:id', (req, res) => {
-	Workout
-	.findById(req.params.id)
-	.then(workout => res.json(workout.apiRepr()))
-	.catch(err => {
-		console.error(err);
-		res.status(500).json({ error: 'Something went terribly wrong'});
-	});
-});
-
-app.put('/workouts/:id/exercises', (req, res) => {
-	if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
-		res.status(400).json({
-			error: `Request path id and request body id values must match`
+//A protected endpoint which needs a valid JWT to access it
+app.get(
+	'/api/protected',
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+		return res.json({
+			data: 'tester'
 		});
 	}
-	const newExercise = {};
-	const fields = ['exerciseName','muscleGroup'];
-	fields.forEach(field => {
-		if(field in req.body) {
-			newExercise[field] = req.body[field];
-		}
-	});
+);
 
-	Workout
-	.findByIdAndUpdate(req.params.id, 
-		{$push: {exercises: newExercise}, new: true})
+//protected - add a workout
+app.put('/api/workouts',
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+	User
+	.findOneAndUpdate({userID: req.body.userID}, 
+		{$push: {workouts: req.body.workout}, new: true})
 	.then(updatedWorkout => res.status(204).end())
 	.catch(err => res.status(500).json({message: `Something went wrong`}));
 });
 
-app.put('/workouts/:id/exercises/sets', (req, res) => {
-	if (!(req.params.id && req.body.id && req.params.id === req.body.id)) {
-		res.status(400).json({
-			error: `Request path id and request body id values must match`
-		});
-	}
-	const newSet = {};
-	const fields = ['setNumber','setWeight', 'setReps', 'setNotes'];
-	fields.forEach(field => {
-		if(field in req.body) {
-			newSet[field] = req.body[field];
-		}
-	});
-
-
-	Workout
-	.findOneAndUpdate({_id: req.params.id, 'exercises.exerciseID': req.body.exerciseID}, 
-            {$push: {'exercises.sets': req.body.sets}}, 
-            {new: true})
-        .then(exercise => {
-        	console.log(exercise)
-		res.status(200).json({exercise})
-		})
-        .catch(err => {
-        console.log(err)
-        res.status(500)
-    });
-
+//protected - add an exercise to a workout
+app.put('/api/workouts/exercises',
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+	User
+	.findOneAndUpdate({userID: req.body.userID}, 
+		{$push: {exercises: req.body.exercise}, new: true})
+	.then(updatedWorkout => res.status(204).end())
+	.catch(err => res.status(500).json({message: `Something went wrong`}));
 });
 
 
-app.post('/workouts', (req, res) => {
-	const requiredFields = ['workoutName'];
-	for(let i=0; i<requiredFields.length; i++) {
-		const field = requiredFields[i];
-		if(!(field in req.body)) {
-			const message = `Missing \`${field}\` in request body`
-			console.error(message);
-			return res.status(400).send(message);
-		}
-	}
-
-	Workout
-	.create({
-		workoutName: req.body.workoutName,
-		exercises: req.body.exercises
-	})
-	.then(Workout => res.status(201).json(Workout.apiRepr()))
-	.catch(err => {
-		console.error(err);
-		res.status(500).json({error: 'Something went wrong'});
-	});
+app.use('*', (req, res) => {
+	return res.status(404).json({message: 'Not Found'});
 });
 
 let server;

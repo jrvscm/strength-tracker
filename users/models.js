@@ -1,9 +1,10 @@
 const bcrypt = require('bcryptjs');
 const mongoose = require('mongoose');
-
+const uuid = require('uuid');
 mongoose.Promise = global.Promise;
 
 const UserSchema = mongoose.Schema({
+	userID: String,
     username: {
         type: String,
         required: true,
@@ -14,14 +15,17 @@ const UserSchema = mongoose.Schema({
         required: true
     },
     firstName: {type: String, default: ''},
-    lastName: {type: String, default: ''}
+    lastName: {type: String, default: ''},
+    workouts: Array
 });
 
 UserSchema.methods.apiRepr = function() {
     return {
+    	userID: this.userID,
         username: this.username || '',
         firstName: this.firstName || '',
-        lastName: this.lastName || ''
+        lastName: this.lastName || '',
+        workouts: this.workouts
     };
 };
 
@@ -45,20 +49,9 @@ const workoutSchema = mongoose.Schema({
 	//"setNumber": type: number,
 	//"setWeight": type: number,
 	//"setReps": type: number,
-	//"setNotes": type: string		
+	//"setNotes": type: string	
+	//]	
 });
 
-workoutSchema.methods.apiRepr = function() {
-	return {
-		id: this._id,
-		date: this.date,
-		workoutName: this.workoutName,
-		exercises: this.exercises
-	};
-}
-
-
-//const User = mongoose.model('User', UserSchema);
-const Workout = mongoose.model('Workout', workoutSchema);
-
-module.exports = {Workout};
+const User = mongoose.model('User', UserSchema);
+module.exports = {User};
