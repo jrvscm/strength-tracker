@@ -1,7 +1,11 @@
 function watchLogIn() {
 	$('#log-in').on('click', '#logInButton', event => {
 		event.preventDefault();
+		let uname = $('#username');
+		localStorage.setItem("username", uname.val());
 		sendLogIn();
+		$('#username').val('');
+		$('#passord').val('');
 	});
 }
 
@@ -9,6 +13,13 @@ function renderLogIn() {
 	return `{
 		"username": "${$('#username').val()}",
 		"password": "${$('#password').val()}"
+	}`
+}
+
+function renderSignUpLogIn() {
+	return `{
+		"username": "${$('#usernameSignUp').val()}",
+		"password": "${$('#passwordSignUp').val()}"
 	}`
 }
 
@@ -21,8 +32,12 @@ function sendLogIn() {
 		dataType : "json",
 		success: function(data) {
 		localStorage.setItem('authToken', data.authToken);	
-		window.location.href = '/loggedin.html';
+		window.location.href = '/dashboard.html';
 		},
+		error: function(xhr, status, error) {
+  			let err = eval("(" + xhr.responseText + ")");
+  			alert(err.Message);
+		}
 	});
 	//ajax
 }
@@ -41,12 +56,9 @@ function renderNewUser() {
 		"username": "${$('#userNameSignUp').val()}",
 		"password": "${$('#passwordSignUp').val()}"
 	}`
-
-	console.log()
-	sendNewUser();
 }
 
-function sendNewUser(newUser) {
+function sendNewUser() {
 	$.ajax({
 		method: "POST",
 		url: '/api/users/',
@@ -55,8 +67,28 @@ function sendNewUser(newUser) {
 		dataType : "json",
 		success: function(data) {
 			console.log(data)
+		},
+		error: function(xhr, status, error) {
+  			var err = eval("(" + xhr.responseText + ")");
+  			alert(err.Message);
 		}
-	});//ajax
+	})
+	.then(
+		$.ajax({
+		method: "POST",
+		url: '/api/auth/login/',
+		data: renderSignUpLogIn(),
+		contentType: "application/json; charset=utf-8",
+		dataType : "json",
+		success: function(data) {
+			localStorage.setItem('authToken', data.authToken);	
+			window.location.href = '/dashboard.html';
+		},
+		error: function(xhr, status, error) {
+  			let err = eval("(" + xhr.responseText + ")");
+  			alert(err.Message);
+		}
+	}));
 }
 
 
