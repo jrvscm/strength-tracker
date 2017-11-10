@@ -7,3 +7,7 @@
 	list-style-type: none;
 	padding: 5px;
 }
+
+.hidden {
+	display: none;
+}

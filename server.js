@@ -8,12 +8,11 @@ const uuid = require('uuid');
 
 const {router: usersRouter} = require('./users');
 const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
+const {router: workoutsRouter} = require('./workouts');
 
 mongoose.Promise = global.Promise;
 
 const{PORT, DATABASE_URL} = require('./config');
-
-const {User} = require('./users/models');
 
 const app = express();
 
@@ -38,29 +37,9 @@ app.use(passport.initialize());
 passport.use(basicStrategy);
 passport.use(jwtStrategy);
 
+app.use('/api/workouts/', workoutsRouter)
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
-
-//A protected endpoint which needs a valid JWT to access it
-app.get(
-	'/api/protected',
-	passport.authenticate('jwt', {session: false}),
-	(req, res) => {
-		return res.json({
-			data: 'tester'
-		});
-	}
-);
-
-app.put(
-	'/api/workouts',
-	passport.authenticate('jwt', {session: false}),
-	(req, res) => {
-	User.findOne({username: req.body.username})
-        .then(user => res.json(user.apiRepr()))
-        .catch(err => res.status(500).json({message: 'Internal server error'}));
-});
-
 
 
 //protected - add a workout
