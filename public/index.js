@@ -20,9 +20,11 @@ function sendLogIn() {
 		contentType: "application/json; charset=utf-8",
 		dataType : "json",
 		success: function(data) {
-			console.log(data)
+		localStorage.setItem('authToken', data.authToken);	
+		window.location.href = '/loggedin.html';
 		},
-	});//ajax
+	});
+	//ajax
 }
 
 function watchSignUp() {
@@ -40,8 +42,8 @@ function renderNewUser() {
 		"password": "${$('#passwordSignUp').val()}"
 	}`
 
-	console.log(newUser)
-	sendNewUser(newUser);
+	console.log()
+	sendNewUser();
 }
 
 function sendNewUser(newUser) {
