@@ -37,21 +37,5 @@ UserSchema.statics.hashPassword = function(password) {
     return bcrypt.hash(password, 10);
 };
 
-/////////////////////data///////////////////////
-
-const workoutSchema = mongoose.Schema({	
-	date: {type:Date, default: Date.now},
-	workoutName: {type: String, required: true},
-	exercises: Array
-	//"muscleGroup": type: String,
-	//"exerciseName": type: String
-	//"sets": [
-	//"setNumber": type: number,
-	//"setWeight": type: number,
-	//"setReps": type: number,
-	//"setNotes": type: string	
-	//]	
-});
-
 const User = mongoose.model('User', UserSchema);
 module.exports = {User};

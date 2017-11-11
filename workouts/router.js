@@ -19,16 +19,10 @@ router.put('/new', jsonParser,
 		{$push: {workouts: req.body.workout}, upsert:true, new: true})
         .then(user => res.json(user.apiRepr()))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
-	});
+});
 
 //add an exercise
-router.put('/exercise', jsonParser,
-	passport.authenticate('jwt', {session: false}),
-	(req, res) => {
-		User.findOne({username: req.body.username})
-        .populate({workouts: req.body.workoutName}, 
-        	{$push: {exercises: req.body.exercise}, upsert: true, new: true})
-        .catch(err => res.status(500).json({message: 'Internal server error'}));
-});
+
+
 
 module.exports = {router};

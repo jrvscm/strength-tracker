@@ -56,6 +56,8 @@ function renderNewUser() {
 		"username": "${$('#userNameSignUp').val()}",
 		"password": "${$('#passwordSignUp').val()}"
 	}`
+	let unameSignUp = $('#username');
+	localStorage.setItem("username", unameSignUp.val());
 }
 
 function sendNewUser() {

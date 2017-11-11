@@ -20,7 +20,6 @@ function watchNewWorkout() {
 		let muscleGroup = $('#workout-muscle-group');
 		localStorage.setItem("muscleGroup", muscleGroup.val());
 		createNewWorkout();
-		showExerciseForm();
 	});
 }
 
@@ -45,7 +44,7 @@ function createNewWorkout() {
 			xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 		},
 	});
-	clearWorkoutFields();
+	showExerciseForm()
 }
 
 function showExerciseForm() {
@@ -68,10 +67,10 @@ function watchNewExercise() {
 	});
 }
 
-function createNewWorkout() {
+function addExercise() {
 	$.ajax({
 		method: "PUT",
-		url: '/api/workouts/new',
+		url: '/api/workouts/exercises',
 		data: JSON.stringify({
 			'username': `${localStorage.getItem('username')}`,
 			'exercise': {
@@ -89,7 +88,6 @@ function createNewWorkout() {
 			xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 		},
 	});
-	clearExerciseFields();
 }
 
 function clearExerciseFields() {

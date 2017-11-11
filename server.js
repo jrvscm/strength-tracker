@@ -41,30 +41,6 @@ app.use('/api/workouts/', workoutsRouter)
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 
-
-//protected - add a workout
-app.put('/api/workouts',
-	passport.authenticate('jwt', {session: false}),
-	(req, res) => {
-	User
-	.findOneAndUpdate({userID: req.body.userID}, 
-		{$push: {workouts: req.body.workout}, new: true})
-	.then(updatedWorkout => res.status(204).end())
-	.catch(err => res.status(500).json({message: `Something went wrong`}));
-});
-
-//protected - add an exercise to a workout
-app.put('/api/workouts/exercises',
-	passport.authenticate('jwt', {session: false}),
-	(req, res) => {
-	User
-	.findOne({userID: req.body.userID}, 
-		{$push: {exercises: req.body.exercise}, new: true})
-	.then(updatedWorkout => res.status(204).end())
-	.catch(err => res.status(500).json({message: `Something went wrong`}));
-});
-
-
 app.use('*', (req, res) => {
 	return res.status(404).json({message: 'Not Found'});
 });
