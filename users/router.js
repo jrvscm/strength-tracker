@@ -116,7 +116,6 @@ router.post('/', jsonParser, (req, res) => {
         })
         .then(hash => {
             return User.create({
-            	userID: uuid.v4(),
                 username,
                 password: hash,
                 firstName,

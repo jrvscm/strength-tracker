@@ -32,13 +32,13 @@ function createNewWorkout() {
 			'workout': {
 			'workoutName': `${localStorage.getItem('workoutName')}`,
 			'muscleGroup': `${localStorage.getItem('muscleGroup')}`,
-			'exercises': []
 		}
 		}),
 		contentType: "application/json; charset=utf-8",
 		dataType : "json",
 		success: function(data) {
-			console.log(data);	
+			console.log(data)
+			console.log('got data')	
 		},
 		beforeSend: function(xhr, settings) { 
 			xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -76,13 +76,16 @@ function addExercise() {
 			'exercise': {
 			'exerciseName': `${localStorage.getItem('exerciseName')}`,
 			'exMuscleGroup': `${localStorage.getItem('exMuscleGroup')}`,
-			'sets': []
 		}
 		}),
 		contentType: "application/json; charset=utf-8",
 		dataType : "json",
 		success: function(data) {
 			console.log(data);	
+		},
+		error: function(xhr, status, error) {
+  			var err = eval("(" + xhr.responseText + ")");
+  			alert(err.Message);
 		},
 		beforeSend: function(xhr, settings) { 
 			xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -100,11 +103,16 @@ function clearWorkoutFields() {
 	$('#workout-name').val('');
 }
 
-function watchAddExerciseBtn() {
-	$('#workout-choices-list').on('click', '#create-workout-button', event => {
-		showWorkoutForm();
+function watchLogOut() {
+	$('#workout-choices-list').on('click', '#log-out-button', event => {
+		localStorage.clear();
+		window.location.href = 'index.html';
 	});
 }
 
+function handleUserPaths() {
+	watchCreateWorkoutBtn()
+	watchLogOut()
+}
 
-$(watchCreateWorkoutBtn);
+$(handleUserPaths);

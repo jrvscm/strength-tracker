@@ -16,13 +16,6 @@ function renderLogIn() {
 	}`
 }
 
-function renderSignUpLogIn() {
-	return `{
-		"username": "${$('#usernameSignUp').val()}",
-		"password": "${$('#passwordSignUp').val()}"
-	}`
-}
-
 function sendLogIn() {
 	$.ajax({
 		method: "POST",
@@ -49,18 +42,20 @@ function watchSignUp() {
 	});
 }
 
-function renderNewUser() {
+function renderNewUser() {	
 	return `{
 		"firstName": "${$('#firstNameSignUp').val()}",
 		"lastName": "${$('#lastNameSignUp').val()}",
 		"username": "${$('#userNameSignUp').val()}",
 		"password": "${$('#passwordSignUp').val()}"
-	}`
-	let unameSignUp = $('#username');
-	localStorage.setItem("username", unameSignUp.val());
+	}`	
 }
 
 function sendNewUser() {
+	console.log($('#userNameSignUp').val());
+	let unameSignUp = $('#userNameSignUp');
+	localStorage.setItem("username", unameSignUp.val());
+	
 	$.ajax({
 		method: "POST",
 		url: '/api/users/',
@@ -74,8 +69,7 @@ function sendNewUser() {
   			var err = eval("(" + xhr.responseText + ")");
   			alert(err.Message);
 		}
-	})
-	.then(
+	}).then(
 		$.ajax({
 		method: "POST",
 		url: '/api/auth/login/',
@@ -84,6 +78,7 @@ function sendNewUser() {
 		dataType : "json",
 		success: function(data) {
 			localStorage.setItem('authToken', data.authToken);	
+			console.log('logged in')
 			window.location.href = '/dashboard.html';
 		},
 		error: function(xhr, status, error) {
@@ -91,6 +86,13 @@ function sendNewUser() {
   			alert(err.Message);
 		}
 	}));
+}
+
+function renderSignUpLogIn() {
+	return `{
+		"username": "${$('#usernameSignUp').val()}",
+		"password": "${$('#passwordSignUp').val()}"
+	}`
 }
 
 
