@@ -3,6 +3,26 @@ const mongoose = require('mongoose');
 const uuid = require('uuid');
 mongoose.Promise = global.Promise;
 
+const SetsSchema = mongoose.Schema({
+	setNumber: {type: Number, required: true},
+	setWeight: {type: Number, required: true},
+	setReps: {type: Number, required: true},
+	setNotes: {type: String}
+})
+
+const ExerciseSchema = mongoose.Schema({
+	exerciseName: {type: String, required: true},
+	muscleGroup: {type:String},
+	sets: [SetsSchema]
+})
+
+const WorkoutSchema = mongoose.Schema({	
+	date: {type:Date, default: Date.now},
+	workoutName: {type: String, required: true},
+	muscleGroup: {type: String},
+	exercises: [ExerciseSchema]	
+});
+
 const UserSchema = mongoose.Schema({
 	userID: String,
     username: {
@@ -16,16 +36,17 @@ const UserSchema = mongoose.Schema({
     },
     firstName: {type: String, default: ''},
     lastName: {type: String, default: ''},
-    workouts: Array
+    workouts: [WorkoutSchema]
 });
+
+
 
 UserSchema.methods.apiRepr = function() {
     return {
-    	userID: this.userID,
         username: this.username || '',
         firstName: this.firstName || '',
         lastName: this.lastName || '',
-        workouts: this.workouts
+        workouts: this.workouts || ''
     };
 };
 
@@ -38,4 +59,7 @@ UserSchema.statics.hashPassword = function(password) {
 };
 
 const User = mongoose.model('User', UserSchema);
-module.exports = {User};
+const Workout = mongoose.model('Workout', WorkoutSchema);
+const Exercise = mongoose.model('Exercise', ExerciseSchema);
+const Sets = mongoose.model('Sets', SetsSchema);
+module.exports = {User, Workout, Exercise, Sets};
