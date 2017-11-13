@@ -14,9 +14,11 @@ const jsonParser = bodyParser.json();
 router.put('/new', jsonParser,
 	passport.authenticate('jwt', {session: false}),
 	(req, res) => {
-	User.findOneAndUpdate({username: req.body.username},
-		{$push: {workouts: req.body.workout}, upsert:true, new: true})
-        .then(user => res.json(user.workouts))
+		User.findOneAndUpdate(
+			{username: req.body.username},
+			{$push: {workouts: req.body.workout}}, 
+			{upsert:true, new:true})
+        .then(user => res.json(user.apiRepr()))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
@@ -24,8 +26,10 @@ router.put('/new', jsonParser,
 router.put('/exercises', jsonParser,
 	passport.authenticate('jwt', {session: false}),
 	(req, res) => {
-		User.findOneAndUpdate({username: req.body.username, 'workouts._id': req.body._id},
-			{$push: {'workouts.$.exercises': req.body.exercise}, new: true})
+		User.findOneAndUpdate(
+			{username: req.body.username, 'workouts._id': req.body._id},
+			{$push: {'workouts.$.exercises': req.body.exercise}},
+			{upsert: true, new: true})
 		.then(user => res.json(user.apiRepr()))
     	.catch(err => res.status(500).json({message: 'Internal server error'}));
 });
@@ -34,11 +38,11 @@ router.put('/exercises', jsonParser,
 router.put('/sets', jsonParser,
 	passport.authenticate('jwt', {session: false}),
 	(req, res) => {
-		User.findOneAndUpdate({username: req.body.username, 'workouts._id': req.body._id},
-			{$push: {'workouts.$.exercises.sets': req.body.set}, new: true})
+		User.findOneAndUpdate(
+			{username: req.body.username, 'workouts._id': req.body._id},
+			{$push: {'workouts.$.exercises[exercise.length].sets': req.body.setObj}},
+			{upsert: true, new: true})
 		.then(user => res.json(user.apiRepr()))
     	.catch(err => res.status(500).json({message: 'Internal server error'}));
 });
-
-
 module.exports = {router};

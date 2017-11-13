@@ -36,15 +36,23 @@ function createNewWorkout() {
 		}),
 		contentType: "application/json; charset=utf-8",
 		dataType : "json",
-		success: function(data) {
-			console.log(data)
-			console.log('got data')	
+		success: function(user) {
+			accessUserObject(user);
 		},
 		beforeSend: function(xhr, settings) { 
 			xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 		},
 	});
 	showExerciseForm()
+}
+
+function accessUserObject(user) {
+	getCurrentWorkoutId(user);
+}
+
+function getCurrentWorkoutId(user) {
+	let idx = user.workouts.length - 1;
+	localStorage.setItem('currentWorkout', user.workouts[idx]._id);
 }
 
 function showExerciseForm() {
@@ -73,9 +81,10 @@ function addExercise() {
 		url: '/api/workouts/exercises',
 		data: JSON.stringify({
 			'username': `${localStorage.getItem('username')}`,
+			'_id': `${localStorage.getItem('currentWorkout')}`,
 			'exercise': {
 			'exerciseName': `${localStorage.getItem('exerciseName')}`,
-			'exMuscleGroup': `${localStorage.getItem('exMuscleGroup')}`,
+			'MuscleGroup': `${localStorage.getItem('MuscleGroup')}`,
 		}
 		}),
 		contentType: "application/json; charset=utf-8",
