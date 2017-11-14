@@ -60,6 +60,7 @@ function showExerciseForm() {
 	setTimeout(function() {
 	$('#add-exercise-section').fadeIn('fast').removeClass('hidden');
 }, 250);
+	renderWorkoutDisplay();
 	watchNewExercise();
 }
 
@@ -71,6 +72,16 @@ function watchNewExercise() {
 		
 		let exMuscleGroup = $('#exercise-muscle-group');
 		localStorage.setItem("exMuscleGroup", exMuscleGroup.val());
+
+		let exSetNumber = $('#set-number');
+		localStorage.setItem("setNumber", exSetNumber.val());
+
+		let exSetWeight = $('#set-weight');
+		localStorage.setItem("setWeight", exSetWeight.val());
+
+		let exSetReps = $('#set-reps');
+		localStorage.setItem("setReps", exSetReps.val());
+
 		addExercise();
 	});
 }
@@ -84,9 +95,14 @@ function addExercise() {
 			'_id': `${localStorage.getItem('currentWorkout')}`,
 			'exercise': {
 			'exerciseName': `${localStorage.getItem('exerciseName')}`,
-			'MuscleGroup': `${localStorage.getItem('MuscleGroup')}`,
+			'muscleGroup': `${localStorage.getItem('muscleGroup')}`,
+			'sets': [
+			{'setNumber': `${localStorage.getItem('setNumber')}`,
+			 'setReps': `${localStorage.getItem('setReps')}`,
+			 'setWeight': `${localStorage.getItem('setWeight')}`
+			}]
 		}
-		}),
+	}),
 		contentType: "application/json; charset=utf-8",
 		dataType : "json",
 		success: function(data) {
@@ -100,6 +116,19 @@ function addExercise() {
 			xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 		},
 	});
+}
+
+function renderWorkoutDisplay() {
+	let workoutRep = `<div class="workout">
+								<h2>Workout: ${localStorage.getItem('workoutName')}</h2>
+								<h3>Muscle Group: ${localStorage.getItem('muscleGroup')}</h3>
+								<h3>Exercises: </h3>
+					  </div>`;
+	insertWorkout(workoutRep);
+}
+
+function insertWorkout(workoutRep) {
+	$('#populate-workout-section').append(workoutRep).fadeIn('fast').removeClass('hidden');
 }
 
 function clearExerciseFields() {

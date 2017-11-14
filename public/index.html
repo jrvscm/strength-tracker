@@ -12,36 +12,46 @@
 </head>
 <body>
 	<main role="main">
-		<section id="log-in-section">
-			<div id="log-in-container">
-				<form action="" id="log-in">
-					<h1>Log In</h1>
+
+		<section id="intro-section">
+			<div class="row">
+				<div id="intro-container" class="container center">
+					<h1>Strength Tracker</h1>
+					<p>Track your lifts. Get stronger, period.</p>
+					<button id="intro-login-button" role="button" class="btn btn-danger">Log In</button><button id="intro-signup-button" role="button" class="btn btn-danger">Sign Up</button>
+				</div>				
+			</div>
+		</section>
+		<section id="log-in-section" class="hidden">
+			<div id="log-in-container" class="center">
+				<form action="#" id="log-in">
+					<h2>Log In</h2>
 						<label for="username">Username: </label>
-						<input id="username" name="username" required="required" type="text" placeholder="eg. Ada"/>
+						<input id="username" class="form-control" name="username" required="required" type="text" placeholder="eg. Ada"/>
 					 
 						<label for="password">Password: </label>
-						<input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" />  
+						<input id="password" class="form-control" name="password" required="required" type="password" placeholder="eg. X8df!90EO" />  
 						<button id="logInButton" type="submit" class="btn btn-success">Log In</button> 
 				</form>
 			</div><!--log-in-container-->
 		</section>
 
-		<section id="sign-up-section">
-			<div id="sign-up-container">
-				<form action="" id="sign-up">
-						<h1>Sign Up</h1>
+		<section id="sign-up-section" class ="hidden">
+			<div id="sign-up-container" class="center">
+				<form action="#" id="sign-up">
+						<h2>Sign Up</h2>
 						<label for="firstNameSignUp">First Name</label>
-						<input id="firstNameSignUp" name="userNameSignUp" required="required" type="text" placeholder="eg. Jack" />
+						<input id="firstNameSignUp" class="form-control" name="userNameSignUp" required="required" type="text" placeholder="eg. Jack" />
 
 						<label for="lastNameSignUp">Last Name</label>
-						<input id="lastNameSignUp" name="userNameSignUp" required="required" type="text" placeholder="eg. Theripper" />
+						<input id="lastNameSignUp" class="form-control" name="userNameSignUp" required="required" type="text" placeholder="eg. Theripper" />
 
 						<label for="userNameSignUp">Username</label>
-						<input id="userNameSignUp" name="userNameSignUp" required="required" type="text" placeholder="eg. SliceNDice" />
+						<input id="userNameSignUp" class="form-control" name="userNameSignUp" required="required" type="text" placeholder="eg. SliceNDice" />
 
 						<label for="passwordSignUp">Password</label>
-						<input id="passwordSignUp" name="passwordSignUp" required="required" type="password" placeholder="eg. wh0sNex7?!"/>
-						<button id="signUpButton" type="submit" class="btn btn-success">Sign Up</button>
+						<input id="passwordSignUp" class="form-control" name="passwordSignUp" required="required" type="password" placeholder="eg. wh0sNex7?!"/>
+						<button id="signUpButton" type="submit" class="btn btn-success "form-control"">Sign Up</button>
 				</form>
 			</div><!--sign-up-container-->
 		</section>	

@@ -11,7 +11,7 @@ const router = express.Router();
 const jsonParser = bodyParser.json();
 
 // add a workout
-router.put('/new', jsonParser,
+router.put('/news', jsonParser,
 	passport.authenticate('jwt', {session: false}),
 	(req, res) => {
 		User.findOneAndUpdate(
@@ -23,7 +23,7 @@ router.put('/new', jsonParser,
 });
 
 //add an exercise
-router.put('/exercises', jsonParser,
+router.put('/exercisess', jsonParser,
 	passport.authenticate('jwt', {session: false}),
 	(req, res) => {
 		User.findOneAndUpdate(
@@ -34,15 +34,15 @@ router.put('/exercises', jsonParser,
     	.catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
-//add a set - HAVE NOT TESTED
-router.put('/sets', jsonParser,
+//add a new workout
+router.post('/newref', jsonParser,
 	passport.authenticate('jwt', {session: false}),
 	(req, res) => {
-		User.findOneAndUpdate(
-			{username: req.body.username, 'workouts._id': req.body._id},
-			{$push: {'workouts.$.exercises[exercise.length].sets': req.body.setObj}},
-			{upsert: true, new: true})
-		.then(user => res.json(user.apiRepr()))
-    	.catch(err => res.status(500).json({message: 'Internal server error'}));
+		Workout
+		.create({workoutName: req.body.workoutName,
+				muscleGroup: req.body.muscleGroup,
+				userRef: req.body.userRef})
+        .then(user => res.json(workout.apiRepr()))
+        .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 module.exports = {router};

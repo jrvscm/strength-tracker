@@ -15,9 +15,9 @@
 
 	<section id="workout-choices">
 		<ul id="workout-choices-list">
-			<li class="list-item"><button id="create-workout-button" class="btn btn-success">Create a Workout</button></li>
-			<li class="list-item"><button id="find-workout-button" class="btn btn-success">Find a Workout</button></li>
-			<li class="list-item"><button id="view-all-workouts-button" class="btn btn-success">View My Workouts</button></li>
+			<li class="list-item"><button id="create-workout-button" class="btn btn-success">Create Workout</button></li>
+			<li class="list-item"><button id="find-workout-button" class="btn btn-success">View Progress</button></li>
+			<li class="list-item"><button id="view-all-workouts-button" class="btn btn-success">My Workouts</button></li>
 			<li class="list-item"><button id='log-out-button' class="btn btn-success" role="button">Log Out</button></li>
 		</ul>	
 	</section>
@@ -27,10 +27,10 @@
 			<form action="" id="create-new-workout-form">
 				<h2>Add your workout info:</h2>
 					<label for="workout-name">Workout Name: </label>
-					<input id="workout-name" name="workout" required="required" type="text" placeholder="eg. Hulk Back Day"/>
+					<input id="workout-name" class="form-control" name="workout" required="required" type="text" placeholder="eg. Hulk Back Day"/>
 					 
 					<label for="workout-muscle-group">Muscle Group: </label>
-					<input id="workout-muscle-group" name="workout" required="required" type="text" placeholder="eg. Back" />  
+					<input id="workout-muscle-group" class="form-control" name="workout" required="required" type="text" placeholder="eg. Back" />  
 					<button id="create-new-workout-button" type="submit" class="btn btn-success">Create Workout</button> 
 			</form>
 		</div>
@@ -40,27 +40,27 @@
 			<form action="" id="workout-exercise-form">
 				<h2>Add an Exercise:</h2>
 					<label for="exercise-name">Exercise Name: </label>
-					<input id="exercise-name" name="workout-params" required="required" type="text" placeholder="eg. Hulk Squats"/>
+					<input id="exercise-name" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Hulk Squats"/>
 					 
 					<label for="exercise-muscle-group">Muscle Group: </label>
-					<input id="exercise-muscle-group" name="workout-params" required="required" type="text" placeholder="eg. Quads" />
+					<input id="exercise-muscle-group" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Quads" />
 			</form>
 			<form action="" id="workout-exercise-sets-form">
 					<label for="set-number">Set Number:</label>
-					<input id="set-number" name="workout-params" required="required" type="text" placeholder="eg. 1"/>
+					<input id="set-number" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 1"/>
 					 
 					<label for="set-weight">Set Weight:</label>
-					<input id="set-weight" name="workout-params" required="required" type="text" placeholder="eg. 315" />
+					<input id="set-weight" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 315" />
 
 					<label for="set-reps">Set Reps:</label>
-					<input id="set-reps" name="workout-params" required="required" type="text" placeholder="eg. 12" />
+					<input id="set-reps" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 12" />
 
-					<label for="set-notes">Set Notes:</label>
-					<textarea id="set-notes" name="workout-params" type="text" placeholder="eg. Up weight next time."></textarea>
 					<button id="add-set-button" class="btn btn-success">Set++</button><br>
 					<button id="add-workout-exercise-button" type="submit" class="btn btn-success">Save Exercise</button> 
 			</form>
 		</div>
+	</section>
+	<section id="populate-workout-section" class="hidden" aria-live="polite">
 	</section>
 	
 </main>

@@ -7,24 +7,33 @@ const SetsSchema = mongoose.Schema({
 	setNumber: {type: Number, required: true},
 	setWeight: {type: Number, required: true},
 	setReps: {type: Number, required: true},
-	setNotes: {type: String}
-})
+	exerciseRef: {type: mongoose.Schema.Types.ObjectId, ref: 'Exercise'}
+});
 
 const ExerciseSchema = mongoose.Schema({
 	exerciseName: {type: String, required: true},
 	muscleGroup: {type:String},
-	sets: [SetsSchema]
-})
+	workoutRef: {type: mongoose.Schema.Types.ObjectId, ref: 'Workout'}
+});
 
 const WorkoutSchema = mongoose.Schema({	
 	date: {type:Date, default: Date.now},
 	workoutName: {type: String, required: true},
-	muscleGroup: {type: String},
-	exercises: [ExerciseSchema]	
+	muscleGroup: {type: String, required: true},
+	userRef: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
+WorkoutSchema.methods.apiRepr = function() {
+	return {
+			date: this.date,
+			workoutName: this.workoutName,
+			muscleGroup: this.muscleGroup,
+			userRef: this.userRef
+	};
+};
+
 const UserSchema = mongoose.Schema({
-	userID: String,
+	_id: {type: mongoose.Schema.Types.ObjectId},
     username: {
         type: String,
         required: true,
@@ -36,17 +45,16 @@ const UserSchema = mongoose.Schema({
     },
     firstName: {type: String, default: ''},
     lastName: {type: String, default: ''},
-    workouts: [WorkoutSchema]
 });
 
 
 
 UserSchema.methods.apiRepr = function() {
     return {
+    	_id: this._id,
         username: this.username || '',
         firstName: this.firstName || '',
-        lastName: this.lastName || '',
-        workouts: this.workouts || ''
+        lastName: this.lastName || ''
     };
 };
 

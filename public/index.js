@@ -95,8 +95,21 @@ function renderSignUpLogIn() {
 	}`
 }
 
+function watchIntroClicks() {
+	$('#intro-section').on('click', '#intro-login-button', event => {
+		$('#intro-section').fadeOut('fast').addClass('hidden');
+		$('#log-in-section').fadeIn('fast').removeClass('hidden');
+	});
+
+	$('#intro-section').on('click', '#intro-signup-button', event => {
+		$('#intro-section').fadeOut('fast').addClass('hidden');
+		$('#sign-up-section').fadeIn('fast').removeClass('hidden');
+	});		
+}
+
 
 function handleLogin() {
+	watchIntroClicks()
 	watchSignUp();
 	watchLogIn();
 }
