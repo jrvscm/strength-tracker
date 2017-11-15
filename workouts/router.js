@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const uuid = require('uuid');
 
-const {User, Workout, Exercise, Sets} = require('../users/models');
+const {User, Workout, Exercise, Setsobj} = require('../users/models');
 
 const router = express.Router();
 
@@ -17,7 +17,7 @@ router.post('/new', jsonParser,
 		.create({workoutName: req.body.workoutName,
 				muscleGroup: req.body.muscleGroup,
 				userRef: req.body.userRef})
-        .then(workout => res.json(workout.apiRepr()))
+        .then(workout => res.json(workout))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
@@ -42,7 +42,7 @@ router.post('/sets', jsonParser,
 				setWeight: req.body.setWeight,
 				setReps: req.body.setReps,
 				exerciseRef: req.body.exerciseRef})
-        .then(setsObj => res.json(setsObj))
+        .then(Setsobj => res.json(Setsobj))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
@@ -52,8 +52,28 @@ router.get('/myworkouts/:id', jsonParser,
 	(req, res) => {
 		Workout
 		.find({userRef: req.params.id})
-        .then(workouts => res.json(workouts.map(workout => workout.apiRepr())))
+        .then(workouts => res.json(workouts.map(workout => workout)))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
+
+//get all exercises for a workout
+router.get('/exercises/:id', jsonParser,
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+		Exercise
+		.find({workoutRef: req.params.id})
+		.then(exercises => res.json(exercises.map(exercise => exercise)))
+		.catch(err => res.status(500).json({message: 'Internal server error'}));
+	});
+
+//get all sets for an exercise
+router.get('/sets/:id', jsonParser,
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+		Setsobj
+		.find({exerciseRef: req.params.id})
+		.then(setsobjs => res.json(setsobjs.map(setobj => setobj)))
+		.catch(err => res.status(500).json({message: 'Internal server error'}));
+	});
 
 module.exports = {router};

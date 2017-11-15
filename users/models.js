@@ -3,8 +3,7 @@ const mongoose = require('mongoose');
 const uuid = require('uuid');
 mongoose.Promise = global.Promise;
 
-const SetsSchema = mongoose.Schema({
-	_id: {type: mongoose.Schema.Types.ObjectId},
+const SetsobjSchema = mongoose.Schema({
 	setNumber: {type: Number, required: true},
 	setWeight: {type: Number, required: true},
 	setReps: {type: Number, required: true},
@@ -17,34 +16,14 @@ const ExerciseSchema = mongoose.Schema({
 	workoutRef: {type: mongoose.Schema.Types.ObjectId, ref: 'Workout'}
 });
 
-ExerciseSchema.methods.apiRepr = function() {
-	return { 
-			exerciseName: this.exerciseName,
-			muscleGroup: this.muscleGroup,
-			workoutRef: this.workoutRef
-		};
-}
-
 const WorkoutSchema = mongoose.Schema({	
 	date: {type:Date, default: Date.now},
-	_id: {type: mongoose.Schema.Types.ObjectId},
 	workoutName: {type: String, required: true},
 	muscleGroup: {type: String, required: true},
 	userRef: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
-WorkoutSchema.methods.apiRepr = function() {
-	return {
-			date: this.date,
-			_id: this._id,
-			workoutName: this.workoutName,
-			muscleGroup: this.muscleGroup,
-			userRef: this.userRef
-	};
-}
-
 const UserSchema = mongoose.Schema({
-	_id: {type: mongoose.Schema.Types.ObjectId},
     username: {
         type: String,
         required: true,
@@ -62,7 +41,6 @@ const UserSchema = mongoose.Schema({
 
 UserSchema.methods.apiRepr = function() {
     return {
-    	_id: this._id,
         username: this.username || '',
         firstName: this.firstName || '',
         lastName: this.lastName || ''
@@ -80,5 +58,5 @@ UserSchema.statics.hashPassword = function(password) {
 const User = mongoose.model('User', UserSchema);
 const Workout = mongoose.model('Workout', WorkoutSchema);
 const Exercise = mongoose.model('Exercise', ExerciseSchema);
-const Sets = mongoose.model('Sets', SetsSchema);
-module.exports = {User, Workout, Exercise, Sets};
+const Setsobj = mongoose.model('Setsobj', SetsobjSchema);
+module.exports = {User, Workout, Exercise, Setsobj};

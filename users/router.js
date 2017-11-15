@@ -123,7 +123,7 @@ router.post('/', jsonParser, (req, res) => {
             });
         })
         .then(user => {
-            return res.status(201).json(user.apiRepr());
+            return res.status(201).json(user);
         })
         .catch(err => {
             // Forward validation errors on to the client, otherwise give a 500
@@ -139,7 +139,7 @@ router.post('/', jsonParser, (req, res) => {
 //just doing this so we have a quick way to see all users
 router.get('/', (req, res) => {
     return User.find()
-        .then(users => res.json(users.map(user => user.apiRepr())))
+        .then(users => res.json(users.map(user => user)))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 

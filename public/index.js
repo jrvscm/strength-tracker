@@ -5,27 +5,55 @@ function watchLogIn() {
 		localStorage.setItem("username", uname.val());
 		sendLogIn();
 		$('#username').val('');
-		$('#passord').val('');
+		$('#password').val('');
+
 	});
 }
 
-function renderLogIn() {
+function renderLoginInfo() {
 	return `{
 		"username": "${$('#username').val()}",
 		"password": "${$('#password').val()}"
-	}`
+	}`;
+}
+
+function renderLoginInfo() {
+	return `{
+		"username": "${$('#username').val()}"
+	}`;
 }
 
 function sendLogIn() {
 	$.ajax({
 		method: "POST",
 		url: '/api/auth/login/',
-		data: renderLogIn(),
+		data: renderLoginInfo(),
 		contentType: "application/json; charset=utf-8",
 		dataType : "json",
 		success: function(data) {
 		localStorage.setItem('authToken', data.authToken);	
 		window.location.href = '/dashboard.html';
+		getUserId();
+		},
+		error: function(xhr, status, error) {
+  			let err = eval("(" + xhr.responseText + ")");
+  			alert(err.Message);
+		}
+	});
+	//ajax
+}
+
+function getUserId() {
+	$.ajax({
+		method: "GET",
+		url: '/api/auth/login/',
+		data: renderUsername(),
+		contentType: "application/json; charset=utf-8",
+		dataType : "json",
+		success: function(data) {
+		localStorage.setItem('authToken', data.authToken);	
+		window.location.href = '/dashboard.html';
+		getUserId();
 		},
 		error: function(xhr, status, error) {
   			let err = eval("(" + xhr.responseText + ")");
@@ -38,20 +66,20 @@ function sendLogIn() {
 function watchSignUp() {
 	$('#sign-up').on('click', '#signUpButton', event => {
 		event.preventDefault();
-		sendNewUser();
+		createNewUser();
 	});
 }
 
-function renderNewUser() {	
+function renderNewUser() {
 	return `{
 		"firstName": "${$('#firstNameSignUp').val()}",
 		"lastName": "${$('#lastNameSignUp').val()}",
 		"username": "${$('#userNameSignUp').val()}",
 		"password": "${$('#passwordSignUp').val()}"
-	}`	
+	}`;
 }
 
-function sendNewUser() {
+function createNewUser() {
 	console.log($('#userNameSignUp').val());
 	let unameSignUp = $('#userNameSignUp');
 	localStorage.setItem("username", unameSignUp.val());
@@ -63,36 +91,41 @@ function sendNewUser() {
 		contentType: "application/json; charset=utf-8",
 		dataType : "json",
 		success: function(data) {
-			console.log(data)
+			localStorage.setItem('userId', data._id);
+			loginAfterUserCreated();
 		},
 		error: function(xhr, status, error) {
   			var err = eval("(" + xhr.responseText + ")");
   			alert(err.Message);
 		}
-	}).then(
-		$.ajax({
+	});
+}
+
+function renderNewUserLogin() {
+	return `{
+		"username": "${$('#usernameSignUp').val()}",
+		"password": "${$('#passwordSignUp').val()}"
+	}`;
+}
+
+
+function loginAfterUserCreated() {
+
+$.ajax({
 		method: "POST",
 		url: '/api/auth/login/',
-		data: renderSignUpLogIn(),
+		data: renderNewUserLogin(),
 		contentType: "application/json; charset=utf-8",
 		dataType : "json",
 		success: function(data) {
 			localStorage.setItem('authToken', data.authToken);	
-			console.log('logged in')
 			window.location.href = '/dashboard.html';
 		},
 		error: function(xhr, status, error) {
   			let err = eval("(" + xhr.responseText + ")");
   			alert(err.Message);
 		}
-	}));
-}
-
-function renderSignUpLogIn() {
-	return `{
-		"username": "${$('#usernameSignUp').val()}",
-		"password": "${$('#passwordSignUp').val()}"
-	}`
+	});
 }
 
 function watchIntroClicks() {
