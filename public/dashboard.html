@@ -37,15 +37,16 @@
 	</section>
 	<section id="add-exercise-section" class="hidden" aria-live="polite">
 		<div id="workout-exercise-form-container">
-			<form action="" id="workout-exercise-form">
+			<form action="#" id="workout-exercise-form">
 				<h2>Add an Exercise:</h2>
 					<label for="exercise-name">Exercise Name: </label>
 					<input id="exercise-name" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Hulk Squats"/>
 					 
 					<label for="exercise-muscle-group">Muscle Group: </label>
 					<input id="exercise-muscle-group" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Quads" />
-			</form>
-			<form action="" id="workout-exercise-sets-form">
+					<button id="add-workout-exercise-button" type="submit" class="btn btn-success">Save Exercise</button>
+			</form> 
+			<form action="#" id="exercise-sets-form" class="hidden" aria-live="polite">
 					<label for="set-number">Set Number:</label>
 					<input id="set-number" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 1"/>
 					 
@@ -55,8 +56,7 @@
 					<label for="set-reps">Set Reps:</label>
 					<input id="set-reps" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 12" />
 
-					<button id="add-set-button" class="btn btn-success">Set++</button><br>
-					<button id="add-workout-exercise-button" type="submit" class="btn btn-success">Save Exercise</button> 
+					<button id="add-set-button" class="btn btn-success">Set++</button><br>-->
 			</form>
 		</div>
 	</section>

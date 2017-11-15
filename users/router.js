@@ -143,4 +143,11 @@ router.get('/', (req, res) => {
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
+router.post('/params', jsonParser, 
+	(req, res) => {
+	User.findOne({username: req.body.username})
+		.then(user => res.json(user))
+		.catch(err => res.status(500).json({message: 'Internal server error'}));
+});
+
 module.exports = {router};
