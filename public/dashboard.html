@@ -7,44 +7,47 @@
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Oswald" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="dashboard.css">
-	<title>Strength Tracker User Dashboard</title>
+	<title>Strength Tracker</title>
 </head>
 <body>
 <main role="main">
-	<h1 role="banner">Strength Tracker User Dashboard</h1>
+	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
+    		<span class="navbar-toggler-icon"></span>
+  		</button>
+  			<div class="collapse navbar-collapse" id="navbar-toggle">
+  				<button id='log-out-button' class="btn btn-success" role="button">Log Out</button>
+  			</div>
+		</nav>
 
 	<section id="workout-choices">
-		<ul id="workout-choices-list">
+		<ul id="workout-choices-list" class="center">
 			<li class="list-item"><button id="create-workout-button" class="btn btn-success">Create Workout</button></li>
 			<li class="list-item"><button id="find-workout-button" class="btn btn-success">View Progress</button></li>
 			<li class="list-item"><button id="view-all-workouts-button" class="btn btn-success">My Workouts</button></li>
-			<li class="list-item"><button id='log-out-button' class="btn btn-success" role="button">Log Out</button></li>
-		</ul>	
+		</ul>
 	</section>
 
 	<section id="new-workout-section" class="hidden" aria-live="polite">
 		<div id="workout-form-container">
 			<form action="" id="create-new-workout-form">
-				<h2>Add your workout info:</h2>
+				<h2>Name this workout:</h2>
 					<label for="workout-name">Workout Name: </label>
 					<input id="workout-name" class="form-control" name="workout" required="required" type="text" placeholder="eg. Hulk Back Day"/>
-					 
-					<label for="workout-muscle-group">Muscle Group: </label>
-					<input id="workout-muscle-group" class="form-control" name="workout" required="required" type="text" placeholder="eg. Back" />  
 					<button id="create-new-workout-button" type="submit" class="btn btn-success">Create Workout</button> 
 			</form>
 		</div>
-	</section>
-	<section id="add-exercise-section" class="hidden" aria-live="polite">
-		<div id="workout-exercise-form-container">
-			<form action="#" id="workout-exercise-form">
-				<h2>Add an Exercise:</h2>
-					<label for="exercise-name">Exercise Name: </label>
-					<input id="exercise-name" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Hulk Squats"/>
-					 
+	<div class="row">	
+		<div id="workout-exercise-form-container" class="col-md-4">
+			<form action="#" id="workout-exercise-form" class="hidden" aria-life="polite">
+				<h2>Lift:</h2>
+					
 					<label for="exercise-muscle-group">Muscle Group: </label>
 					<input id="exercise-muscle-group" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Quads" />
-					<button id="add-workout-exercise-button" type="submit" class="btn btn-success">Save Exercise</button>
+
+					<label for="exercise-name">Exercise Name: </label>
+					<input id="exercise-name" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Hulk Squats"/>
+					<button id="add-workout-exercise-button" type="submit" class="btn btn-success">Add Exercise</button>
 			</form> 
 			<form action="#" id="exercise-sets-form" class="hidden" aria-live="polite">
 					<label for="set-number">Set Number:</label>
@@ -56,12 +59,18 @@
 					<label for="set-reps">Set Reps:</label>
 					<input id="set-reps" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 12" />
 
-					<button id="add-set-button" class="btn btn-success">Set++</button><br>-->
+					<button id="add-set-button" class="btn btn-success" type="submit">Set++</button>
 			</form>
+			<button id="next-exercise-button" class="btn btn-success hidden">Next Exercise</button>
 		</div>
+
+		<div id="populate-workout-section" class="hidden col-md-8 table-responsive" aria-live="polite">
+		</div>
+
+	</div><!--row-->
 	</section>
-	<section id="populate-workout-section" class="hidden" aria-live="polite">
-	</section>
+		
+	
 	
 </main>
 

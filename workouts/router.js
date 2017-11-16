@@ -15,7 +15,6 @@ router.post('/new', jsonParser,
 	(req, res) => {
 		Workout
 		.create({workoutName: req.body.workoutName,
-				muscleGroup: req.body.muscleGroup,
 				userRef: req.body.userRef})
         .then(workout => res.json(workout))
         .catch(err => res.status(500).json({message: 'Internal server error'}));

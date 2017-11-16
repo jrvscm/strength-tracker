@@ -19,7 +19,6 @@ const ExerciseSchema = mongoose.Schema({
 const WorkoutSchema = mongoose.Schema({	
 	date: {type:Date, default: Date.now},
 	workoutName: {type: String, required: true},
-	muscleGroup: {type: String, required: true},
 	userRef: {type: mongoose.Schema.Types.ObjectId, ref: 'User'}
 });
 
