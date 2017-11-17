@@ -1,3 +1,12 @@
+/////////////////CREATE WORKOUT//////////////////////
+
+function watchMyWorkoutsBtn() {
+	$('#workout-choices-list').on('click', '#view-all-workouts-button', event=> {
+		getUserId();
+		window.location.href = '/myworkouts.html';
+	});
+}
+
 function watchCreateWorkoutBtn() {
 	$('#workout-choices-list').on('click', '#create-workout-button', event => {
 		$('#workout-choices-list').removeClass('center');
@@ -226,8 +235,9 @@ function watchLogOut() {
 }
 
 function handleUserPaths() {
-	watchCreateWorkoutBtn()
-	watchLogOut()
+	watchCreateWorkoutBtn();
+	watchMyWorkoutsBtn();
+	watchLogOut();
 }
 
 $(handleUserPaths);

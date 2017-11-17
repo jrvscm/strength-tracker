@@ -6,7 +6,6 @@ function watchLogIn() {
 		sendLogIn();
 		$('#username').val('');
 		$('#password').val('');
-
 	});
 }
 
@@ -14,12 +13,6 @@ function renderLoginInfo() {
 	return `{
 		"username": "${$('#username').val()}",
 		"password": "${$('#password').val()}"
-	}`;
-}
-
-function renderLoginInfo() {
-	return `{
-		"username": "${$('#username').val()}"
 	}`;
 }
 
@@ -39,28 +32,7 @@ function sendLogIn() {
   			let err = eval("(" + xhr.responseText + ")");
   			alert(err.Message);
 		}
-	});
-	//ajax
-}
-
-function getUserId() {
-	$.ajax({
-		method: "GET",
-		url: '/api/auth/login/',
-		data: renderUsername(),
-		contentType: "application/json; charset=utf-8",
-		dataType : "json",
-		success: function(data) {
-		localStorage.setItem('authToken', data.authToken);	
-		window.location.href = '/dashboard.html';
-		getUserId();
-		},
-		error: function(xhr, status, error) {
-  			let err = eval("(" + xhr.responseText + ")");
-  			alert(err.Message);
-		}
-	});
-	//ajax
+	}); //ajax
 }
 
 function watchSignUp() {

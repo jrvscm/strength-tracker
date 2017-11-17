@@ -55,6 +55,16 @@ router.get('/myworkouts/:id', jsonParser,
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
+//find a specific workout by id
+router.get('/:id', jsonParser,
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+		Workout
+		.findById(req.params.id)
+		.then(workout => res.json(workout))
+		.catch(err => res.status(500).json({message: 'Internal server error'}));
+	});
+
 //get all exercises for a workout
 router.get('/exercises/:id', jsonParser,
 	passport.authenticate('jwt', {session: false}),

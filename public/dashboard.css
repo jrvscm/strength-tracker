@@ -17,15 +17,28 @@ html, body {
 	display: none;
 }
 
+.workoutForm {
+	border: 1px solid black;
+	height: 300px;
+	width:400px;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 5px;
+}
+
+button {
+	margin-top: 5px;
+	width: 150px;
+	cursor: pointer;
+}
 .center {
-	position: absolute;
+	position: absolute;	
 	margin: auto;
-	top: 0;
+	top: 120px;
 	right: 0;
 	bottom: 0;
 	left: 0;
 	background-color: rgb(106, 90, 205);
-	border-radius: 3px;
 	height: 100%;
 	width: 100%;
 	padding-top: 20%;
