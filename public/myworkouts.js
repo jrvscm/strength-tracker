@@ -1,6 +1,6 @@
 function getUserWorkouts() {
 	$.ajax({
-		method: "get",
+		method: "GET",
 		url: `/api/workouts/myworkouts/${localStorage.getItem('userId')}`,
 		data:"",
 		contentType: "application/json; charset=utf-8",
@@ -22,23 +22,23 @@ function mapWorkouts(workouts) {
 	$('#userWorkoutsList').append(`<h2>${localStorage.getItem('username')}'s Workouts</h2>`);
 
 	for(let i=0; i<workouts.length; i++) {
-		$('#userWorkoutsList').append(`<li><a href="#" id="${workouts[i]._id}" class="workoutLink">${workouts[i].workoutName}</a> <i class="fa fa-times"></i></li>`);
+		$('#userWorkoutsList').append(`<li><a href="#" id="${workouts[i]._id}" class="workoutLink">${workouts[i].workoutName}</a></li>`);
 	}
 	watchUserWorkoutList();
 }
 
 function watchUserWorkoutList() {
-	$('#userWorkoutsList').on('click', function(e) {
+	$('#userWorkoutsList li').on('click', '.workoutLink', function(e) {
 		let workoutID = $(e.target).attr('id');
 		$.ajax({
-			method: "get",
+			method: "GET",
 			url: `/api/workouts/${workoutID}`,
 			data:"",
 			contentType: "application/json; charset=utf-8",
 			dataType : "json",
 			success: function(workout) {
 				appendBaseWorkoutTable(workout);
-				getExercisesList(workoutID);
+				getExercisesList(workoutID, workout);
 			},
 			beforeSend: function(xhr, settings) { 
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -51,17 +51,17 @@ function watchUserWorkoutList() {
 	});
 }
 
-function getExercisesList(workoutID) {
+function getExercisesList(workoutID, workout) {
 	$.ajax({
-			method: "get",
-			url: `/api/workouts/exercises/${workoutID}`,
+			method: "GET",
+			url: `/api/workouts/exercises/${workout._id}`,
 			data:"",
 			contentType: "application/json; charset=utf-8",
 			dataType : "json",
 			success: function(exercises) {
 				console.log(exercises)
 				appendExercises(exercises);
-				getSets(exercises);
+				getSets(exercises, workout);
 
 			},
 			beforeSend: function(xhr, settings) { 
@@ -78,15 +78,15 @@ function appendExercises(exercises) {
 	for(let i=0; i<exercises.length; i++) {
 		$('#workout-table-body').append(`<tr id="${exercises[i]._id}">
 											<td><strong><em>${exercises[i].exerciseName}</strong></em></td>
-										 <tr>`);
+										 </tr>`);
 	}
 }
 
 
-function getSets(exercises) {
+function getSets(exercises, workout) {
 	for(let i=0; i<exercises.length; i++) {
 		$.ajax({
-			method: "get",
+			method: "GET",
 			url: `/api/workouts/sets/${exercises[i]._id}`,
 			data:"",
 			contentType: "application/json; charset=utf-8",
@@ -94,6 +94,7 @@ function getSets(exercises) {
 			success: function(sets) {
 				console.log(sets)
 				appendSets(sets);
+				watchDelete(workout, exercises, sets);
 			},
 			beforeSend: function(xhr, settings) { 
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -106,9 +107,93 @@ function getSets(exercises) {
 	}
 }
 
+function watchDelete(workout, exercises, sets) {
+
+	function deleteSets(sets) {
+		for(let i=0; i<sets.length; i++) {
+			$.ajax({
+			method: "DELETE",
+			url: `/api/workouts/sets/${sets[i]._id}`,
+			data:"",
+			contentType: "application/json; charset=utf-8",
+			dataType : "json",
+			success: function(sets) {
+				
+			},
+			beforeSend: function(xhr, settings) { 
+				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
+			},
+			error: function(xhr, status, error) {
+  				let err = eval("(" + xhr.responseText + ")");
+  				alert(err.Message);
+			}
+		});
+	}
+	console.log('deleted sets')
+}
+
+function deleteExercises(exercises) {
+	for(let i=0; i<exercises.length; i++) {
+		$.ajax({
+			method: "DELETE",
+			url: `/api/workouts/exercises/${exercises[i]._id}`,
+			data:"",
+			contentType: "application/json; charset=utf-8",
+			dataType : "json",
+			success: function(sets) {
+				
+			},
+			beforeSend: function(xhr, settings) { 
+				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
+			},
+			error: function(xhr, status, error) {
+  				let err = eval("(" + xhr.responseText + ")");
+  				alert(err.Message);
+			}
+		});
+	}
+	console.log('deleted exercises')
+}
+
+function deleteWorkout(workout) {
+	console.log(workout)
+		$.ajax({
+			method: "DELETE",
+			url: `/api/workouts/${workout._id}`,
+			data:"",
+			contentType: "application/json; charset=utf-8",
+			dataType : "json",
+			success: function(workout) {
+				
+			},
+			beforeSend: function(xhr, settings) { 
+				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
+			},
+			error: function(xhr, status, error) {
+  				let err = eval("(" + xhr.responseText + ")");
+  				alert(err.Message);
+			}
+		});
+}
+
+
+
+	$('#renderedWorkout').on('click', 'button#delete-button', event => {
+		deleteSets(sets);
+		deleteExercises(exercises);
+		deleteWorkout(workout);
+	});
+}
+
 function appendSets(sets) {
-	for(i=0; i<sets.length; i++) {
-		console.log(sets[i].exerciseRef)
+	for(let i = sets.length; i--;) {
+		$('#' + sets[i].exerciseRef).after(
+			`<tr>
+				<td></td>
+				<td>${sets[i].setNumber}</td>
+				<td>${sets[i].setWeight}</td>
+				<td>${sets[i].setReps}</td>
+			</tr>`);
 	}
 }
 
@@ -127,18 +212,14 @@ function renderBaseWorkoutTable(workout) {
 				<tbody id="workout-table-body">
 				</tbody>
 				</table>
+				<button id="delete-button"><i class="fa fa-times">Delete</i></button>
 				</div>`
 }
 
 function appendBaseWorkoutTable(workout) {
 	$('#userWorkoutsList').fadeOut('fast').addClass('hidden');
 	$('#userWorkoutsListContainer').append(renderBaseWorkoutTable(workout)).fadeIn('fast');
-	//appendWorkoutExercisesSets(workout);
 	console.log(workout);
-}
-
-function appendWorkoutExercisesSets(workout) {
-
 }
 
 $(getUserWorkouts);

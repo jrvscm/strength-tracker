@@ -85,4 +85,32 @@ router.get('/sets/:id', jsonParser,
 		.catch(err => res.status(500).json({message: 'Internal server error'}));
 	});
 
+//delete a workout by id
+router.delete('/:id', jsonParser,
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+		Workout
+		.findByIdAndRemove(req.params.id)
+		.then(() => res.status(204).json({message:'Item Removed'}))
+		.catch(err => res.status(500).json({message: 'Internal server error'}));
+	});
+//delete an exercise by id
+router.delete('/exercises/:id', jsonParser,
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+		Exercise
+		.findByIdAndRemove(req.params.id)
+		.then(() => res.status(204).json({message:'Item Removed'}))
+		.catch(err => res.status(500).json({message: 'Internal server error'}));
+	});
+//delete sets by id
+router.delete('/sets/:id', jsonParser,
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+		Setsobj
+		.findByIdAndRemove(req.params.id)
+		.then(() => res.status(204).json({message:'Item Removed'}))
+		.catch(err => res.status(500).json({message: 'Internal server error'}));
+	});
+
 module.exports = {router};
