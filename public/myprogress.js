@@ -1,5 +1,4 @@
 let userExercises = [];
-
 let ctx = $('#exerciseChart')[0].getContext('2d');
 let chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -9,7 +8,7 @@ let chart = new Chart(ctx, {
     data: {
         labels: [],
         datasets: [{
-            label: "Weight Lifted",
+            label:"Weight Lifted",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [],
@@ -29,15 +28,23 @@ let chart = new Chart(ctx, {
     }
 });
 
-function renderChart(sets){
-    for(i=0; i<sets.length; i++) {
+
+function renderChart(sets, matchedExercises){
+    for(let i=0; i<sets.length; i++) {
         chart.data.datasets[0].data.push(sets[i].setWeight);
         chart.data.labels.push(`Date: ${sets[i].date} Set: ${sets[i].setNumber}`);
     }
+
     setTimeout(function() { chart.update(); 
         clearChartData ();
     },100);  
 
+}
+
+function setTheLabel(matchedExercises) {
+    for (j=0; j<matchedExercises.length; j++) {
+       graphLabel = matchedExercises[i].exerciseName;
+    }
 }
 
  function clearChartData() {   
@@ -46,9 +53,7 @@ function renderChart(sets){
         chart.data.labels=[];
     },2000);
 
-}
-
-  
+} 
 
 
 function getExerciseData() {
@@ -151,7 +156,7 @@ function getMatchedExercises() {
             }
         }
     }
-    getSetsForGraph(matchedExercises)
+    getSetsForGraph(matchedExercises);
 }
 
 function getSetsForGraph(matchedExercises) {
