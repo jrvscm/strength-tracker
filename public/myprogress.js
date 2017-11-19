@@ -1,6 +1,5 @@
 let userExercises = [];
 
-function renderChart(sets, matchedExercises) {
 let ctx = $('#exerciseChart')[0].getContext('2d');
 let chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -10,7 +9,7 @@ let chart = new Chart(ctx, {
     data: {
         labels: [],
         datasets: [{
-            label: getTheLabel(),
+            label: "Weight Lifted",
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [],
@@ -30,18 +29,27 @@ let chart = new Chart(ctx, {
     }
 });
 
-function getTheLabel() {
-    for(let j=0; j<matchedExercises.length; j++) {
-        return `${matchedExercises[j].exerciseName}`
-    }
-}
+function renderChart(sets){
     for(i=0; i<sets.length; i++) {
         chart.data.datasets[0].data.push(sets[i].setWeight);
         chart.data.labels.push(`Date: ${sets[i].date} Set: ${sets[i].setNumber}`);
     }
-    
-    setTimeout(function() { chart.update(); },100);
+    setTimeout(function() { chart.update(); 
+        clearChartData ();
+    },100);  
+
 }
+
+ function clearChartData() {   
+    setTimeout(function() {
+        chart.data.datasets[0].data=[];
+        chart.data.labels=[];
+    },2000);
+
+}
+
+  
+
 
 function getExerciseData() {
     $.ajax({
@@ -51,7 +59,6 @@ function getExerciseData() {
         contentType: "application/json; charset=utf-8",
         dataType : "json",
         success: function(workouts) {
-            console.log('got workouts')
             getTheExercises(workouts);
         },
         beforeSend: function(xhr, settings) { 
@@ -72,7 +79,7 @@ function getTheExercises(workouts) {
             data:"",
             contentType: "application/json; charset=utf-8",
             dataType : "json",
-            success: function(exercises) {    
+            success: function(exercises) {   
                 saveExercises(exercises);
             },
             beforeSend: function(xhr, settings) { 
@@ -144,7 +151,6 @@ function getMatchedExercises() {
             }
         }
     }
-    
     getSetsForGraph(matchedExercises)
 }
 
@@ -157,7 +163,7 @@ function getSetsForGraph(matchedExercises) {
             contentType: "application/json; charset=utf-8",
             dataType : "json",
             success: function(sets) {
-               renderChart(sets, matchedExercises);
+                renderChart(sets);
             },
             beforeSend: function(xhr, settings) { 
                 xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 

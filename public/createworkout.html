@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Oswald" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="createworkout.css">
+	<title>Strength Tracker</title>
+</head>
+<body>
+<main role="main">
+	<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+  		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
+    			<span class="navbar-toggler-icon"></span>
+  		</button>
+  			<div class="collapse navbar-collapse" id="navbar-toggle">
+  				<button id='log-out-button' class="btn btn-success" role="button">Log Out</button>
+  			</div>
+		</nav>
+		<section id="new-workout-section" class="hidden" aria-live="polite">
+		<div id="workout-form-container">
+			<form action="#" id="create-new-workout-form" class="workoutForm">
+				<h2>Name this workout:</h2>
+					<label for="workout-name">Workout Name: </label>
+					<input id="workout-name" class="form-control" name="workout" required="required" type="text" placeholder="eg. Hulk Back Day"/>
+					<button id="create-new-workout-button" type="submit" class="btn btn-success">Create Workout</button> 
+			</form>
+		</div>	
+		<div id="workout-exercise-form-container">
+			<form action="#" id="workout-exercise-form" class="hidden workoutForm" aria-live="polite">
+				<h2>Lift:</h2>
+					
+					<label for="exercise-muscle-group">Muscle Group: </label>
+					<input id="exercise-muscle-group" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Quads" />
+
+					<label for="exercise-name">Exercise Name: </label>
+					<input id="exercise-name" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Hulk Squats"/>
+					<button id="add-workout-exercise-button" type="submit" class="btn btn-success">Add Exercise</button>
+			</form> 
+			<form action="#" id="exercise-sets-form" class="hidden workoutForm" aria-live="polite">
+					<label for="set-number">Set Number:</label>
+					<input id="set-number" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 1"/>
+					 
+					<label for="set-weight">Set Weight:</label>
+					<input id="set-weight" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 315" />
+
+					<label for="set-reps">Set Reps:</label>
+					<input id="set-reps" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 12" />
+
+					<button id="add-set-button" class="btn btn-success" type="submit">Set++</button>
+			</form>
+			<button id="next-exercise-button" class="btn btn-success hidden">Next Exercise</button>
+		</div>
+
+		<section id="populate-workout-section" class="hidden table-responsive" aria-live="polite">
+		</section>
+	</section>
+		
+	</main>
+
+
+<script
+  src="https://code.jquery.com/jquery-3.2.1.js"
+  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="text/javascript" src="dashboard.js"></script>
+<script type="text/javascript" src="createworkout.js"></script>
+</body>
+</html>
