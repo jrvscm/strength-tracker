@@ -1,6 +1,6 @@
 let userExercises = [];
 
-function renderChart(sets) {
+function renderChart(sets, matchedExercises) {
 let ctx = $('#exerciseChart')[0].getContext('2d');
 let chart = new Chart(ctx, {
     // The type of chart we want to create
@@ -10,7 +10,7 @@ let chart = new Chart(ctx, {
     data: {
         labels: [],
         datasets: [{
-            label: "Weight Lifted",
+            label: getTheLabel(),
             backgroundColor: 'rgb(255, 99, 132)',
             borderColor: 'rgb(255, 99, 132)',
             data: [],
@@ -29,9 +29,15 @@ let chart = new Chart(ctx, {
         }
     }
 });
+
+function getTheLabel() {
+    for(let j=0; j<matchedExercises.length; j++) {
+        return `${matchedExercises[j].exerciseName}`
+    }
+}
     for(i=0; i<sets.length; i++) {
         chart.data.datasets[0].data.push(sets[i].setWeight);
-        chart.data.labels.push(sets[i].setNumber);
+        chart.data.labels.push(`Date: ${sets[i].date} Set: ${sets[i].setNumber}`);
     }
     
     setTimeout(function() { chart.update(); },100);
@@ -151,7 +157,7 @@ function getSetsForGraph(matchedExercises) {
             contentType: "application/json; charset=utf-8",
             dataType : "json",
             success: function(sets) {
-               renderChart(sets);
+               renderChart(sets, matchedExercises);
             },
             beforeSend: function(xhr, settings) { 
                 xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
