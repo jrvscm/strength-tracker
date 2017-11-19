@@ -1,4 +1,4 @@
-let graphExerciseObjs = [];
+let userExercises = [];
 
 function renderChart(sets) {
 let ctx = $('#exerciseChart')[0].getContext('2d');
@@ -60,15 +60,13 @@ function getExerciseData() {
 
 function getTheExercises(workouts) {
     for(let i=0; i<workouts.length; i++) {
-        console.log(workouts[i])
         $.ajax({
             method: "GET",
             url: `/api/workouts/exercises/${workouts[i]._id}`,
             data:"",
             contentType: "application/json; charset=utf-8",
             dataType : "json",
-            success: function(exercises) {
-                renderDropdownChoices(exercises);
+            success: function(exercises) {    
                 saveExercises(exercises);
             },
             beforeSend: function(xhr, settings) { 
@@ -80,43 +78,80 @@ function getTheExercises(workouts) {
             }
         });
     }
+
 }
 
 function saveExercises(exercises) {
-    graphExerciseObjs = [];
-
-    for(let i=0; i<exercises.length; i++) {
-        if(graphExerciseObjs.indexOf(exercises[i]._id) == -1) {
-            graphExerciseObjs.push(exercises[i]);
-        }
-    }
-    filterGraphExerciseObjs();
+    userExercises.push(exercises);
 }
 
-function filterGraphExerciseObjs() {
-    $('#create-new-chart').on('click', '#create-new-chart-button', function(e) {
-        event.preventDefault();
-    let matchedExercises = [];
-
-        for(let i=0; i<graphExerciseObjs.length; i++) {
-            if(graphExerciseObjs[i].exerciseName == $('#exercise-name').val()) {
-                matchedExercises.push(graphExerciseObjs[i]);
+function filterDropdownChoices() {
+    let exNames = [];
+        
+    for(let i=0; i<userExercises.length; i++) {
+        for(let j=0; j<userExercises[i].length; j++){
+            if(exNames.indexOf(userExercises[i][j].exerciseName) == -1) {
+                exNames.push(userExercises[i][j].exerciseName);
             }
         }
-        getGraphSets(matchedExercises);
+    }
+
+    renderDropdownChoices(exNames)
+}
+
+function renderDropdownChoices(exNames) {
+    $('#user-exercise-names').empty();
+    for(let i=0; i<exNames.length; i++) {
+        $('#user-exercise-names').append(`<li id="userExercise">${exNames[i]}</li>`);
+    }
+    watchLiClicks();
+}
+
+function watchExerciseForm() {
+     $('#create-new-chart').off().on('click', '#exercise-name', event => {
+        $('#user-exercise-names').toggleClass('hidden');
+        filterDropdownChoices();
     });
 }
 
-function getGraphSets(matchedExercises) {
+function watchLiClicks() {
+    $('#user-exercise-names').off().on('click', '#userExercise', function(e) {
+        $('#exercise-name').val($(e.target).text());
+        $('#user-exercise-names').toggleClass('hidden');
+    });
+    watchCreateChartBtn();
+}
+
+function watchCreateChartBtn() {
+    $('#create-new-chart-button').off().on('click', event => {
+        event.preventDefault();
+        getMatchedExercises();
+    });
+}
+
+function getMatchedExercises() {
+    let matchedExercises = [];
+    for(i=0; i<userExercises.length; i++) {
+        for(j=0; j<userExercises[i].length; j++) {
+            if(userExercises[i][j].exerciseName === $('#exercise-name').val()) {
+                matchedExercises.push(userExercises[i][j]);
+            }
+        }
+    }
+    
+    getSetsForGraph(matchedExercises)
+}
+
+function getSetsForGraph(matchedExercises) {
     for(let i=0; i<matchedExercises.length; i++) {
-        $.ajax({
+    $.ajax({
             method: "GET",
             url: `/api/workouts/sets/${matchedExercises[i]._id}`,
             data:"",
             contentType: "application/json; charset=utf-8",
             dataType : "json",
             success: function(sets) {
-                renderChart(sets);
+               renderChart(sets);
             },
             beforeSend: function(xhr, settings) { 
                 xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -129,30 +164,9 @@ function getGraphSets(matchedExercises) {
     }
 }
 
-function renderDropdownChoices(exercises) {
-    for(let i=0; i<exercises.length; i++) {
-        $('#user-exercise-names').append(`<li id="userExercise">${exercises[i].exerciseName}</li>`);
-    }
-watchExerciseForm();
-}
-
-function watchExerciseForm() {
-     $('#create-new-chart').off().on('click', '#exercise-name', event => {
-        $('#user-exercise-names').toggleClass('hidden');
-    });
-     watchLiClicks();
-}
-
-function watchLiClicks() {
-    $('#create-new-chart').on('click', '#userExercise', function(e) {
-        $('#exercise-name').val($(e.target).text());
-        $('#user-exercise-names').toggleClass('hidden');
-    });
-}
-
-
 function viewProgress() {
     getExerciseData();
+    watchExerciseForm();
 }
 
 
