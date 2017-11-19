@@ -6,18 +6,14 @@
 html, body {
 	height: 100%;
 	width: 100%;
-}
-
-li {
-	list-style-type: none;
-	padding: 5px;
-}
-
-li:hover {
-	cursor:pointer;
-	background: rgba(255,255,255,.4);
+	box-sizing: border-box;
 }
 
 .hidden {
 	display: none;
+}
+
+li:hover {
+	cursor:pointer;
+	background: rgba(0,0,0,.3);
 }

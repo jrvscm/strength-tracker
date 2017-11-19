@@ -1,4 +1,9 @@
-/////////////////CREATE WORKOUT//////////////////////
+function watchViewProgressBtn() {
+	$('#workout-choices-list').on('click', '#view-progress-button', event => {
+		getUserId();
+		window.location.href = '/myprogress.html';
+	});
+}
 
 function watchMyWorkoutsBtn() {
 	$('#workout-choices-list').on('click', '#view-all-workouts-button', event=> {
@@ -237,6 +242,7 @@ function watchLogOut() {
 function handleUserPaths() {
 	watchCreateWorkoutBtn();
 	watchMyWorkoutsBtn();
+	watchViewProgressBtn();
 	watchLogOut();
 }
 

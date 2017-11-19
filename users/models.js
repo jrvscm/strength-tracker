@@ -4,6 +4,7 @@ const uuid = require('uuid');
 mongoose.Promise = global.Promise;
 
 const SetsobjSchema = mongoose.Schema({
+	date: {type: Date, default: Date.now},
 	setNumber: {type: Number, required: true},
 	setWeight: {type: Number, required: true},
 	setReps: {type: Number, required: true},

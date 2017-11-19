@@ -53,16 +53,15 @@ function watchUserWorkoutList() {
 
 function getExercisesList(workoutID, workout) {
 	$.ajax({
-			method: "GET",
-			url: `/api/workouts/exercises/${workout._id}`,
-			data:"",
-			contentType: "application/json; charset=utf-8",
-			dataType : "json",
-			success: function(exercises) {
-				console.log(exercises)
-				appendExercises(exercises);
-				getSets(exercises, workout);
-
+		method: "GET",
+		url: `/api/workouts/exercises/${workout._id}`,
+		data:"",
+		contentType: "application/json; charset=utf-8",
+		dataType : "json",
+		success: function(exercises) {
+			console.log(exercises)
+			appendExercises(exercises);
+			getSets(exercises, workout);
 			},
 			beforeSend: function(xhr, settings) { 
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
