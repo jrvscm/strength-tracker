@@ -21,7 +21,7 @@
 		</nav>
 		<section id="new-workout-section" class="hidden" aria-live="polite">
 		<div id="workout-form-container">
-			<form action="#" id="create-new-workout-form" class="workoutForm">
+			<form action="#" id="create-new-workout-form" class="workoutForm" autocomplete="off">
 				<h2>Name this workout:</h2>
 					<label for="workout-name">Workout Name: </label>
 					<input id="workout-name" class="form-control" name="workout" required="required" type="text" placeholder="eg. Hulk Back Day"/>
@@ -29,29 +29,66 @@
 			</form>
 		</div>	
 		<div id="workout-exercise-form-container">
-			<form action="#" id="workout-exercise-form" class="hidden workoutForm" aria-live="polite">
+			<form action="#" id="workout-exercise-form" class="hidden workoutForm" aria-live="polite" autocomplete="off">
 				<h2>Lift:</h2>
 					
 					<label for="exercise-muscle-group">Muscle Group: </label>
 					<input id="exercise-muscle-group" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Quads" />
-
+					<div class="dropdown">	
+						<ul id="muscle-group" class="hidden">
+							<li class="createWorkoutLi">Abs (rectus abdominis)</li>
+							<li class="createWorkoutLi">Biceps (biceps brachii)</li>
+							<li class="createWorkoutLi">Calves (gastrocnemius)</li>
+							<li class="createWorkoutLi">Chest (pectoralis)</li>
+							<li class="createWorkoutLi">Forearm (brachioradialis)</li>
+							<li class="createWorkoutLi">Hamstrings (biceps femoris)</li>
+							<li class="createWorkoutLi">Lats (latissimus dorsi)</li>
+							<li class="createWorkoutLi">Lower Back</li>
+							<li class="createWorkoutLi">Neck</li>
+							<li class="createWorkoutLi">Quads (quadriceps)</li>
+							<li class="createWorkoutLi">Shoulders (deltoids)</li>
+							<li class="createWorkoutLi">Traps (trapezius)</li>
+							<li class="createWorkoutLi">Triceps (triceps brachii)</li>
+						</ul>
+					</div>	
 					<label for="exercise-name">Exercise Name: </label>
 					<input id="exercise-name" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Hulk Squats"/>
+
+					<div class="dropdown">	
+						<ul id="exercise" class="hidden">
+						</ul>
+					</div>
+					
 					<button id="add-workout-exercise-button" type="submit" class="btn btn-success">Add Exercise</button>
 			</form> 
-			<form action="#" id="exercise-sets-form" class="hidden workoutForm" aria-live="polite">
+			<form action="#" id="exercise-sets-form" class="hidden workoutForm" aria-live="polite" autocomplete="off">
 					<label for="set-number">Set Number:</label>
 					<input id="set-number" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 1"/>
-					 
+					
+					<div class="dropdown">
+						<ul id="set-numbers-list" class="hidden">
+						</ul>
+					</div>
+
 					<label for="set-weight">Set Weight:</label>
 					<input id="set-weight" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 315" />
+					
+					<div class="dropdown">
+						<ul id="set-weight-list" class="hidden">
+						</ul>
+					</div>
 
 					<label for="set-reps">Set Reps:</label>
 					<input id="set-reps" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 12" />
-
+					
+					<div class="dropdown">
+						<ul id="set-reps-list" class="hidden">
+						</ul>
+					</div>
+					
 					<button id="add-set-button" class="btn btn-success" type="submit">Set++</button>
+					<button id="next-exercise-button" class="btn btn-success hidden">Next Exercise</button>
 			</form>
-			<button id="next-exercise-button" class="btn btn-success hidden">Next Exercise</button>
 		</div>
 
 		<section id="populate-workout-section" class="hidden table-responsive" aria-live="polite">
@@ -68,6 +105,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script type="text/javascript" src="dashboard.js"></script>
+<script type="text/javascript" src="dropdown.js"></script>
 <script type="text/javascript" src="createworkout.js"></script>
 </body>
 </html>

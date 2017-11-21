@@ -30,6 +30,7 @@ function createNewWorkout() {
 			console.log(workout);
 			watchNewExercise(workout);
 			appendNewWorkout(workout);
+			watchExerciseMuscleGroup();
 		},
 		beforeSend: function(xhr, settings) { 
 			xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -40,6 +41,92 @@ function createNewWorkout() {
 		}
 	});
 }
+
+function watchExerciseMuscleGroup() {
+	$('#workout-exercise-form').on('click', '#exercise-muscle-group', event => {
+		$('#muscle-group').toggleClass('hidden');
+	});
+
+	watchMuscleGroupLiClicks();
+}
+
+function watchMuscleGroupLiClicks() {
+$('#muscle-group').off().on('click', '.createWorkoutLi', function(e) {
+        $('#exercise-muscle-group').val($(e.target).text());
+        $('#muscle-group').toggleClass('hidden');
+    });
+	
+
+	watchMuscleGroupValue();//--> dropdown.js
+}
+
+function watchExerciseLiClicks() {
+	$('#exercise').off().on('click', '.createWorkoutLi', function(e) {
+        $('#exercise-name').val($(e.target).text());
+        $('#exercise').toggleClass('hidden');
+    });
+
+    renderExerciseSetsForm();
+}
+
+function renderExerciseSetsForm() {
+	$('#workout-exercise-form-container').on('click', '#set-number', event => {
+		$('#set-numbers-list').empty();
+		for (let i=1; i<=15; i++) {
+			$('#set-numbers-list').append(`<li class="createWorkoutLi set-number-li">${i}</li>`);
+		}
+		$('#set-numbers-list').toggleClass('hidden');
+	});
+	pickSetNumber();
+} 
+
+function pickSetNumber() {
+	$('#workout-exercise-form-container').on('click', '.set-number-li', function(e) {
+        $('#set-number').val($(e.target).text());
+        $('#set-numbers-list').toggleClass('hidden');
+    });
+	renderSetWeightDropdown();
+}
+
+function renderSetWeightDropdown() {
+	$('#workout-exercise-form-container').on('click', '#set-weight', event => {
+		$('set-weight-list').empty();
+		for (let i=5; i<=1000; i+=5) {
+			$('#set-weight-list').append(`<li class="createWorkoutLi set-weight-li">${i}</li>`);
+		}
+		$('#set-weight-list').toggleClass('hidden');
+	});
+	pickSetWeight();
+} 
+
+function pickSetWeight() {
+	$('#workout-exercise-form-container').on('click', '.set-weight-li', function(e) {
+        $('#set-weight').val($(e.target).text());
+        $('#set-weight-list').toggleClass('hidden');
+    });
+	renderSetRepsDropdown();
+}
+
+
+function renderSetRepsDropdown() {
+	$('#workout-exercise-form-container').on('click', '#set-reps', event => {
+		$('#set-reps-list').empty();
+		for (let i=1; i<=50; i++) {
+			$('#set-reps-list').append(`<li class="createWorkoutLi set-reps-li">${i}</li>`);
+		}
+		$('#set-reps-list').toggleClass('hidden');
+	});
+	pickSetReps();
+}
+
+function pickSetReps() {
+	$('#workout-exercise-form-container').on('click', '.set-reps-li', function(e) {
+        $('#set-reps').val($(e.target).text());
+        $('#set-reps-list').toggleClass('hidden');
+    });
+}
+
+
 
 function renderWorkoutRepr(workout) {
 	return `<h2>${workout.workoutName}</h2>

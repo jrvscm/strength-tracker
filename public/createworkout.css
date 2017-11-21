@@ -14,9 +14,30 @@ html, body {
 	padding: 5px;
 }
 
+.createWorkoutLi {
+	background-color:white;
+	list-style-type: none;
+}
+
+.createWorkoutLi:hover {
+	cursor:pointer;
+	background: rgba(0,0,0,.3);
+}
+
 .hidden {
 	display: none;
 }
+
+.dropdown {
+	background-color:white;
+}
+
+.dropdown ul {
+	height: 300px;
+	overflow-y: scroll;
+}
+
+
 
 .workoutForm {
 	border: 1px solid black;
@@ -74,3 +95,4 @@ button {
 .workoutListItemSets {
 	border-bottom: 1px solid black;
 }
+
