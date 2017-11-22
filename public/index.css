@@ -7,7 +7,7 @@
 html, body {
 	height: 100%;
 	width: 100%;
-	background: url('images/colorful-kettelbells.jpeg') center center;
+	background: url('images/dumbbells.jpg') center center;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -16,16 +16,21 @@ html, body {
 	display: none;
 }
 
+.color-schema {
+	background-color: rgba(208, 234, 255, .9);
+	border-radius: 10px;
+	color: rgb( 97, 148, 188);
+	font-family: 'Montserrat', sans-serif;
+	-webkit-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
+	-moz-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
+	box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
+}
+
 #intro-container {
 	text-align: center;
 	height: 300px;
 	width: 400px;
-	background-color: rgba(0, 191, 255,.9);
-	border-radius: 10px;
 	display:table;
-	border: 1px solid black;
-	color:white;
-	font-family: 'Montserrat', sans-serif;
 }
 
 .inner-container {
@@ -48,11 +53,6 @@ html, body {
 form {
 	height:auto;
 	width: 400px;
-	background-color: rgba(0, 191, 255,.9);
-	border-radius: 10px;
-	border: 1px solid black;
-	color:white;
-	font-family: 'Montserrat', sans-serif;
 	padding: 10px;
 }
 
@@ -65,9 +65,14 @@ button {
 	margin-top: 10px;
 	width: 120px;
 	cursor: pointer;
+	color: rgb( 97, 148, 188) !important;
 	border-radius: 0px !important;
 	background-color: transparent !important;
-	border: 2px solid white !important;
+	border: 2px solid rgb(97, 148, 188) !important;
+}
+
+button:hover {
+	background-color: rgba(255, 255, 255, .5) !important;
 }
 
 .center {
