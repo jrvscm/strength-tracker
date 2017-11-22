@@ -6,25 +6,25 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Oswald" rel="stylesheet">
-       <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
 
-	<title>Strength Tracker</title>
+	<title>trength Tracker</title>
 </head>
 <body>
 	<main role="main">
 
-		<section id="intro-section">
-			<div class="row">
-				<div id="intro-container" class="container center">
-					<h1>Strength Tracker</h1>
-					<p>Track your lifts. Get stronger, period.</p>
-					<button id="intro-login-button" role="button" class="btn btn-danger">Log In</button><button id="intro-signup-button" role="button" class="btn btn-danger">Sign Up</button>
-				</div>				
-			</div>
+		<section id="intro-section" class="center">
+				<div id="intro-container" class="container">
+					<div class="inner-container">
+						<h1>Strength Tracker</h1>
+						<p>Track your lifts. Get stronger, period.</p>
+						<button id="intro-login-button" role="button" class="btn btn-danger">Log In</button><button id="intro-signup-button" role="button" class="btn btn-danger">Sign Up</button>
+					</div>
+				</div>
 		</section>
-		<section id="log-in-section" class="hidden">
-			<div id="log-in-container" class="center">
-				<form action="#" id="log-in">
+		<section id="log-in-section" class="hidden center">
+			<div id="log-in-container">
+				<form action="#" id="log-in" autocomplete="off" class="inner-container">
 					<h2>Log In</h2>
 						<label for="username">Username: </label>
 						<input id="username" class="form-control" name="username" required="required" type="text" placeholder="eg. Ada"/>
@@ -32,13 +32,14 @@
 						<label for="password">Password: </label>
 						<input id="password" class="form-control" name="password" required="required" type="password" placeholder="eg. X8df!90EO" />  
 						<button id="logInButton" type="submit" class="btn btn-success">Log In</button> 
+						<button id="signUpButtonLogin" class="btn btn-success" class="form-control">Sign Up</button>
 				</form>
 			</div><!--log-in-container-->
 		</section>
 
-		<section id="sign-up-section" class ="hidden">
-			<div id="sign-up-container" class="center">
-				<form action="#" id="sign-up">
+		<section id="sign-up-section" class ="hidden center">
+			<div id="sign-up-container">
+				<form action="#" id="sign-up" autocomplete="off">
 						<h2>Sign Up</h2>
 						<label for="firstNameSignUp">First Name</label>
 						<input id="firstNameSignUp" class="form-control" name="userNameSignUp" required="required" type="text" placeholder="eg. Jack" />
@@ -51,7 +52,8 @@
 
 						<label for="passwordSignUp">Password</label>
 						<input id="passwordSignUp" class="form-control" name="passwordSignUp" required="required" type="password" placeholder="eg. wh0sNex7?!"/>
-						<button id="signUpButton" type="submit" class="btn btn-success "form-control"">Sign Up</button>
+						<button id="signUpButton" type="submit" class="btn btn-success" class="form-control">Sign Up</button>
+						<button id="logInButtonSignup" class="btn btn-success">Log In</button> 
 				</form>
 			</div><!--sign-up-container-->
 		</section>	

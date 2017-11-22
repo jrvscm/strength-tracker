@@ -206,8 +206,10 @@ function clearExerciseForm() {
 }
 
 function showSetsForm(exercise) {
-	$('#exercise-sets-form').fadeIn('fast').removeClass('hidden');
+	setTimeout(function() {
+		$('#exercise-sets-form').fadeIn('fast').removeClass('hidden');
 	watchSetSubmit(exercise)
+	},200);
 }
 
 function renderNewSets(exercise) {
@@ -264,7 +266,9 @@ function addNextExercise() {
 		event.preventDefault();
 		$('#exercise-sets-form').fadeOut('fast').addClass('hidden');
 		$('#next-exercise-button').fadeOut('fast').addClass('hidden');
-		$('#workout-exercise-form').fadeIn('fast').removeClass('hidden');
+		setTimeout(function() {
+			$('#workout-exercise-form').fadeIn('fast').removeClass('hidden');
+		}, 200);
 	});
 }
 

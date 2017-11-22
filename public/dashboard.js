@@ -42,10 +42,19 @@ function getUserId() {
 }
 
 
-function watchLogOut() {
+function watchNavBar() {
+	$('.navbar-brand').empty().append(`${localStorage.getItem('username')}`);
 	$('#navbar-toggle').on('click', '#log-out-button', event => {
 		localStorage.clear();
 		window.location.href = 'index.html';
+	});
+
+	$('#navbar-toggle').on('click', '#dashboard-button', event => {
+		window.location.href = 'dashboard.html';
+	});
+
+	$('#navbar-toggle').on('click', '.navbar-brand', event => {
+		window.location.href = 'dashboard.html';
 	});
 }
 
@@ -54,7 +63,7 @@ function handleUserPaths() {
 	watchCreateWorkoutBtn();
 	watchMyWorkoutsBtn();
 	watchViewProgressBtn();
-	watchLogOut();
+	watchNavBar();
 }
 
 $(handleUserPaths);

@@ -75,7 +75,7 @@ function createNewUser() {
 
 function renderNewUserLogin() {
 	return `{
-		"username": "${$('#usernameSignUp').val()}",
+		"username": "${$('#userNameSignUp').val()}",
 		"password": "${$('#passwordSignUp').val()}"
 	}`;
 }
@@ -102,16 +102,29 @@ $.ajax({
 
 function watchIntroClicks() {
 	$('#intro-section').on('click', '#intro-login-button', event => {
-		$('#intro-section').fadeOut('fast').addClass('hidden');
+		$('#intro-container').fadeOut('fast').addClass('hidden');
 		$('#log-in-section').fadeIn('fast').removeClass('hidden');
 	});
 
 	$('#intro-section').on('click', '#intro-signup-button', event => {
 		$('#intro-section').fadeOut('fast').addClass('hidden');
 		$('#sign-up-section').fadeIn('fast').removeClass('hidden');
-	});		
+	});	
+
+	watchWrongWayClicks() 	
 }
 
+function watchWrongWayClicks() {
+	$('#log-in').on('click', '#signUpButtonLogin', event => {
+		$('#log-in-section').fadeOut('fast').addClass('hidden');
+		$('#sign-up-section').fadeIn('fast').removeClass('hidden');
+	});
+
+	$('#sign-up').on('click', '#logInButtonSignup', event => {
+		$('#sign-up-section').fadeOut('fast').addClass('hidden');
+		$('#log-in-section').fadeIn('fast').removeClass('hidden');
+	});
+}
 
 function handleLogin() {
 	watchIntroClicks()

@@ -4,18 +4,70 @@
 	box-sizing: border-box;
 }
 
+html, body {
+	height: 100%;
+	width: 100%;
+	background: url('images/colorful-kettelbells.jpeg') center center;
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
 .hidden {
 	display: none;
 }
 
 #intro-container {
 	text-align: center;
+	height: 300px;
+	width: 400px;
+	background-color: rgba(0, 191, 255,.9);
+	border-radius: 10px;
+	display:table;
+	border: 1px solid black;
+	color:white;
+	font-family: 'Montserrat', sans-serif;
+}
+
+.inner-container {
+	display:table-cell;
+	vertical-align: middle;
+}
+
+#log-in-container {
+	display: table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#sign-up-container {
+	display:table;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+form {
+	height:auto;
+	width: 400px;
+	background-color: rgba(0, 191, 255,.9);
+	border-radius: 10px;
+	border: 1px solid black;
+	color:white;
+	font-family: 'Montserrat', sans-serif;
+	padding: 10px;
+}
+
+form h2	{
+	text-align: center;
 }
 
 button {
-	margin: 10px;
-	width: 100px;
+	margin-right: 10px;
+	margin-top: 10px;
+	width: 120px;
 	cursor: pointer;
+	border-radius: 0px !important;
+	background-color: transparent !important;
+	border: 2px solid white !important;
 }
 
 .center {
@@ -26,8 +78,8 @@ button {
 	bottom: 0;
 	left: 0;
 	border-radius: 3px;
-	height: auto;
-	width: 400px;
+	height: 100%;
+	width: 100%;
 	padding-top: 15%;
 }
 

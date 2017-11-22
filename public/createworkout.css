@@ -9,6 +9,10 @@ html, body {
 	box-sizing: border-box;
 }
 
+body > main > nav {
+	text-align: right;
+}
+
 .list-item {
 	list-style-type: none;
 	padding: 5px;
@@ -21,23 +25,20 @@ html, body {
 
 .createWorkoutLi:hover {
 	cursor:pointer;
-	background: rgba(0,0,0,.3);
+	background: gray;
 }
 
 .hidden {
 	display: none;
 }
 
-.dropdown {
-	background-color:white;
-}
-
 .dropdown ul {
 	height: 300px;
 	overflow-y: scroll;
+	position: absolute;
+	width: 100%;
+	background-color:white;
 }
-
-
 
 .workoutForm {
 	border: 1px solid black;
@@ -96,3 +97,6 @@ button {
 	border-bottom: 1px solid black;
 }
 
+#workout-exercise-form-container {
+	height: 350px;
+}

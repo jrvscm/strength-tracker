@@ -7,7 +7,7 @@ const passport = require('passport');
 const uuid = require('uuid');
 
 const {router: usersRouter} = require('./users');
-const {router: authRouter, basicStrategy, jwtStrategy} = require('./auth');
+const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');
 const {router: workoutsRouter} = require('./workouts');
 
 mongoose.Promise = global.Promise;
@@ -34,7 +34,7 @@ app.use(bodyParser.json());
 app.use(express.static('public'));
 
 app.use(passport.initialize());
-passport.use(basicStrategy);
+passport.use(localStrategy);
 passport.use(jwtStrategy);
 
 app.use('/api/workouts/', workoutsRouter)
