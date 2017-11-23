@@ -43,7 +43,7 @@ function getUserId() {
 
 
 function watchNavBar() {
-	$('.navbar-brand').empty().append(`${localStorage.getItem('username')}`);
+	$('.navbar-brand').empty().append(`${localStorage.getItem('username')} <i class="fa fa-user-circle-o" aria-hidden="true"></i>`);
 	$('#navbar-toggle').on('click', '#log-out-button', event => {
 		localStorage.clear();
 		window.location.href = 'index.html';

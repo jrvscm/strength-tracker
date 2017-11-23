@@ -18,6 +18,7 @@
   			<div class="collapse navbar-collapse" id="navbar-toggle">
   				<a class="navbar-brand" href="#"></a>
   				<ul class="navbar-nav ml-auto">
+  					<li><button id='finish-workout-button' class="btn button nav-button hidden" role="button">Finish Workout</button></li>
   					<li><button id='dashboard-button' class="btn button nav-button" role="button">Dashboard</button></li>
   					<li><button id='log-out-button' class="btn button nav-button" role="button">Log Out</button></li>
   				</ul>
@@ -25,10 +26,8 @@
 		</nav>
 
 		<section id="new-workout-section" class="hidden" aria-live="polite">
-		<div id="populate-workout-section" class="hidden table-responsive" aria-live="polite">
-		</div>
 		<div id="workout-form-container">
-			<form action="#" id="create-new-workout-form" class="workoutForm color-schema" autocomplete="off">
+			<form action="#" id="create-new-workout-form" class="workoutForm color-schema" autocomplete="off" novalidate="true">
 				<h2>Name this workout:</h2>
 					<label for="workout-name">Workout Name: </label>
 					<input id="workout-name" class="form-control" name="workout" required="required" type="text" placeholder="eg. Hulk Back Day"/>
@@ -36,9 +35,7 @@
 			</form>
 		</div>	
 		<div id="workout-exercise-form-container">
-			<form action="#" id="workout-exercise-form" class="hidden workoutForm color-schema" aria-live="polite" autocomplete="off">
-				<h2>Lift:</h2>
-					
+			<form action="#" id="workout-exercise-form" class="hidden workoutForm color-schema" aria-live="polite" autocomplete="off" novalidate="true">
 					<label for="exercise-muscle-group">Muscle Group: </label>
 					<input id="exercise-muscle-group" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Quads" />
 					<div class="dropdown">	
@@ -68,7 +65,7 @@
 					
 					<button id="add-workout-exercise-button" type="submit" class="btn button">Add Exercise</button>
 			</form> 
-			<form action="#" id="exercise-sets-form" class="hidden workoutForm color-schema" aria-live="polite" autocomplete="off">
+			<form action="#" id="exercise-sets-form" class="hidden workoutForm color-schema" aria-live="polite" autocomplete="off" novalidate="true">
 					<label for="set-number">Set Number:</label>
 					<input id="set-number" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 1"/>
 					
@@ -96,6 +93,9 @@
 					<button id="add-set-button" class="btn button" type="submit">Set++</button>
 					<button id="next-exercise-button" class="btn button hidden right">Next Exercise</button>
 			</form>
+		</div>
+
+		<div id="populate-workout-section" class="hidden table-responsive" aria-live="polite">
 		</div>
 	</section>
 		

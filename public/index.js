@@ -115,12 +115,14 @@ function watchIntroClicks() {
 }
 
 function watchWrongWayClicks() {
-	$('#log-in').on('click', '#signUpButtonLogin', event => {
+	$('#log-in').off().on('click', '#signUpButtonLogin', event => {
+		event.preventDefault();
 		$('#log-in-section').fadeOut('fast').addClass('hidden');
 		$('#sign-up-section').fadeIn('fast').removeClass('hidden');
 	});
 
-	$('#sign-up').on('click', '#logInButtonSignup', event => {
+	$('#sign-up').off().on('click', '#logInButtonSignup', event => {
+		event.preventDefault();
 		$('#sign-up-section').fadeOut('fast').addClass('hidden');
 		$('#log-in-section').fadeIn('fast').removeClass('hidden');
 	});

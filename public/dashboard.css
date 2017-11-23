@@ -1,13 +1,13 @@
 *{
 	margin:0;
 	padding:0;
+		box-sizing: border-box;
 }
 
 html, body {
 	height: 100%;
 	width: 100%;
-	box-sizing: border-box;
-	background: url('images/colorful-kettelbells.jpeg') center center;
+	background: url('images/warehouse-gym.jpg') center center;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -26,7 +26,7 @@ html, body {
 }
 
 button {
-	width: 120px;
+	width: 150px;
 	cursor: pointer;
 	color: rgb( 97, 148, 188);
 	border-radius: 0px;
@@ -35,7 +35,7 @@ button {
 }
 
 button:hover {
-	background-color: rgba(255, 255, 255, .6) !important;
+	background-color: rgba(255, 255, 255, .7) !important;
 }
 
 .user-path-button {
@@ -70,6 +70,11 @@ button#view-all-workouts-button {
 	border-radius: 0px;
 }
 
+.navbar-brand {
+	font-family: 'Montserrat', sans-serif;
+	font-color: white;
+}
+
 body main nav {
 	background-color: #D0EAFF !important;
 	-webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
@@ -84,9 +89,7 @@ body main nav {
 	right: 0;
 	bottom: 0;
 	left: 0;
-	height: 100%;
-	width: 100%;
-	padding-top: 10%;
+	padding-top: 8%;
 }
 
 .color-schema {
@@ -104,6 +107,10 @@ body main nav {
 	width: 450px;
 	margin-left: auto;
 	margin-right: auto;
+}
+
+.inner-container p {
+	font-size: 32px;
 }
 
 .inner-container ul {

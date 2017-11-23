@@ -28,14 +28,22 @@ html, body {
 
 #intro-container {
 	text-align: center;
-	height: 300px;
-	width: 400px;
+	height: 280px;
+	width: 450px;
 	display:table;
 }
 
 .inner-container {
 	display:table-cell;
 	vertical-align: middle;
+}
+
+.inner-container p {
+	font-size: 18px;
+}
+
+.inner-container h1 {
+	font-size: 44px;
 }
 
 #log-in-container {
@@ -61,8 +69,9 @@ form h2	{
 }
 
 button {
-	margin-right: 10px;
-	margin-top: 10px;
+	margin-right: 5px;
+	margin-left: 5px;
+	margin-top: 5px;
 	width: 150px;
 	cursor: pointer;
 	color: rgb( 97, 148, 188) !important;
@@ -72,7 +81,7 @@ button {
 }
 
 button:hover {
-	background-color: rgba(255, 255, 255, .5) !important;
+	background-color: rgba(255, 255, 255, .7) !important;
 }
 
 body main nav {
@@ -81,7 +90,6 @@ body main nav {
 	-moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
 	box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
 }
-
 
 .center {
 	position: absolute;
@@ -93,7 +101,11 @@ body main nav {
 	border-radius: 3px;
 	height: 100%;
 	width: 100%;
-	padding-top: 15%;
+	padding-top: 10%;
+}
+
+.right {
+	float:right;
 }
 
 .list-item {

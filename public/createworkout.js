@@ -9,6 +9,14 @@ function watchNewWorkout() {
 	$('#create-new-workout-form').off().on('click', '#create-new-workout-button', event => {
 		event.preventDefault();
 		createNewWorkout();
+		watchEndWorkout();
+	});
+}
+
+function watchEndWorkout() {
+	$('#finish-workout-button').fadeIn('fast').removeClass('hidden');
+	$('#finish-workout-button').click(function(e) {
+		window.location.href = '/dashboard.html';
 	});
 }
 
@@ -191,6 +199,9 @@ function watchNewExercise(workout) {
 function renderExerciseRepr(exercise) {
 	return `<tr class="exercise-info">
 				<td><strong><em>${exercise.exerciseName}</strong></em></td>
+				<td></td>
+				<td></td>
+				<td></td>
 			</tr>`;
 }
 
