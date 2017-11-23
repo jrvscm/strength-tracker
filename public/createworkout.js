@@ -141,7 +141,7 @@ function renderWorkoutRepr(workout) {
 					</thead>
 				<tbody id="workout-table-body">
 				</tbody>
-				</table>`
+				</table>`;
 }
 
 function appendNewWorkout(workout) {
@@ -189,9 +189,9 @@ function watchNewExercise(workout) {
 }
 
 function renderExerciseRepr(exercise) {
-	return `<tr>
+	return `<tr class="exercise-info">
 				<td><strong><em>${exercise.exerciseName}</strong></em></td>
-			<tr>`
+			</tr>`;
 }
 
 function appendNewExercise(exercise) {
@@ -222,12 +222,12 @@ function renderNewSets(exercise) {
 }
 
 function renderSetsRepr(sets) {
-	return `<tr>
+	return `<tr class="set-info">
 				<td></td>
 				<td>${sets.setNumber}</td>
 				<td>${sets.setWeight}</td>
 				<td>${sets.setReps}</td>
-			</tr>`
+			</tr>`;
 }
 
 function appendNewSet(sets) {
