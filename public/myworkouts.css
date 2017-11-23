@@ -7,10 +7,11 @@ html, body {
 	height: 100%;
 	width: 100%;
 	box-sizing: border-box;
+	background-color: rgb(251, 226, 212);
 }
 
-#userWorkoutsList {
-	background-color: rgba(208, 234, 255, .5);
+.right {
+	float:right;
 }
 
 #userWorkoutsList h2 {
@@ -32,6 +33,27 @@ html, body {
 
 #userWorkoutsList a {
 	text-decoration: none;
+}
+
+#renderedWorkout>h2{
+	font-family: 'Montserrat', sans-serif;
+	background-color: rgb(100, 137, 126); 
+	color: white;
+	margin:0;
+	padding:10px;
+}
+
+.trhead {
+	background: #6194BC;
+	color: white;
+}
+
+.sets-tr {
+	background-color: #D0EAFF;
+}
+
+.exercise-tr {
+	background-color: #A5D1F3;
 }
 
 
@@ -69,3 +91,31 @@ button {
 button:hover {
 	background-color: rgba(255, 255, 255, .7) !important;
 }
+
+.tinted-image {
+	background: 
+	linear-gradient(
+	rgba(100, 137, 126, .8),
+	rgba(100, 137, 126, .8)), 
+	url('images/elitefts-gym.jpg') no-repeat center center;
+	background-size: cover;
+}
+
+#renderedWorkout {
+	width: 80%;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+	-webkit-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
+	-moz-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
+	box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
+}
+
+.set-info {
+	background-color: #D0EAFF;
+}
+
+.exercise-info {
+	background-color: #A5D1F3;
+}
+

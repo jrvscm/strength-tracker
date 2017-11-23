@@ -9,7 +9,7 @@ let chart = new Chart(ctx, {
         labels: [],
         datasets: [{
             label:"Weight Lifted",
-            backgroundColor: 'rgb(255, 99, 132)',
+            backgroundColor: 'transparent',
             borderColor: 'rgb(255, 99, 132)',
             data: [],
         }]
@@ -21,8 +21,8 @@ let chart = new Chart(ctx, {
             padding: {
                 left: 150,
                 right: 150,
-                top: 200,
-                bottom: 200
+                top: 20,
+                bottom: 300
             }
         }
     }
@@ -120,7 +120,7 @@ function filterDropdownChoices() {
 function renderDropdownChoices(exNames) {
     $('#user-exercise-names').empty();
     for(let i=0; i<exNames.length; i++) {
-        $('#user-exercise-names').append(`<li id="userExercise">${exNames[i]}</li>`);
+        $('#user-exercise-names').append(`<li id="userExercise" class="createWorkoutLi">${exNames[i]}</li>`);
     }
     watchLiClicks();
 }

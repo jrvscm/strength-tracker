@@ -18,24 +18,25 @@
         <div class="collapse navbar-collapse" id="navbar-toggle">
           <a class="navbar-brand" href="#"></a>
           <ul class="navbar-nav ml-auto">
-            <li><button id='dashboard-button' class="btn btn-outline-success nav-button" role="button">Dashboard</button></li>
-            <li><button id='log-out-button' class="btn btn-outline-success nav-button" role="button">Log Out</button></li>
+            <li><button id='dashboard-button' class="btn button nav-button" role="button">Dashboard</button></li>
+            <li><button id='log-out-button' class="btn button nav-button" role="button">Log Out</button></li>
           </ul>
         </div>
     </nav>
 
 <section id="exercise-chart">
-  <canvas id="exerciseChart"></canvas>
-  <div id="chart-form-container">
-      <form action="#" id="create-new-chart" autocomplete="off">
-        <h2>Choose an exercise:</h2>
+  <div id="chart-form-container" class="dropdown workoutForm">
+      <form action="#" id="create-new-chart" autocomplete="off" class="color-schema workoutForm">
           <label for="exercise-name">Exercise: </label>
           <input id="exercise-name" class="form-control" name="exercise-name" required="required" type="text" placeholder="eg. Squats"/>
           <ul id="user-exercise-names" class="hidden" aria-live="polite">
           </ul>
-          <button id="create-new-chart-button" type="submit" class="btn btn-success">Create Chart</button> 
+          <button id="create-new-chart-button" type="submit" class="btn button">Create Chart</button> 
       </form>
-    </div>  
+    </div> 
+    <div class="canvas-container">
+    <canvas id="exerciseChart"></canvas> 
+    </div>
 </section>
   </main>
 <script

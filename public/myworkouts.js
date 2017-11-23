@@ -39,6 +39,7 @@ function watchUserWorkoutList() {
 			success: function(workout) {
 				appendBaseWorkoutTable(workout);
 				getExercisesList(workoutID, workout);
+				console.log('stepOne')
 			},
 			beforeSend: function(xhr, settings) { 
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -59,9 +60,9 @@ function getExercisesList(workoutID, workout) {
 		contentType: "application/json; charset=utf-8",
 		dataType : "json",
 		success: function(exercises) {
-			console.log(exercises)
 			appendExercises(exercises);
 			getSets(exercises, workout);
+			console.log('stepTwo')
 			},
 			beforeSend: function(xhr, settings) { 
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -75,8 +76,11 @@ function getExercisesList(workoutID, workout) {
 
 function appendExercises(exercises) {
 	for(let i=0; i<exercises.length; i++) {
-		$('#workout-table-body').append(`<tr id="${exercises[i]._id}">
+		$('#workout-table-body').append(`<tr id="${exercises[i]._id}" class="exercise-tr">
 											<td><strong><em>${exercises[i].exerciseName}</strong></em></td>
+											<td></td>
+											<td></td>
+											<td></td>
 										 </tr>`);
 	}
 }
@@ -91,7 +95,6 @@ function getSets(exercises, workout) {
 			contentType: "application/json; charset=utf-8",
 			dataType : "json",
 			success: function(sets) {
-				console.log(sets)
 				appendSets(sets);
 				watchDelete(workout, exercises, sets);
 			},
@@ -107,7 +110,7 @@ function getSets(exercises, workout) {
 }
 
 function watchDelete(workout, exercises, sets) {
-
+console.log('inside')
 	function deleteSets(sets) {
 		for(let i=0; i<sets.length; i++) {
 			$.ajax({
@@ -128,7 +131,6 @@ function watchDelete(workout, exercises, sets) {
 			}
 		});
 	}
-	console.log('deleted sets')
 }
 
 function deleteExercises(exercises) {
@@ -151,7 +153,7 @@ function deleteExercises(exercises) {
 			}
 		});
 	}
-	console.log('deleted exercises')
+
 }
 
 function deleteWorkout(workout) {
@@ -177,17 +179,21 @@ function deleteWorkout(workout) {
 
 
 
-	$('#renderedWorkout').on('click', 'button#delete-button', event => {
+	$('#userWorkoutsListContainer').on('click', '#delete-button', event => {
+		console.log('clicked')
 		deleteSets(sets);
 		deleteExercises(exercises);
 		deleteWorkout(workout);
+		window.location.href = '/myworkouts.html';
 	});
+
 }
+
 
 function appendSets(sets) {
 	for(let i = sets.length; i--;) {
 		$('#' + sets[i].exerciseRef).after(
-			`<tr>
+			`<tr class="sets-tr">
 				<td></td>
 				<td>${sets[i].setNumber}</td>
 				<td>${sets[i].setWeight}</td>
@@ -201,7 +207,7 @@ function renderBaseWorkoutTable(workout) {
 			<h2>${workout.workoutName}</h2>
 				<table class="table">
 					<thead>
-						<tr>
+						<tr class="trhead">
 							<th>Exercise Name</th>
 							<th>Sets</th>
 							<th>Weight</th>
@@ -211,14 +217,13 @@ function renderBaseWorkoutTable(workout) {
 				<tbody id="workout-table-body">
 				</tbody>
 				</table>
-				<button id="delete-button"><i class="fa fa-times">Delete</i></button>
+				<button id="delete-button" class="right">Delete<i class="fa fa-times right"></i></button>
 				</div>`
 }
 
 function appendBaseWorkoutTable(workout) {
 	$('#userWorkoutsList').fadeOut('fast').addClass('hidden');
 	$('#userWorkoutsListContainer').append(renderBaseWorkoutTable(workout)).fadeIn('fast');
-	console.log(workout);
 }
 
 $(getUserWorkouts);

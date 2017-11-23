@@ -6,10 +6,15 @@
 html, body {
 	height: 100%;
 	width: 100%;
-	box-sizing: border-box;
-	background: url('images/elitefts-gym.jpg') center center;
+}
+
+.tinted-image {
+	background: 
+	linear-gradient(
+	rgba(100, 137, 126, .7),
+	rgba(100, 137, 126, .7)), 
+	url('images/clean-weight-room.jpg') no-repeat center center;
 	background-size: cover;
-	background-repeat: no-repeat;
 }
 
 body main nav {
@@ -75,7 +80,7 @@ button:hover {
 
 .color-schema {
 	background-color: rgba(208, 234, 255, .95);
-	border-radius: 10px;
+	border-radius: 2px;
 	color: rgb( 97, 148, 188);
 	font-family: 'Montserrat', sans-serif;
 	-webkit-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
@@ -155,7 +160,6 @@ table.table{
 	-webkit-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
 	-moz-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
 	box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
-	border-radius: 10px !important;
 }
 
 thead {

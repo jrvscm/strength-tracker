@@ -112,3 +112,12 @@ body main nav {
 	list-style-type: none;
 	padding: 5px;
 }
+
+.tinted-image {
+	background: 
+	linear-gradient(
+	rgba(100, 137, 126, .7),
+	rgba(100, 137, 126, .7)), 
+	url('images/dumbbells.jpg') no-repeat center center;
+	background-size: cover;
+}
