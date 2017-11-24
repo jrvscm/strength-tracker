@@ -1,17 +1,11 @@
-*{
-	margin:0;
-	padding:0;
-}
-
-html, body {
-	height: 100%;
-	width: 100%;
-	box-sizing: border-box;
-	background-color: rgb(251, 226, 212);
-}
-
-.right {
-	float:right;
+.tinted-image {
+	background: 
+	linear-gradient(
+	rgba(100, 137, 126, .8),
+	rgba(100, 137, 126, .8)), 
+	url('images/elitefts-gym.jpg') no-repeat center center;
+	background-size: cover;
+	background-attachment: fixed;
 }
 
 #userWorkoutsList h2 {
@@ -19,20 +13,26 @@ html, body {
 	text-align: center;
 	padding-top: 50px;
 	margin-bottom: 50px;
+	color: white;
 }
 
 #userWorkoutsList li {
 	list-style-type: none;
 	width: 400px;
-	border-bottom: 1px solid rgb(97, 148, 188);
+	border-bottom: 1px solid white;
 	margin-left: auto;
 	margin-right: auto;
-	font-family: 'Montserrat', sans-serif;
+	font-family: 'Oswald', sans-serif;
 	font-size: 24px;
 }
 
 #userWorkoutsList a {
 	text-decoration: none;
+	color:white;
+}
+
+#userWorkoutsList a:hover {
+	color: rgba(0,0,0,.5);
 }
 
 #renderedWorkout>h2{
@@ -56,51 +56,6 @@ html, body {
 	background-color: #A5D1F3;
 }
 
-
-.hidden {
-	display: none;
-}
-
-body main nav {
-	background-color: #D0EAFF !important;
-	-webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
-	-moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
-	box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
-}
-
-.nav-button {
-	margin-right: 5px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	border-radius: 0px;
-}
-
-.navbar-brand {
-	font-family: 'Montserrat', sans-serif;
-}
-
-button {
-	width: 150px;
-	cursor: pointer;
-	color: rgb( 97, 148, 188);
-	border-radius: 0px;
-	background-color: transparent;
-	border: 2px solid rgb(97, 148, 188) !important;
-}
-
-button:hover {
-	background-color: rgba(255, 255, 255, .7) !important;
-}
-
-.tinted-image {
-	background: 
-	linear-gradient(
-	rgba(100, 137, 126, .8),
-	rgba(100, 137, 126, .8)), 
-	url('images/elitefts-gym.jpg') no-repeat center center;
-	background-size: cover;
-}
-
 #renderedWorkout {
 	width: 80%;
 	margin-top: 50px;
@@ -117,5 +72,9 @@ button:hover {
 
 .exercise-info {
 	background-color: #A5D1F3;
+}
+
+#userWorkoutsListContainer {
+	margin-top: 100px;
 }
 

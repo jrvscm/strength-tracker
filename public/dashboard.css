@@ -1,13 +1,4 @@
-*{
-	margin:0;
-	padding:0;
-		box-sizing: border-box;
-}
 
-html, body {
-	height: 100%;
-	width: 100%;
-}
 
 .tinted-image {
 	background: 
@@ -18,31 +9,6 @@ html, body {
 	background-size: cover;
 }
 
-.hidden {
-	display: none;
-}
-
-.workoutForm {
-	border: 1px solid black;
-	height: 300px;
-	width:400px;
-	margin-left: auto;
-	margin-right: auto;
-	padding: 5px;
-}
-
-button {
-	width: 150px;
-	cursor: pointer;
-	color: rgb( 97, 148, 188);
-	border-radius: 0px;
-	background-color: transparent;
-	border: 2px solid rgb(97, 148, 188) !important;
-}
-
-button:hover {
-	background-color: rgba(255, 255, 255, .7) !important;
-}
 
 .user-path-button {
 	height: 150px;
@@ -54,16 +20,16 @@ button:hover {
 }
 
 button#create-workout-button {
-	border-top-left-radius: 10px;
-	border-top-right-radius: 10px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
 	border-bottom-right-radius: 0px;
 	border-bottom-left-radius: 0px;
 	border-bottom: transparent !important;
 }
 
 button#view-all-workouts-button {
-	border-bottom-left-radius: 10px;
-	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 3px;
+	border-bottom-right-radius: 3px;
 	border-top-left-radius: 0px;
 	border-top-right-radius: 0px;
 	border-top: transparent !important;

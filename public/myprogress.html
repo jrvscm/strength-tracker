@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Oswald" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="global.css">
   <link rel="stylesheet" type="text/css" href="myprogress.css">
 	<title>Strength Tracker</title>
 </head>
@@ -15,8 +16,20 @@
       <button class="navbar-toggler nvabar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
       </button>
+
+      <a class="navbar-brand" href="#"></a>
+
+    <div id="chart-form-container" class="dropdown">
+      <form action="#" id="create-new-chart" autocomplete="off" class="color-schema workoutForm form-inline my-2 my-lg-0">
+          <label for="exercise-name">Exercise: </label>
+          <input id="exercise-name" class="form-control" name="exercise-name" required="required" type="text" placeholder="eg. Squats"/>
+          <ul id="user-exercise-names" class="hidden" aria-live="polite">
+          </ul>
+          <button id="create-new-chart-button" type="submit" class="btn button-margin form-inline my-2 my-lg-0">Create Chart</button> 
+      </form>
+    </div> 
+      
         <div class="collapse navbar-collapse" id="navbar-toggle">
-          <a class="navbar-brand" href="#"></a>
           <ul class="navbar-nav ml-auto">
             <li><button id='dashboard-button' class="btn button nav-button" role="button">Dashboard</button></li>
             <li><button id='log-out-button' class="btn button nav-button" role="button">Log Out</button></li>
@@ -25,17 +38,8 @@
     </nav>
 
 <section id="exercise-chart">
-  <div id="chart-form-container" class="dropdown workoutForm">
-      <form action="#" id="create-new-chart" autocomplete="off" class="color-schema workoutForm">
-          <label for="exercise-name">Exercise: </label>
-          <input id="exercise-name" class="form-control" name="exercise-name" required="required" type="text" placeholder="eg. Squats"/>
-          <ul id="user-exercise-names" class="hidden" aria-live="polite">
-          </ul>
-          <button id="create-new-chart-button" type="submit" class="btn button">Create Chart</button> 
-      </form>
-    </div> 
     <div class="canvas-container">
-    <canvas id="exerciseChart"></canvas> 
+      <canvas id="exerciseChart"></canvas> 
     </div>
 </section>
   </main>

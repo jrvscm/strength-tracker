@@ -6,12 +6,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:700|Oswald" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="myworkouts.css">
     <link rel="stylesheet" type="text/css" href="createworkout.css">
+    <link rel="stylesheet" type="text/css" href="global.css">
 	<title>Strength Tracker</title>
 </head>
 <body class="tinted-image">
 <main role="main">
-		<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+		<nav class="navbar navbar-toggleable-md navbar-light bg-faded fixed-top">
   		<button class="navbar-toggler nvabar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
     			<span class="navbar-toggler-icon"></span>
   		</button>
@@ -30,7 +32,7 @@
 			<form action="#" id="create-new-workout-form" class="workoutForm color-schema" autocomplete="off" novalidate="true">
 					<label for="workout-name">Workout Name: </label>
 					<input id="workout-name" class="form-control" name="workout" required="required" type="text" placeholder="eg. Hulk Back Day"/>
-					<button id="create-new-workout-button" type="submit" class="btn button">Create Workout</button> 
+					<button id="create-new-workout-button" type="submit" class="btn button-margin">Create Workout</button> 
 			</form>
 		</div>	
 		<div id="workout-exercise-form-container">
@@ -62,7 +64,7 @@
 						</ul>
 					</div>
 					
-					<button id="add-workout-exercise-button" type="submit" class="btn button">Add Exercise</button>
+					<button id="add-workout-exercise-button" type="submit" class="btn button-margin">Add Exercise</button>
 			</form> 
 			<form action="#" id="exercise-sets-form" class="hidden workoutForm color-schema" aria-live="polite" autocomplete="off" novalidate="true">
 					<label for="set-number">Set Number:</label>

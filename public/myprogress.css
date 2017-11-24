@@ -1,25 +1,3 @@
-*{
-	margin:0;
-	padding:0;
-}
-
-html, body {
-	height: 100%;
-	width: 100%;
-	box-sizing: border-box;
-}
-
-.hidden {
-	display: none;
-}
-
-body main nav {
-	background-color: #D0EAFF !important;
-	-webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
-	-moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
-	box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
-}
-
 .tinted-image {
 	background: 
 	linear-gradient(
@@ -29,58 +7,14 @@ body main nav {
 	background-size: cover;
 }
 
-.color-schema {
-	background-color: rgba(208, 234, 255, .95);
-	border-radius: 10px;
-	color: rgb( 97, 148, 188);
-	font-family: 'Montserrat', sans-serif;
-	-webkit-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
-	-moz-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
-	box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
-}
-
-.workoutForm {
-	margin-left: auto;
-	margin-right: auto;
-	width:400px;
-	padding: 5px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.dropdown ul {
+.dropdown ul{
 	height: 300px;
-	width: 100%;
+	width: 65%;
 	overflow-y: scroll;
 	position: absolute;
+	top: 50px;
+	left: 160px;
 	background-color:white;
-}
-
-.nav-button {
-	margin-right: 5px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	border-radius: 0px;
-}
-
-.navbar-brand {
-	font-family: 'Montserrat', sans-serif;
-	font-color: white;
-}
-
-button {
-	width: 150px;
-	cursor: pointer;
-	color: rgb( 97, 148, 188);
-	border-radius: 0px !important;
-	background-color: transparent;
-	border: 2px solid rgb(97, 148, 188) !important;
-	margin-top: 5px;
-}
-
-button:hover {
-	background-color: rgba(255, 255, 255, .7) !important;
-	cursor: pointer;
 }
 
 .createWorkoutLi {
@@ -97,8 +31,37 @@ button:hover {
 	height: 400px;
 }
 
-form {
-	position: absolute;
-	top: 400px;
-	right:65%;
+#create-new-chart-button {
+	float:left;
 }
+
+div#chart-form-container {
+	display: inline-block;
+}
+
+form#create-new-chart {
+	width: 550px;
+	border: none;
+	margin-left: 50px;
+	-webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.44);
+	-moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.44);
+	box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.44);
+}
+
+form#create-new-chart label{
+	font-size: 20px;
+}
+
+#create-new-chart button {
+	margin-left: 5px;
+}
+
+input#exercise-name {
+	margin-left: 10px;
+}
+
+input#exercise-name ul {
+	margin-top: 50px;
+}
+
+
