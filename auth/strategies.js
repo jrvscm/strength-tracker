@@ -1,3 +1,4 @@
+'use strict';
 const { Strategy: LocalStrategy } = require('passport-local');
     // Assigns the Strategy export to the name JwtStrategy using object
     // destructuring
@@ -5,6 +6,7 @@ const { Strategy: JwtStrategy, ExtractJwt } = require('passport-jwt');
 
 const {User} = require('../users/models');
 const {JWT_SECRET} = require('../config');
+
 
 const localStrategy = new LocalStrategy((username, password, callback) => {
     let user;

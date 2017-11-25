@@ -1,4 +1,5 @@
-global.DATABASE_URL = 'mongodb://localhost/strength-tracker';
+'use strict';
+global.DATABASE_URL='mongodb://localhost/strength-tracker';
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const jwt = require('jsonwebtoken');
@@ -21,7 +22,7 @@ describe('Auth endpoints', function() {
     const lastName = 'User';
 
     before(function() {
-        return runServer();
+        return runServer(DATABASE_URL);
     });
 
     after(function() {
@@ -42,6 +43,15 @@ describe('Auth endpoints', function() {
     afterEach(function() {
         return User.remove({});
     });
+
+function tearDownDb() {
+  return new Promise((resolve, reject) => {
+    console.warn('Deleting database');
+    mongoose.connection.dropDatabase()
+    .then(result => resolve(result))
+    .catch(err => reject(err))
+  });
+}
 
     describe('/api/auth/login/', function() {
         it('Should reject requests with no credentials', function() {

@@ -1,8 +1,8 @@
+'use strict';
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
 const uuid = require('uuid');
-const moment = require('moment');
 
 const {User, Workout} = require('./models');
 

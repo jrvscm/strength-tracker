@@ -1,3 +1,4 @@
+'use strict';
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const express = require('express');
@@ -5,7 +6,6 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
 const uuid = require('uuid');
-const moment = require('moment');
 
 const {router: usersRouter} = require('./users');
 const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');
@@ -38,7 +38,7 @@ app.use(passport.initialize());
 passport.use(localStrategy);
 passport.use(jwtStrategy);
 
-app.use('/api/workouts/', workoutsRouter)
+app.use('/api/workouts/', workoutsRouter);
 app.use('/api/users/', usersRouter);
 app.use('/api/auth/', authRouter);
 

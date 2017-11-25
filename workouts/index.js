@@ -1,3 +1,4 @@
+'use strict';
 const {workout} = require('./models');
 const {router} = require('./router');
 

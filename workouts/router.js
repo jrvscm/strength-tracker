@@ -1,3 +1,4 @@
+'use strict';
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
@@ -112,5 +113,14 @@ router.delete('/sets/:id', jsonParser,
 		.then(() => res.status(204).json({message:'Item Removed'}))
 		.catch(err => res.status(500).json({message: 'Internal server error'}));
 	});
+
+router.get('/workouts', jsonParser,
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+		return Workout.find()
+		.then(workouts => res.json(workouts.map(workout => workout)))
+        .catch(err => res.status(500).json({message: 'Internal server error'}));
+	});
+
 
 module.exports = {router};
