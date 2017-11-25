@@ -10,6 +10,39 @@ const router = express.Router();
 
 const jsonParser = bodyParser.json();
 
+//get protected data for test
+router.get(
+    '/protected',
+    passport.authenticate('jwt', {session: false}),
+    (req, res) => {
+        return res.json({
+            data: 'protected data'
+        });
+    }
+);
+
+//post for test
+router.post('/protected', jsonParser,
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+  		Workout
+		.create({workoutName: req.body.workoutName,
+				userRef: req.body.userRef})
+        .then(workout => res.status(201).json(workout))
+        .catch(err => res.status(500).json({message: 'Internal server error'}));
+});
+
+//delete for test
+router.delete('/protected', jsonParser,
+	passport.authenticate('jwt', {session: false}),
+	(req, res) => {
+		Workout
+		.findByOneAndRemove(req.params.workoutName)
+		.then(() => res.status(204).json({message:'Item Removed'}))
+		.catch(err => res.status(500).json({message: 'Internal server error'}));
+});
+
+
 //add a new workout
 router.post('/new', jsonParser,
 	passport.authenticate('jwt', {session: false}),
@@ -17,7 +50,7 @@ router.post('/new', jsonParser,
 		Workout
 		.create({workoutName: req.body.workoutName,
 				userRef: req.body.userRef})
-        .then(workout => res.json(workout))
+        .then(workout => res.status(201).json(workout))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
@@ -29,7 +62,7 @@ router.post('/exercises', jsonParser,
 		.create({exerciseName: req.body.exerciseName,
 				muscleGroup: req.body.muscleGroup,
 				workoutRef: req.body.workoutRef})
-        .then(exercise => res.json(exercise))
+        .then(exercise => res.status(201).json(exercise))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
@@ -42,7 +75,7 @@ router.post('/sets', jsonParser,
 				setWeight: req.body.setWeight,
 				setReps: req.body.setReps,
 				exerciseRef: req.body.exerciseRef})
-        .then(Setsobj => res.json(Setsobj))
+        .then(Setsobj => res.status(201).json(Setsobj))
         .catch(err => res.status(500).json({message: 'Internal server error'}));
 });
 
@@ -112,14 +145,6 @@ router.delete('/sets/:id', jsonParser,
 		.findByIdAndRemove(req.params.id)
 		.then(() => res.status(204).json({message:'Item Removed'}))
 		.catch(err => res.status(500).json({message: 'Internal server error'}));
-	});
-
-router.get('/workouts', jsonParser,
-	passport.authenticate('jwt', {session: false}),
-	(req, res) => {
-		return Workout.find()
-		.then(workouts => res.json(workouts.map(workout => workout)))
-        .catch(err => res.status(500).json({message: 'Internal server error'}));
 	});
 
 
