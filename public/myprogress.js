@@ -204,9 +204,16 @@ function getSetsForGraph(matchedExercises) {
     }
 }
 
+function watchUserIcon() {
+    $('.navbar').on('click', '.navbar-brand', event => {
+        window.location.href = 'dashboard.html';
+    });
+}
+
 function viewProgress() {
     getExerciseData();
     watchExerciseForm();
+    watchUserIcon();
 }
 
 
