@@ -9,11 +9,10 @@
 
 .dropdown ul{
 	height: 300px;
-	width: 65%;
+	width:100%;
 	overflow-y: scroll;
 	position: absolute;
 	top: 50px;
-	left: 160px;
 	background-color:white;
 }
 
@@ -31,18 +30,14 @@
 	height: 400px;
 }
 
-#create-new-chart-button {
-	float:left;
-}
-
 div#chart-form-container {
-	display: inline-block;
+	width:550px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 form#create-new-chart {
-	width: 550px;
 	border: none;
-	margin-left: 50px;
 	-webkit-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.44);
 	-moz-box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.44);
 	box-shadow: 0px 0px 0px 0px rgba(0,0,0,0.44);
@@ -53,11 +48,8 @@ form#create-new-chart label{
 }
 
 #create-new-chart button {
+	margin-top: 0px;
 	margin-left: 5px;
-}
-
-input#exercise-name {
-	margin-left: 10px;
 }
 
 input#exercise-name ul {

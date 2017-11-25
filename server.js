@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const morgan = require('morgan');
 const passport = require('passport');
 const uuid = require('uuid');
+const moment = require('moment');
 
 const {router: usersRouter} = require('./users');
 const {router: authRouter, localStrategy, jwtStrategy} = require('./auth');

@@ -1,3 +1,4 @@
+
 let userExercises = [];
 let ctx = $('#exerciseChart')[0].getContext('2d');
 let chart = new Chart(ctx, {
@@ -8,7 +9,7 @@ let chart = new Chart(ctx, {
     data: {
         labels: [],
         datasets: [{
-            label:"Weight Lifted",
+            label: "Weight Lifted",
             backgroundColor: 'transparent',
             borderColor: 'rgb(255, 99, 132)',
             data: [],
@@ -19,41 +20,27 @@ let chart = new Chart(ctx, {
     options: {
         layout: {
             padding: {
-                left: 150,
-                right: 150,
-                top: 20,
-                bottom: 300
+                left: 110,
+                right: 110,
+                top: 50,
+                bottom: 110
             }
         }
     }
+
 });
 
-
-function renderChart(sets, matchedExercises){
+function renderChart(sets){
     for(let i=0; i<sets.length; i++) {
         chart.data.datasets[0].data.push(sets[i].setWeight);
-        chart.data.labels.push(`Date: ${sets[i].date} Set: ${sets[i].setNumber}`);
+        chart.data.labels.push(`${moment(sets[i].date).format('l')} Set: ${sets[i].setNumber}`);
     }
 
-    setTimeout(function() { chart.update(); 
-        clearChartData ();
+    setTimeout(function() { 
+        chart.update(); 
     },100);  
 
 }
-
-function setTheLabel(matchedExercises) {
-    for (j=0; j<matchedExercises.length; j++) {
-       graphLabel = matchedExercises[i].exerciseName;
-    }
-}
-
- function clearChartData() {   
-    setTimeout(function() {
-        chart.data.datasets[0].data=[];
-        chart.data.labels=[];
-    },2000);
-
-} 
 
 
 function getExerciseData() {
@@ -143,8 +130,44 @@ function watchLiClicks() {
 function watchCreateChartBtn() {
     $('#create-new-chart-button').off().on('click', event => {
         event.preventDefault();
-        getMatchedExercises();
+        chart.destroy();
+        initializeNewChart();
     });
+}
+
+function initializeNewChart() {
+ctx = $('#exerciseChart')[0].getContext('2d');
+chart = new Chart(ctx, {
+    // The type of chart we want to create
+    type: 'line',
+
+    // The data for our dataset
+    data: {
+        labels: [],
+        datasets: [{
+            label: "Weight Lifted",
+            backgroundColor: 'transparent',
+            borderColor: 'rgb(255, 99, 132)',
+            data: [],
+        }]
+    },
+
+    // Configuration options go here
+    options: {
+        layout: {
+            padding: {
+                left: 110,
+                right: 110,
+                top: 50,
+                bottom: 110
+            }
+        }
+    }
+
+});
+
+getMatchedExercises();
+
 }
 
 function getMatchedExercises() {

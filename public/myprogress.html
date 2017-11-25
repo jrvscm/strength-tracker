@@ -21,11 +21,11 @@
 
     <div id="chart-form-container" class="dropdown">
       <form action="#" id="create-new-chart" autocomplete="off" class="color-schema workoutForm form-inline my-2 my-lg-0">
-          <label for="exercise-name">Exercise: </label>
-          <input id="exercise-name" class="form-control" name="exercise-name" required="required" type="text" placeholder="eg. Squats"/>
+          <label for="exercise-name" aria-labelledby="Exercise"></label>
+          <input id="exercise-name" class="form-control" name="exercise-name" required="required" type="text" placeholder="Choose an exercise"/>
           <ul id="user-exercise-names" class="hidden" aria-live="polite">
           </ul>
-          <button id="create-new-chart-button" type="submit" class="btn button-margin form-inline my-2 my-lg-0">Create Chart</button> 
+          <button id="create-new-chart-button" type="submit" class="btn button-margin">Create Chart</button> 
       </form>
     </div> 
       
@@ -50,6 +50,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.2/moment.js"></script>
 <script type="text/javascript" src="dashboard.js"></script>
 <script type="text/javascript" src="myprogress.js"></script>
 </body>
