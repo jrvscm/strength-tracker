@@ -1,3 +1,9 @@
 language: node_js
 node_js: node
-
+deploy: obscure-refuge-96931
+  provider: heroku
+  api_key:
+    secure: elLvbpIMSYpHnJqWl7oCPrk0byzNPhoVf6LutGRIWeCmJi86NgFAL3tP9vZxoIaaIx6YzYt4q9pgQiF/pd+zJU88E7GKCrmtynn7qChXjhlvQqKUI7ZVfPVtpWQEDPrHEFXe6Xkjuq/E5uc8+lA1QwgIrE2fBU/ufkpZ/S/O+PRH9OZKuDgJ+0ztcJisKqr1POKsa0SFMU45KrQOtPWsilybVFqrzUI2WhzzZT0rTIbxOVoFHx5JLIWky9X65TBvSdYrCP0D6Yh6bARzKIdcSYX03nyq7D0thUJ1C1ndLy5fcr23Koc1kMNTVxK/as6JwlySgpZaaBv3QXP6kJZDHEwv2yRW/68IdJsjbf+Zg+3pdHMbTvk4B8cKs/kcXpJzERxV57eceV1lNcYhEDHoxclQgyDZUP7oJO11JHWB4pBK4fr+aGkomxc9v6IEiSfdled3bs2N9WervyxzKI6+GJhgRy884Bq8Z6mZMgQXiBGb3ewraKNEmOU6PXxAJ6L6bKfJfnCB4f25f+6GR1fGasLXXs4BwwtreyoR26hhvW0CrtgfX054q2o3lVi4RALomfnFPbPHqTKVMkbrVSBN+47oc7U8bv6bjifYPOh0KHGPWWtBpWgwuSMlLfxFYTddMO4fwiy6+dn57LS9WbiZYGQWHeN7rKIctNIypEhJ0SE=
+  app: strength-tracker
+  on:
+    repo: jrvscm/strength-tracker
