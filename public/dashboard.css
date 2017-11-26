@@ -35,45 +35,6 @@ button#view-all-workouts-button {
 	border-top: transparent !important;
 }
 
-.nav-button {
-	margin-right: 5px;
-	margin-top: 5px;
-	margin-bottom: 5px;
-	border-radius: 0px;
-}
-
-.navbar-brand {
-	font-family: 'Montserrat', sans-serif;
-	font-color: white;
-}
-
-body main nav {
-	background-color: #D0EAFF !important;
-	-webkit-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
-	-moz-box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
-	box-shadow: 0px 0px 10px 3px rgba(0,0,0,0.44);
-}
-
-.center {
-	position: absolute;	
-	margin: auto;
-	top: 100px;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	padding-top: 8%;
-}
-
-.color-schema {
-	background-color: rgba(208, 234, 255, .9);
-	border-radius: 10px;
-	color: rgb( 97, 148, 188);
-	font-family: 'Montserrat', sans-serif;
-	font-size: 32px;
-	-webkit-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
-	-moz-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
-	box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
-}
 
 .inner-container {
 	width: 450px;
@@ -84,3 +45,36 @@ body main nav {
 .inner-container ul {
 	list-style-type: none;
 }
+
+@media screen and (max-device-width: 375px) and (max-device-height: 667px) {
+	.inner-container {
+		width: 95%;
+	}
+
+	nav {
+		text-align: center;
+	}
+
+	nav > button{
+		margin-left: auto;
+		margin-right: auto;
+	}
+
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+	}
+
+	#log-out-button {
+		float:right;
+	}
+
+}/*end iphone 6 styles-------------->
