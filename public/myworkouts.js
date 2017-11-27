@@ -1,4 +1,5 @@
 function getUserWorkouts() {
+	watchUserIcon();
 	$.ajax({
 		method: "GET",
 		url: `/api/workouts/myworkouts/${localStorage.getItem('userId')}`,
@@ -39,7 +40,7 @@ function watchUserWorkoutList() {
 			success: function(workout) {
 				appendBaseWorkoutTable(workout);
 				getExercisesList(workoutID, workout);
-				console.log('stepOne')
+
 			},
 			beforeSend: function(xhr, settings) { 
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -62,7 +63,6 @@ function getExercisesList(workoutID, workout) {
 		success: function(exercises) {
 			appendExercises(exercises);
 			getSets(exercises, workout);
-			console.log('stepTwo')
 			},
 			beforeSend: function(xhr, settings) { 
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -110,7 +110,6 @@ function getSets(exercises, workout) {
 }
 
 function watchDelete(workout, exercises, sets) {
-console.log('inside')
 	function deleteSets(sets) {
 		for(let i=0; i<sets.length; i++) {
 			$.ajax({
@@ -180,11 +179,17 @@ function deleteWorkout(workout) {
 
 
 	$('#userWorkoutsListContainer').on('click', '#delete-button', event => {
-		console.log('clicked')
 		deleteSets(sets);
 		deleteExercises(exercises);
 		deleteWorkout(workout);
 		window.location.href = '/myworkouts.html';
+	});
+
+	$('#userWorkoutsListContainer').on('click', '#return-button', event => {
+		$('#renderedWorkout').fadeOut('fast').toggleClass('hidden');
+		setTimeout(function() {
+		$('#userWorkoutsList').fadeIn('fast').toggleClass('hidden');
+		},200);
 	});
 
 }
@@ -203,7 +208,7 @@ function appendSets(sets) {
 }
 
 function renderBaseWorkoutTable(workout) {
-	return `<div id="renderedWorkout">
+	return `<div id="renderedWorkout" class="hidden">
 			<h2>${workout.workoutName}</h2>
 				<table class="table">
 					<thead>
@@ -217,13 +222,24 @@ function renderBaseWorkoutTable(workout) {
 				<tbody id="workout-table-body">
 				</tbody>
 				</table>
-				<button id="delete-button" class="right">Delete<i class="fa fa-times right"></i></button>
+				<button id="return-button" class="btn">Return</button>
+				<button id="delete-button" class="btn right">Delete</button>
 				</div>`
 }
 
 function appendBaseWorkoutTable(workout) {
+	$('#renderedWorkout').remove();
 	$('#userWorkoutsList').fadeOut('fast').addClass('hidden');
-	$('#userWorkoutsListContainer').append(renderBaseWorkoutTable(workout)).fadeIn('fast');
+	$('#userWorkoutsListContainer').append(renderBaseWorkoutTable(workout))
+	setTimeout(function() {
+	$('#renderedWorkout').fadeIn('fast').toggleClass('hidden');
+	},200);
+}
+
+function watchUserIcon() {
+    $('.navbar').on('click', '.navbar-brand', event => {
+        window.location.href = 'dashboard.html';
+    });
 }
 
 $(getUserWorkouts);

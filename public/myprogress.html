@@ -17,7 +17,13 @@
           <span class="navbar-toggler-icon"></span>
       </button>
 
-      <a class="navbar-brand" href="#"></a>
+    <a class="navbar-brand" href="#"></a>
+    <div class="collapse navbar-collapse" id="navbar-toggle">
+        <ul class="navbar-nav ml-auto">
+            <li><button id='dashboard-button' class="btn button nav-button" role="button">Dashboard</button></li>
+            <li><button id='log-out-button' class="btn button nav-button" role="button">Log Out</button></li>
+        </ul>
+    </div>
 
     <div id="chart-form-container" class="dropdown">
       <form action="#" id="create-new-chart" autocomplete="off" class="color-schema workoutForm form-inline my-2 my-lg-0">
@@ -28,13 +34,6 @@
           <button id="create-new-chart-button" type="submit" class="btn button-margin">Create Chart</button> 
       </form>
     </div> 
-      
-        <div class="collapse navbar-collapse" id="navbar-toggle">
-          <ul class="navbar-nav ml-auto">
-            <li><button id='dashboard-button' class="btn button nav-button" role="button">Dashboard</button></li>
-            <li><button id='log-out-button' class="btn button nav-button" role="button">Log Out</button></li>
-          </ul>
-        </div>
     </nav>
 
 <section id="exercise-chart">

@@ -45,7 +45,93 @@ button#view-all-workouts-button {
 .inner-container ul {
 	list-style-type: none;
 }
+/*iphone 6 plus --------------------*/
+@media screen and (max-device-width: 414px) and (max-device-height: 736px) {
+	.inner-container {
+		width: 95%;
+	}
 
+	nav {
+		text-align: center;
+	}
+
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+}/*end iphone 6 plus flipped styles-------------->*/
+
+@media screen and (max-device-width: 736px) and (max-device-height: 414px) {
+	.inner-container {
+		width: 95%;
+	}
+
+	nav {
+		text-align: center;
+	}
+
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+}
+/*iphone 6 plust flipped--------------*/
+
+/*iphone 6--------------------*/
 @media screen and (max-device-width: 375px) and (max-device-height: 667px) {
 	.inner-container {
 		width: 95%;
@@ -55,15 +141,16 @@ button#view-all-workouts-button {
 		text-align: center;
 	}
 
-	nav > button{
-		margin-left: auto;
-		margin-right: auto;
-	}
-
 	#navbar-toggle > a {
 		margin:0;
 	}
 
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
 
 	#navbar-toggle > ul {
 		display: inline;
@@ -71,10 +158,148 @@ button#view-all-workouts-button {
 
 	#dashboard-button {
 		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
 	}
 
 	#log-out-button {
 		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
 	}
 
 }/*end iphone 6 styles-------------->
+
+/*iphone 6 flipped ------------>*/
+@media screen and (max-device-width: 667px) and (max-device-height: 375px) {
+	.inner-container {
+		width: 95%;
+	}
+
+	nav {
+		text-align: center;
+	}
+
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+}
+/*iphone 5---------*/
+@media screen and (max-device-width: 320px) and (max-device-height: 568px) {
+	.inner-container {
+		width: 95%;
+	}
+
+	nav {
+		text-align: center;
+	}
+
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		width: 100%;
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		width: 100%;
+		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+}
+
+/*ipad --------------->*/
+@media screen and (max-device-width: 768px) and (max-device-height: 1024px) {
+	.inner-container {
+		width: 95%;
+	}
+
+	nav {
+		text-align: center;
+	}
+
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+}

@@ -156,10 +156,10 @@ chart = new Chart(ctx, {
     options: {
         layout: {
             padding: {
-                left: 110,
-                right: 110,
-                top: 50,
-                bottom: 110
+                left: 0,
+                right: 0,
+                top: 0,
+                bottom: 0
             }
         }
     }

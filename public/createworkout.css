@@ -76,25 +76,216 @@
 
 #populate-workout-section h2 {
 	font-family: 'Montserrat', sans-serif;
+	background-color: rgb(100, 137, 126);
 	color: white;
+	padding-bottom: 5px;
+	margin:0;
 	font-size: 42px;
-}
-
-table.table{
-	-webkit-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
-	-moz-box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
-	box-shadow: 0px 0px 16px 5px rgba(0,0,0,0.44);
+	-webkit-box-shadow: 0px -12px 16px -6px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px -12px 16px -6px rgba(0,0,0,0.75);
+	box-shadow: 0px -12px 16px -6px rgba(0,0,0,0.75);
 }
 
 thead {
 	background: #6194BC;
 	color: white;
 }
-
+table.table{
+	-webkit-box-shadow: 0px 12px 16px -6px rgba(0,0,0,0.75);
+	-moz-box-shadow: 0px 12px 16px -6px rgba(0,0,0,0.75);
+	box-shadow: 0px 12px 16px -6px rgba(0,0,0,0.75);
+}
 .set-info {
 	background-color: #D0EAFF;
 }
 
 .exercise-info {
 	background-color: #A5D1F3;
+}
+
+#toggle-form-button {
+	width: 50px;
+}
+
+.toggled {
+	height:50px;
+}
+
+#finish-workout-button {
+	margin-top:0;
+	margin-bottom:0;
+}
+
+
+@media screen and (max-device-width: 375px) and (max-device-height: 667px) {
+	#workout-form-container form {
+		width: 95%;
+	}
+
+	#workout-exercise-form-container {
+		position: fixed;
+		top: 70px;
+		left: 2%;
+		right:2%;
+	}
+
+	#workout-exercise-form {
+		width: 100%;
+	}
+
+	#exercise-sets-form {
+		width: 100%;
+	}
+
+	#populate-workout-section {
+		width:95%;
+	}
+
+	#new-workout-section {
+		margin-top: 30%;
+	}
+
+	.table {
+		width: 100%;
+	}
+
+}/*---end iphone 6 styles---------------------->
+
+iphone 6 flipped -------------*/
+@media screen and (max-device-width: 667px) and (max-device-height:375px) {
+	#workout-form-container form {
+		width: 95%;
+	}
+
+	#workout-exercise-form-container {
+		position: fixed;
+		top: 70px;
+		left: 2%;
+		right:2%;
+	}
+
+	#workout-exercise-form {
+		width: 100%;
+	}
+
+	#exercise-sets-form {
+		width: 100%;
+	}
+
+	#populate-workout-section {
+		width:95%;
+	}
+
+	#new-workout-section {
+		margin-top: 30%;
+	}
+
+	.table {
+		width: 100%;
+	}
+/*iphone 6 plus------------*/
+@media screen and (max-device-width: 414px) and (max-device-height: 736px) {
+	#workout-form-container form {
+		width: 95%;
+	}
+
+	#workout-exercise-form-container {
+		position: fixed;
+		top: 70px;
+		left: 2%;
+		right:2%;
+	}
+
+	#workout-exercise-form {
+		width: 100%;
+	}
+
+	#exercise-sets-form {
+		width: 100%;
+	}
+
+	#populate-workout-section {
+		width:95%;
+	}
+
+	#new-workout-section {
+		margin-top: 30%;
+	}
+
+	.table {
+		width: 100%;
+	}
+
+}
+
+/*---iphone 6 plus flipped styles---------------------->*/
+
+@media screen and (max-device-width: 736px) and (max-device-height: 414px) {
+	#workout-form-container form {
+		width: 95%;
+	}
+
+	#workout-exercise-form-container {
+		position: fixed;
+		top: 70px;
+		left: 2%;
+		right:2%;
+	}
+
+	#workout-exercise-form {
+		width: 100%;
+	}
+
+	#exercise-sets-form {
+		width: 100%;
+	}
+
+	#populate-workout-section {
+		width:95%;
+	}
+
+	#new-workout-section {
+		margin-top: 30%;
+	}
+
+	.table {
+		width: 100%;
+	}
+
+}/*---end iphone 6 plus flipped styles---------------------->
+
+
+/*ipad-------------*/
+@media screen and (max-device-width: 768px) and (max-device-height: 1024px) {
+	#workout-form-container form {
+		width: 95%;
+	}
+
+	#workout-exercise-form-container {
+		position: fixed;
+		top: 70px;
+		left: 2%;
+		right:2%;
+	}
+
+	#workout-exercise-form {
+		width: 100%;
+	}
+
+	#exercise-sets-form {
+		width: 100%;
+	}
+
+	#populate-workout-section {
+		width:95%;
+	}
+
+	#new-workout-section {
+		margin-top: 30%;
+	}
+
+	.table {
+		width: 100%;
+	}
+
 }

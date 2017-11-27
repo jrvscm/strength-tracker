@@ -17,10 +17,9 @@
   		<button class="navbar-toggler nvabar-toggler-right" type="button" data-toggle="collapse" data-target="#navbar-toggle" aria-controls="navbar-toggle" aria-expanded="false" aria-label="Toggle navigation">
     			<span class="navbar-toggler-icon"></span>
   		</button>
+  		<a class="navbar-brand" href="#"></a>
   			<div class="collapse navbar-collapse" id="navbar-toggle">
-  				<a class="navbar-brand" href="#"></a>
   				<ul class="navbar-nav ml-auto">
-  					<li><button id='finish-workout-button' class="btn button nav-button hidden" role="button">Finish Workout</button></li>
   					<li><button id='dashboard-button' class="btn button nav-button" role="button">Dashboard</button></li>
   					<li><button id='log-out-button' class="btn button nav-button" role="button">Log Out</button></li>
   				</ul>
@@ -67,6 +66,8 @@
 					<button id="add-workout-exercise-button" type="submit" class="btn button-margin">Exercise+</button>
 			</form> 
 			<form action="#" id="exercise-sets-form" class="hidden workoutForm color-schema" aria-live="polite" autocomplete="off" novalidate="true">
+				<button id="toggle-form-button" class="btn right"><i class="fa fa-bars" aria-hidden="true"></i></button>
+				<button id='finish-workout-button' class="btn button nav-button hidden right" role="button">Finish Workout</button><br>
 					<label for="set-number">Set Number:</label>
 					<input id="set-number" class="form-control" name="workout-params" required="required" type="number" placeholder="eg. 1"/>
 					
@@ -92,7 +93,7 @@
 					</div>
 					
 					<button id="add-set-button" class="btn button-margin" type="submit">Set+</button>
-					<button id="next-exercise-button" class="btn button-margin hidden right">Next Exercise</button>
+					<button id="next-exercise-button" class="btn button-margin right">Next Exercise</button>
 			</form>
 		</div>
 

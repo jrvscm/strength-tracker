@@ -14,9 +14,10 @@ function watchNewWorkout() {
 }
 
 function watchEndWorkout() {
-	$('#finish-workout-button').fadeIn('fast').removeClass('hidden');
-	$('#finish-workout-button').click(function(e) {
+	$('#finish-workout-button').fadeIn('fast').toggleClass('hidden');
+	$('#finish-workout-button').click(function() {
 		window.location.href = '/dashboard.html';
+		return false;
 	});
 }
 
@@ -137,8 +138,8 @@ function pickSetReps() {
 
 
 function renderWorkoutRepr(workout) {
-	return `<h2>${workout.workoutName}</h2>
-				<table class="table">
+	return `<table class="table">
+				<h2>${workout.workoutName}</h2>
 					<thead>
 						<tr>
 							<th>Exercise Name</th>
@@ -255,10 +256,8 @@ function watchSetSubmit(exercise) {
 			contentType: "application/json; charset=utf-8",
 			dataType : "json",
 			success: function(sets) {
-			console.log(sets);
 			appendNewSet(sets);
 			clearSetsForm();
-			$('#next-exercise-button').fadeIn('fast').removeClass('hidden');
 			addNextExercise();
 			},
 			beforeSend: function(xhr, settings) { 
@@ -275,10 +274,9 @@ function watchSetSubmit(exercise) {
 function addNextExercise() {
 	$('#workout-exercise-form-container').on('click', '#next-exercise-button', event => {
 		event.preventDefault();
-		$('#exercise-sets-form').fadeOut('fast').addClass('hidden');
-		$('#next-exercise-button').fadeOut('fast').addClass('hidden');
+		$('#exercise-sets-form').fadeOut('fast').toggleClass('hidden');
 		setTimeout(function() {
-			$('#workout-exercise-form').fadeIn('fast').removeClass('hidden');
+			$('#workout-exercise-form').fadeIn('fast').toggleClass('hidden');
 		}, 200);
 	});
 }
@@ -289,9 +287,30 @@ function clearSetsForm() {
 	$('#set-reps').val('');
 }
 
+function watchFormToggle() {
+	$('#workout-exercise-form-container').on('click', '#toggle-form-button', event => {
+		event.preventDefault();
+		$('#set-number').toggleClass('hidden');
+		$('#set-weight').toggleClass('hidden');
+		$('#set-reps').toggleClass('hidden');
+		$('#exercise-sets-form>label').toggleClass('hidden');
+		$('#add-set-button').toggleClass('hidden');
+		$('#next-exercise-button').toggleClass('hidden');
+		$('#exercise-sets-form').toggleClass('toggled');
+	});
+}
+
+function watchUserIcon() {
+    $('.navbar').on('click', '.navbar-brand', event => {
+        window.location.href = 'dashboard.html';
+    });
+}
+
 function handleCreateWorkout() {
 	showWorkoutForm();
 	watchNewWorkout();
+	watchFormToggle();
+	watchUserIcon();
 }
 
 $(handleCreateWorkout);

@@ -17,7 +17,7 @@
 }
 
 .createWorkoutLi {
-	background-color:white;
+	background-color: white;
 	list-style-type: none;
 }
 
@@ -26,14 +26,8 @@
 	background-color: rgba(0,0,0,.2);
 }
 
-.canvas-container {
-	height: 400px;
-}
-
 div#chart-form-container {
-	width:550px;
 	margin-left: auto;
-	margin-right: auto;
 }
 
 form#create-new-chart {
@@ -56,4 +50,456 @@ input#exercise-name ul {
 	margin-top: 50px;
 }
 
+#navbar-toggle {
+	width: auto;
+	float: left;
+}
+
+@media screen and (max-device-width: 375px) and (max-device-height: 667px) {
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#create-new-chart{
+		width: 100%;
+		padding: 0;
+	}
+
+	#chart-form-container button{
+		margin-left: auto !important;
+		margin-top: 10px;
+		margin-left: 0;
+	}
+
+	.canvas-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	#exerciseChart {
+		height: 100% !important;
+		width: 100%;
+	}
+
+
+}/*--------------end iphone6 styles------------->*/
+
+/*iphone 6 flipped---------------------------------*/
+@media screen and (max-device-width: 667px) and (max-device-height: 375px) {
+		#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		margin-top:5px;
+		margin-right:0;
+		margin-left: 10px;
+		margin-bottom:0;
+	}
+
+	#create-new-chart{
+		width: 100%;
+		padding: 0;
+	}
+
+	#chart-form-container button{
+		margin-right: 10px;
+	}
+
+}/*------------ END--iphone 6 flipped---------->*/
+
+/*------------iphone 6 plus----------------------*/
+@media screen and (max-device-width: 414px) and (max-device-height: 736px) {
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#create-new-chart{
+		width: 100%;
+		padding: 0;
+	}
+
+	#chart-form-container button{
+		margin-left: auto !important;
+		margin-top: 10px!important;
+	}
+
+	.canvas-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	#exerciseChart {
+		height: 100% !important;
+		width: 100%;
+	}
+
+
+}/*--------------end iphone6 plus styles------------->*/
+
+
+/*-------------------iphone 6 plus flipped---------------?*/
+@media screen and (max-device-width: 736px) and (max-device-height: 414px) {
+		#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		margin-top:5px;
+		margin-right:0;
+		margin-left: 10px;
+		margin-bottom:0;
+	}
+
+	#create-new-chart{
+		width: 100%;
+		padding: 0;
+	}
+
+	#chart-form-container button{
+		margin-right: 10px;
+	}
+
+}/*------------end --- iphone 6 plus flipped---------->*/
+
+/*begin iphone 5 styles ---------*/
+@media screen and (max-device-width: 568px) and (max-device-height: 320px) {
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#create-new-chart{
+		width: 100%;
+		padding: 0;
+	}
+
+	#chart-form-container button{
+		margin-left: auto !important;
+		margin-top: 10px;
+	}
+
+	.canvas-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	#exerciseChart {
+		height: 100% !important;
+		width: 100%;
+	}
+} /*---------------------------end iphone 5 styles----------*/
+
+/*iphone 5 flipped styles---------------*/
+@media screen and (max-device-width: 568px) and (max-device-height: 320px) {
+		#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		margin-top:5px;
+		margin-right:0;
+		margin-left: 10px;
+		margin-bottom:0;
+	}
+
+	#create-new-chart{
+		width: 100%;
+		padding: 0;
+	}
+
+	#chart-form-container button{
+		margin-top: 10px !important;
+		margin-right: 0;
+	}
+
+}
+
+/*------------nexus 6 p---------*/
+@media screen and (max-device-width: 412px) and (max-device-height: 732px) {
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#create-new-chart{
+		width: 100%;
+		padding: 0;
+	}
+
+	#chart-form-container button{
+		margin-left: auto !important;
+		margin-top: 10px;
+	}
+
+	.canvas-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	#exerciseChart {
+		height: 100% !important;
+		width: 100%;
+	}
+} /*---------------------------end nexus 6 p styles----------
+
+/*nexus 6 p flipped styles---------------*/
+@media screen and (max-device-width: 568px) and (max-device-height: 320px) {
+		#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		margin-top:5px;
+		margin-right:0;
+		margin-left: 10px;
+		margin-bottom:0;
+	}
+
+	#create-new-chart{
+		width: 100%;
+		padding: 0;
+	}
+
+	#chart-form-container button{
+		margin-right: 0;
+	}
+
+} /* end nexus 6 p flipped */
+
+/*ipad -----------------------------*/
+@media screen and (max-device-width: 768px) and (max-device-height: 1024px) {
+	#navbar-toggle > a {
+		margin:0;
+	}
+
+	a.navbar-brand {
+		width: auto;
+		position: absolute;	
+		top:10px;
+		right:5px;
+	}
+
+	#navbar-toggle > ul {
+		display: inline;
+	}
+
+	#dashboard-button {
+		float:left;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#log-out-button {
+		float:right;
+		margin-top:5px;
+		margin-right: 0;
+		margin-left: 0;
+		margin-bottom:0;
+	}
+
+	#create-new-chart{
+		width: 100%;
+		padding: 0;
+	}
+
+	#chart-form-container button{
+		margin-top: 0;
+		margin-left: 10px;
+	}
+
+	.canvas-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	#exerciseChart {
+		height: 100% !important;
+		width: 100%;
+	}
+} /*---------------------------end ipad----*/
 

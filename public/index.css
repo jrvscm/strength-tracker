@@ -128,9 +128,361 @@ form h2	{
 		margin-bottom: 50px;
 	}
 
-	
-
-
-
-
 }/*end Iphone 6 styles----->*/
+
+/*iphone 6 flipped-------.*/
+@media screen and (max-device-width: 667px) and (max-device-height: 375px) {
+
+	#intro-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	#log-in-container {
+		height: 50%;
+		width: 100%;
+		margin-top: 10%;
+	}
+
+	#sign-up-container {
+		height: 50%;
+		width: 95%;
+		margin-top: 1%;
+	}
+
+	#sign-up-container form {
+		width:100%;
+	}
+
+	#sign-up-section {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right:0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+
+	.center {
+	position: absolute;	
+	margin: auto;
+	padding-top: 0;
+	top:30px;
+	right:10px;
+	left:10px;
+	bottom:30px;
+	}
+
+	#intro-login-button {
+		width: 80%;
+	}
+
+	#intro-signup-button {
+		width:80%;
+	}
+
+	#intro-container > div > h1 {
+		font-size: 36px;
+		margin-bottom: 30px;
+
+	}
+
+	#intro-container > div > p {
+		margin-bottom: 50px;
+	}
+
+}
+
+/*----------iphone 6 plus-------*/
+@media screen and (max-device-width: 414px) and (max-device-height: 736px) {
+
+	#intro-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	#log-in-container {
+		height: 50%;
+		width: 100%;
+		margin-top: 35%;
+	}
+
+	#sign-up-container {
+		height: 50%;
+		width: 95%;
+		margin-top: 35%;
+	}
+
+	#sign-up-container form {
+		width:100%;
+	}
+
+	#sign-up-section {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right:0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+
+	.center {
+	position: absolute;	
+	margin: auto;
+	padding-top: 0;
+	top:30px;
+	right:10px;
+	left:10px;
+	bottom:30px;
+	}
+
+	#intro-login-button {
+		width: 80%;
+	}
+
+	#intro-signup-button {
+		width:80%;
+	}
+
+	#intro-container > div > h1 {
+		font-size: 36px;
+		margin-bottom: 30px;
+
+	}
+
+	#intro-container > div > p {
+		margin-bottom: 50px;
+	}
+
+}/*end Iphone 6 plus styles----->*/
+/*6plus flipped--------------------*/
+@media screen and (max-device-width: 736px) and (max-device-height: 414px) {
+
+	#intro-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	#log-in-container {
+		height: 50%;
+		width: 100%;
+		margin-top: 5%;
+	}
+
+	#sign-up-container {
+		height: 50%;
+		width: 95%;
+		margin-top: 1%;
+	}
+
+	#sign-up-container form {
+		width:100%;
+	}
+
+	#sign-up-section {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right:0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+
+	.center {
+	position: absolute;	
+	margin: auto;
+	padding-top: 0;
+	top:30px;
+	right:10px;
+	left:10px;
+	bottom:30px;
+	}
+
+	#intro-login-button {
+		width: 80%;
+	}
+
+	#intro-signup-button {
+		width:80%;
+	}
+
+	#intro-container > div > h1 {
+		font-size: 36px;
+		margin-bottom: 30px;
+
+	}
+
+	#intro-container > div > p {
+		margin-bottom: 50px;
+	}
+
+}
+
+/*iphone 5-----------*/
+@media screen and (max-device-width: 320px) and (max-device-height: 568px) {
+
+	#intro-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	#log-in-container {
+		height: 50%;
+		width: 100%;
+		margin-top: 10%;
+	}
+
+	#sign-up-container {
+		height: 50%;
+		width: 95%;
+		margin-top: 10%;
+	}
+
+	#sign-up-container form {
+		width:100%;
+	}
+
+	#sign-up-section {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right:0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+
+	.center {
+	position: absolute;	
+	margin: auto;
+	padding-top: 0;
+	top:30px;
+	right:10px;
+	left:10px;
+	bottom:30px;
+	}
+
+	#intro-login-button {
+		width: 80%;
+	}
+
+	#logInButton{
+		width: 100%;
+	}
+
+	#signUpButton {
+		width: 100%;
+	}
+
+	#logInButtonSignup {
+		width:100%;
+		margin-bottom: 5px;
+	}
+
+	#signUpButtonLogin {
+		width: 100%;
+	}
+
+	#intro-signup-button {
+		width:80%;
+	}
+
+	#intro-container > div > h1 {
+		font-size: 36px;
+		margin-bottom: 30px;
+
+	}
+
+	#intro-container > div > p {
+		margin-bottom: 50px;
+	}
+
+}
+/*flipped iphone 5-------*/
+@media screen and (max-device-width: 568px) and (max-device-height: 320px) {
+
+	#intro-container{
+		height: 100%;
+		width: 100%;
+	}
+
+	#log-in-container {
+		height: 50%;
+		width: 100%;
+		margin-top: 0;
+	}
+
+	#sign-up-container {
+		height: 50%;
+		width: 95%;
+		margin-top: 0;
+	}
+
+	#sign-up-container form {
+		width:100%;
+	}
+
+	#sign-up-section {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right:0;
+		bottom: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+
+	.center {
+	position: absolute;	
+	margin: auto;
+	padding-top: 0;
+	top:30px;
+	right:10px;
+	left:10px;
+	bottom:30px;
+	}
+
+	#intro-login-button {
+		width: 80%;
+	}
+
+	#logInButton{
+		width: 100%;
+	}
+
+	#signUpButton {
+		width: 100%;
+	}
+
+	#logInButtonSignup {
+		width:100%;
+		margin-bottom: 5px;
+	}
+
+	#signUpButtonLogin {
+		width: 100%;
+	}
+
+	#intro-signup-button {
+		width:80%;
+	}
+
+	#intro-container > div > h1 {
+		font-size: 36px;
+		margin-bottom: 30px;
+
+	}
+
+	#intro-container > div > p {
+		margin-bottom: 50px;
+	}
+
+}

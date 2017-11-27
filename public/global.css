@@ -63,6 +63,10 @@ body main nav {
 	float:right;
 }
 
+.left {
+	float:left;
+}
+
 .color-schema {
 	background-color: rgba(208, 234, 255, .9);
 	border-radius: 3px;
