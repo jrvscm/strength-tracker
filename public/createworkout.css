@@ -183,6 +183,8 @@ iphone 6 flipped -------------*/
 	.table {
 		width: 100%;
 	}
+}
+
 /*iphone 6 plus------------*/
 @media screen and (max-device-width: 414px) and (max-device-height: 736px) {
 	#workout-form-container form {
@@ -190,10 +192,10 @@ iphone 6 flipped -------------*/
 	}
 
 	#workout-exercise-form-container {
-		position: fixed;
+		position: absolute;
 		top: 70px;
-		left: 2%;
 		right:2%;
+		left:2%;
 	}
 
 	#workout-exercise-form {
