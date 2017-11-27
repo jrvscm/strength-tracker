@@ -1,21 +1,21 @@
 function watchViewProgressBtn() {
 	$('#workout-choices-list').on('click', '#view-progress-button', event => {
-		getUserId();
 		window.location.href = '/myprogress.html';
+		getUserId();
 	});
 }
 
 function watchMyWorkoutsBtn() {
 	$('#workout-choices-list').on('click', '#view-all-workouts-button', event=> {
-		getUserId();
 		window.location.href = '/myworkouts.html';
+		getUserId();
 	});
 }
 
 function watchCreateWorkoutBtn() {
 	$('#workout-choices-list').on('click', '#create-workout-button', event => {
-		getUserId();
 		window.location.href = '/createworkout.html';
+		getUserId();
 	});
 }
 
