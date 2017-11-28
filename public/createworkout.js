@@ -198,7 +198,7 @@ function watchNewExercise(workout) {
 }
 
 function renderExerciseRepr(exercise) {
-	return `<tr class="exercise-info">
+	return `<tr id="${exercise._id}" class="exercise-info">
 				<td><strong><em>${exercise.exerciseName}</strong></em></td>
 				<td></td>
 				<td></td>
@@ -234,7 +234,7 @@ function renderNewSets(exercise) {
 }
 
 function renderSetsRepr(sets) {
-	return `<tr class="set-info">
+	return `<tr class="set-info ${sets.exerciseRef}">
 				<td></td>
 				<td>${sets.setNumber}</td>
 				<td>${sets.setWeight}</td>

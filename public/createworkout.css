@@ -16,11 +16,24 @@
 .createWorkoutLi {
 	background-color:white;
 	list-style-type: none;
+	font-size: 22px;
 }
 
 .createWorkoutLi:hover {
 	cursor:pointer;
 	background-color: rgba(0,0,0,.2);
+}
+
+.set-number-li {
+	text-align: center;
+}
+
+.set-weight-li {
+	text-align: center;
+}
+
+.set-reps-li {
+	text-align: center;
 }
 
 .dropdown ul {
@@ -114,6 +127,18 @@ table.table{
 #finish-workout-button {
 	margin-top:0;
 	margin-bottom:0;
+}
+
+#delete-exercise {
+	border: none !important;
+	color:white;
+	width: 50px;
+	font-size: 30px;
+}
+
+#delete-exercise:hover {
+	color: rgba(0,0,0,.5);
+	border-radius: 50px;
 }
 
 
