@@ -1,7 +1,9 @@
 function watchViewProgressBtn() {
 	$('#workout-choices-list').on('click', '#view-progress-button', event => {
-		//window.location.href = '/myprogress.html';
 		getUserId();
+		setTimeout(function() {
+		window.location.href = '/myprogress.html';
+		},1000);
 	});
 }
 
@@ -10,14 +12,16 @@ function watchMyWorkoutsBtn() {
 		getUserId();
 		setTimeout(function() {
 		window.location.href = '/myworkouts.html';
-	}, 1000);
+		}, 1000);
 	});
 }
 
 function watchCreateWorkoutBtn() {
 	$('#workout-choices-list').on('click', '#create-workout-button', event => {
-		//window.location.href = '/createworkout.html';
 		getUserId();
+		setTimeout(function() {
+		window.location.href = '/createworkout.html';
+		}, 1000);
 	});
 }
 
