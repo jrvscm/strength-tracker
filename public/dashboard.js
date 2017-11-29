@@ -7,8 +7,10 @@ function watchViewProgressBtn() {
 
 function watchMyWorkoutsBtn() {
 	$('#workout-choices-list').on('click', '#view-all-workouts-button', event=> {
-		//window.location.href = '/myworkouts.html';
 		getUserId();
+		setTimeout(function() {
+		window.location.href = '/myworkouts.html';
+	}, 1000);
 	});
 }
 
