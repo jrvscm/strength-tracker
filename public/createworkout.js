@@ -8,8 +8,13 @@ function showWorkoutForm() {
 function watchNewWorkout() {
 	$('#create-new-workout-form').off().on('click', '#create-new-workout-button', event => {
 		event.preventDefault();
+
+		if($('#workout-name').val() === '') {
+			$('#workoutNameContainer').addClass('has-danger');
+		} else { $('.form-group').removeClass('has-danger');
 		createNewWorkout();
 		watchEndWorkout();
+		}
 	});
 }
 
@@ -138,7 +143,7 @@ function pickSetReps() {
 
 
 function renderWorkoutRepr(workout) {
-	return `<table class="table">
+	return `<table id="workout-table" class="table">
 				<h2>${workout.workoutName}</h2>
 					<thead>
 						<tr>
@@ -146,10 +151,9 @@ function renderWorkoutRepr(workout) {
 							<th>Sets</th>
 							<th>Weight</th>
 							<th>Reps</th>
+							<th></th>
 						</tr>
 					</thead>
-				<tbody id="workout-table-body">
-				</tbody>
 				</table>`;
 }
 
@@ -174,6 +178,11 @@ function renderNewExercise(workout) {
 function watchNewExercise(workout) {
 	$('#workout-exercise-form').off().on('click', '#add-workout-exercise-button', event => {
 		event.preventDefault();
+		if($('#exercise-muscle-group').val() === '') {
+			$('#exerciseMuscleGroupContainer').addClass('has-danger');
+		} else if($('#exercise-name').val() === '') {
+			$('#exerciseNameContainer').addClass('has-danger');
+		} else { $('.form-group').removeClass('has-danger');
 		$.ajax({
 			method: "POST",
 			url: '/api/workouts/exercises',
@@ -185,6 +194,7 @@ function watchNewExercise(workout) {
 			clearExerciseForm();
 			showSetsForm(exercise);
 			appendNewExercise(exercise);
+			watchDeleteExercise();
 			},
 			beforeSend: function(xhr, settings) { 
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -194,20 +204,115 @@ function watchNewExercise(workout) {
   					alert(err.Message);
 				}
 			});
+		}
+	});
+}
+
+function watchDeleteExercise() {
+	$('#populate-workout-section').on('click', '#delete-one-exercise', function(e) {
+		$.ajax({
+			method: "GET",
+			url: `/api/workouts/sets/${$(this).closest('tbody').attr('id')}`,
+			data:"",
+			contentType: "application/json; charset=utf-8",
+			dataType : "json",
+			success: function(sets) {
+				console.log(sets);
+				deleteAllTheSets(sets);
+			},
+			beforeSend: function(xhr, settings) { 
+				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
+			},
+			error: function(xhr, status, error) {
+  				let err = eval("(" + xhr.responseText + ")");
+  				alert(err.Message);
+			}
+		});
+		$(this).closest('tbody').remove();
+	});
+}
+
+function deleteTheExercise(sets) {
+	$.ajax({
+			method: "DELETE",
+			url: `/api/workouts/exercises/${sets[0].exerciseRef}`,
+			data:"",
+			contentType: "application/json; charset=utf-8",
+			dataType : "json",
+			success: function(sets) {
+				console.log('done')
+			},
+			beforeSend: function(xhr, settings) { 
+				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
+			},
+			error: function(xhr, status, error) {
+  				let err = eval("(" + xhr.responseText + ")");
+  				alert(err.Message);
+			}
 		});
 }
 
+function deleteAllTheSets(sets) {
+	for(let i=0; i<sets.length; i++) {
+		$.ajax({
+			method: "DELETE",
+			url: `/api/workouts/sets/${sets[i]._id}`,
+			data:"",
+			contentType: "application/json; charset=utf-8",
+			dataType : "json",
+			success: function() {
+
+			},
+			beforeSend: function(xhr, settings) { 
+				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
+			},
+			error: function(xhr, status, error) {
+  				let err = eval("(" + xhr.responseText + ")");
+  				alert(err.Message);
+			}
+		});
+	}
+
+	deleteTheExercise(sets)
+}
+
+function watchDeleteOneSet(sets) {
+	$('#populate-workout-section').on('click', '#delete-one-set', function(e) {
+		$.ajax({
+			method: "DELETE",
+			url: `/api/workouts/sets/${$(this).closest('tr').attr('id')}`,
+			data:"",
+			contentType: "application/json; charset=utf-8",
+			dataType : "json",
+			success: function(sets) {
+			},
+			beforeSend: function(xhr, settings) { 
+				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
+			},
+			error: function(xhr, status, error) {
+  				let err = eval("(" + xhr.responseText + ")");
+  				alert(err.Message);
+			}
+		});
+		$(this).closest('tr').remove();
+	});
+}
+
 function renderExerciseRepr(exercise) {
-	return `<tr id="${exercise._id}" class="exercise-info">
+	return `
+		<tbody id="${exercise._id}">
+			<tr class="exercise-info">
 				<td><strong><em>${exercise.exerciseName}</strong></em></td>
 				<td></td>
 				<td></td>
 				<td></td>
-			</tr>`;
+				<td><button id="delete-one-exercise" class="delete-exercise-sets right"><i class="fa fa-times" aria-hidden="true"></i></button></td>
+			</tr>
+		</tbody>`;	
 }
 
 function appendNewExercise(exercise) {
-	$('#workout-table-body').append(renderExerciseRepr(exercise)).fadeIn('fast');
+	$('#workout-table').append(renderExerciseRepr(exercise)).fadeIn('fast');
 }
 
 
@@ -234,21 +339,30 @@ function renderNewSets(exercise) {
 }
 
 function renderSetsRepr(sets) {
-	return `<tr class="set-info ${sets.exerciseRef}">
+	return `<tr id="${sets._id}" class="set-info">
 				<td></td>
 				<td>${sets.setNumber}</td>
 				<td>${sets.setWeight}</td>
 				<td>${sets.setReps}</td>
+				<td><button id="delete-one-set" class="delete-exercise-sets right"><i class="fa fa-times" aria-hidden="true"></i></button></td>
 			</tr>`;
 }
 
 function appendNewSet(sets) {
-	$('#workout-table-body').append(renderSetsRepr(sets)).fadeIn('fast');
+	$(`#${sets.exerciseRef}`).append(renderSetsRepr(sets)).fadeIn('fast');
+		watchDeleteOneSet(sets)
 }
 
 function watchSetSubmit(exercise) {
 	$('#exercise-sets-form').off().on('click', '#add-set-button', event => {
 		event.preventDefault();
+		if($('#set-number').val() === '') {
+			$('#setNumberContainer').addClass('has-danger');
+		} else if($('#set-weight').val() === '') {
+			$('#setWeightContainer').addClass('has-danger');
+		} else if($('#set-reps').val() === '') {
+			$('#setRepsContainer').addClass('has-danger');
+		} else { $('.form-group').removeClass('has-danger');
 		$.ajax({
 			method: "POST",
 			url: '/api/workouts/sets',
@@ -259,6 +373,7 @@ function watchSetSubmit(exercise) {
 			appendNewSet(sets);
 			clearSetsForm();
 			addNextExercise();
+			enableNextExerciseButton();
 			},
 			beforeSend: function(xhr, settings) { 
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
@@ -268,12 +383,18 @@ function watchSetSubmit(exercise) {
   					alert(err.Message);
 				}
 			});
-		});
+		}
+	});
+}
+
+function enableNextExerciseButton() {
+	$('#next-exercise-button').attr('disabled', false);
 }
 
 function addNextExercise() {
 	$('#workout-exercise-form-container').on('click', '#next-exercise-button', event => {
 		event.preventDefault();
+		$('#next-exercise-button').attr('disabled', 'disabled');
 		$('#exercise-sets-form').fadeOut('fast').toggleClass('hidden');
 		setTimeout(function() {
 			$('#workout-exercise-form').fadeIn('fast').toggleClass('hidden');
@@ -290,10 +411,9 @@ function clearSetsForm() {
 function watchFormToggle() {
 	$('#workout-exercise-form-container').on('click', '#toggle-form-button', event => {
 		event.preventDefault();
-		$('#set-number').toggleClass('hidden');
-		$('#set-weight').toggleClass('hidden');
-		$('#set-reps').toggleClass('hidden');
-		$('#exercise-sets-form>label').toggleClass('hidden');
+		$('#setNumberContainer').toggleClass('hidden');
+		$('#setWeightContainer').toggleClass('hidden');
+		$('#setRepsContainer').toggleClass('hidden');
 		$('#add-set-button').toggleClass('hidden');
 		$('#next-exercise-button').toggleClass('hidden');
 		$('#exercise-sets-form').toggleClass('toggled');

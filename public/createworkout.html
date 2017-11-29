@@ -31,14 +31,18 @@
 		<div id="workout-form-container">
 			<form action="#" id="create-new-workout-form" class="workoutForm color-schema" autocomplete="off" novalidate="true">
 					<label for="workout-name">Workout Name: </label>
-					<input id="workout-name" class="form-control" name="workout" required="required" type="text" placeholder="eg. Hulk Back Day"/>
+					<div id="workoutNameContainer" class="form-group">
+						<input id="workout-name" class="form-control" name="workout" required="required" type="text" placeholder="Back Day"/>
+					</div>
 					<button id="create-new-workout-button" type="submit" class="btn button-margin">Create Workout</button> 
 			</form>
 		</div>	
 		<div id="workout-exercise-form-container">
-			<form action="#" id="workout-exercise-form" class="hidden workoutForm color-schema" aria-live="polite" autocomplete="off" novalidate="true">
+			<form action="#" id="workout-exercise-form" class="hidden workoutForm color-schema" aria-live="polite" autocomplete="off">
+				<div id="exerciseMuscleGroupContainer" class="form-group">
 					<label for="exercise-muscle-group">Muscle Group: </label>
-					<input id="exercise-muscle-group" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Quads" />
+					<input id="exercise-muscle-group" class="form-control" name="workout-params" required="required" type="text" placeholder="Quads" />
+				</div>
 					<div class="dropdown">	
 						<ul id="muscle-group" class="hidden">
 							<li class="createWorkoutLi">Abs (rectus abdominis)</li>
@@ -56,9 +60,10 @@
 							<li class="createWorkoutLi">Triceps (triceps brachii)</li>
 						</ul>
 					</div>	
+					<div id="exerciseNameContainer" class="form-group">
 					<label for="exercise-name">Exercise Name: </label>
-					<input id="exercise-name" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. Hulk Squats"/>
-
+						<input id="exercise-name" class="form-control" name="workout-params" required type="text" placeholder="Squats"/>
+					</div>
 					<div class="dropdown">	
 						<ul id="exercise" class="hidden">
 						</ul>
@@ -69,32 +74,36 @@
 			<form action="#" id="exercise-sets-form" class="hidden workoutForm color-schema" aria-live="polite" autocomplete="off" novalidate="true">
 				<button id="toggle-form-button" class="btn right"><i class="fa fa-bars" aria-hidden="true"></i></button>
 				<button id='finish-workout-button' class="btn button nav-button hidden right" role="button">Finish Workout</button><br>
+				<div id="setNumberContainer" class="form-group">
 					<label for="set-number">Set Number:</label>
-					<input id="set-number" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 1"/>
+					<input id="set-number" class="form-control" name="workout-params" required type="text" placeholder="1"/>
+				</div>
 					
 					<div class="dropdown">
 						<ul id="set-numbers-list" class="hidden">
 						</ul>
 					</div>
 
+				<div id="setWeightContainer" class="form-group">
 					<label for="set-weight">Set Weight:</label>
-					<input id="set-weight" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 315" />
-					
+					<input id="set-weight" class="form-control" name="workout-params" required type="text" placeholder="315" />
+				</div>	
 					<div class="dropdown">
 						<ul id="set-weight-list" class="hidden">
 						</ul>
 					</div>
 
+				<div id="setRepsContainer" class="form-group">
 					<label for="set-reps">Set Reps:</label>
-					<input id="set-reps" class="form-control" name="workout-params" required="required" type="text" placeholder="eg. 12" />
-					
+					<input id="set-reps" class="form-control" name="workout-params" required type="text" placeholder="12" />
+				</div>	
 					<div class="dropdown">
 						<ul id="set-reps-list" class="hidden">
 						</ul>
 					</div>
 					
 					<button id="add-set-button" class="btn button-margin" type="submit">Set+</button>
-					<button id="next-exercise-button" class="btn button-margin right">Next Exercise</button>
+					<button id="next-exercise-button" class="btn button-margin right" disabled="disabled">Next Exercise</button>
 			</form>
 		</div>
 

@@ -1,11 +1,18 @@
 function watchLogIn() {
 	$('#log-in').on('click', '#logInButton', event => {
 		event.preventDefault();
+
+		if($('#username').val() === '') {
+			$('#usernameLoginContainer').addClass('has-danger');
+		} else if($('#password').val().length < 10) {
+			$('#passwordLoginContainer').addClass('has-danger');
+		} else {
 		let uname = $('#username');
 		localStorage.setItem("username", uname.val());
 		sendLogIn();
 		$('#username').val('');
 		$('#password').val('');
+		}
 	});
 }
 
@@ -38,7 +45,18 @@ function sendLogIn() {
 function watchSignUp() {
 	$('#sign-up').on('click', '#signUpButton', event => {
 		event.preventDefault();
+
+		if($('#firstNameSignUp').val() === '') {
+			$('#firstNameSignUpContainer').addClass('has-danger');
+		} else if($('#lastNameSignUp').val() === '') {
+			$('#lastNameSignUpContainer').addClass('has-danger');
+		} else if($('#userNameSignUp').val() === '') {
+			$('#userNameSignUpContainer').addClass('has-danger');
+		} else if($('#passwordSignUp').val().length < 10) {
+			$('#passwordSignUpContainer').addClass('has-danger');
+		} else {
 		createNewUser();
+		}
 	});
 }
 
@@ -110,23 +128,10 @@ function watchIntroClicks() {
 		$('#intro-section').fadeOut('fast').addClass('hidden');
 		$('#sign-up-section').fadeIn('fast').removeClass('hidden');
 	});	
-
-	watchWrongWayClicks() 	
+	
 }
 
-function watchWrongWayClicks() {
-	$('#log-in').off().on('click', '#signUpButtonLogin', event => {
-		event.preventDefault();
-		$('#log-in-section').fadeOut('fast').addClass('hidden');
-		$('#sign-up-section').fadeIn('fast').removeClass('hidden');
-	});
 
-	$('#sign-up').off().on('click', '#logInButtonSignup', event => {
-		event.preventDefault();
-		$('#sign-up-section').fadeOut('fast').addClass('hidden');
-		$('#log-in-section').fadeIn('fast').removeClass('hidden');
-	});
-}
 
 function handleLogin() {
 	watchIntroClicks()

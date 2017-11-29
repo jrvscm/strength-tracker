@@ -81,6 +81,18 @@
 
 #delete-button {
 	border: 1px solid white;
+	margin-left: auto;
+}
+
+
+#delete-button:hover {
+	color:rgb(100, 137, 126);
+	border: 2px solid rgb(100, 137, 126)!important;
+}
+
+#return-button:hover {
+	color:rgb(100, 137, 126);
+	border: 2px solid rgb(100, 137, 126)!important;
 }
 
 #renderedWorkout > table {
@@ -93,10 +105,6 @@
 	color:white;
 	margin:5px;
 	border-radius: 0px;
-}
-
-#delete-button {
-	margin-left: 5px;
 }
 
 /*iphone 6------------------*/

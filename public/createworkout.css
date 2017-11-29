@@ -129,18 +129,33 @@ table.table{
 	margin-bottom:0;
 }
 
-#delete-exercise {
+.delete-exercise-sets {
 	border: none !important;
 	color:white;
 	width: 50px;
 	font-size: 30px;
 }
 
-#delete-exercise:hover {
+.delete-exercise-sets:hover {
 	color: rgba(0,0,0,.5);
 	border-radius: 50px;
 }
 
+#next-exercise-button {
+	z-index: 1;
+}
+
+#set-reps-list {
+	z-index: 2;
+}
+
+#set-weight-list {
+	z-index: 3;
+}
+
+#set-numbers-list {
+	z-index: 4;
+}
 
 @media screen and (max-device-width: 375px) and (max-device-height: 667px) {
 	#workout-form-container form {
