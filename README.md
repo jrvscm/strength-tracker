@@ -6,7 +6,7 @@ Sometimes lift tracking can be cumbersome. I hate carrying around a pen and pape
 a few fields and save my workouts, weights, and exercises all in one place.
 
 #Track Your Progress <br />
-Strength tracker utilizes charts.js to graph every exercise you enter into it, making it easy to see if your getting stronger. All 
+Strength tracker utilizes charts.js to graph every exercise you enter, making it easy to see if you're getting stronger. All 
 exercises are imported to the graph, so if you track for an extended period of time, you can get a good idea of where your strength
 is headed.
 
@@ -26,12 +26,12 @@ Strength Tracker utilizes passport.js and jwt tokens to authenticate requests to
 user profile, and get tracking. 
 
 #Deployment/Testing <br />
-The Heroku/Travis CI combo is Strength Tracker's vehicle of choice for depoloyment and integration testing. All CRUD endpoints are
-tested and the app is deployed upon pushing to the master branch.
+The Heroku/Travis CI combo is Strength Tracker's vehicle of choice for deployment and integration testing. All CRUD endpoints are
+tested, and the app is deployed upon pushing to the master branch.
 
 #Mongodb/Mongoose/Mlab <br />
 The database is made up of 4 different models:
-Users, Workouts, Exercises, Sets. Each workout references a specific User, each exercise references a specific workout, and each
+Users, Workouts, Exercises, Sets. Each workout references a specific user, each exercise references a specific workout, and each
 set references a specific exercise. This allows the app the interlink all models while easily Creating, Finding, Updating, and Deleting.
 
 #Responsive <br />
