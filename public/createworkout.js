@@ -40,7 +40,6 @@ function createNewWorkout() {
 		contentType: "application/json; charset=utf-8",
 		dataType : "json",
 		success: function(workout) {
-			console.log(workout);
 			watchNewExercise(workout);
 			appendNewWorkout(workout);
 			watchExerciseMuscleGroup();
@@ -185,7 +184,6 @@ function watchNewExercise(workout) {
 			contentType: "application/json; charset=utf-8",
 			dataType : "json",
 			success: function(exercise) {
-			console.log(exercise);
 			clearExerciseForm();
 			showSetsForm(exercise);
 			appendNewExercise(exercise);
@@ -234,7 +232,6 @@ function deleteTheExercise(sets) {
 			contentType: "application/json; charset=utf-8",
 			dataType : "json",
 			success: function(sets) {
-				console.log('done')
 			},
 			beforeSend: function(xhr, settings) { 
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 

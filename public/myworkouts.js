@@ -156,7 +156,6 @@ function deleteExercises(exercises) {
 }
 
 function deleteWorkout(workout) {
-	console.log(workout)
 		$.ajax({
 			method: "DELETE",
 			url: `/api/workouts/${workout._id}`,
