@@ -1,3 +1,5 @@
+
+
 function showWorkoutForm() {
 	$('#create-workout-button').fadeOut('fast').addClass('hidden');
 	$('#find-workout-button').fadeOut('fast').addClass('hidden');
@@ -8,10 +10,7 @@ function showWorkoutForm() {
 function watchNewWorkout() {
 	$('#create-new-workout-form').off().on('click', '#create-new-workout-button', event => {
 		event.preventDefault();
-
-		if($('#workout-name').val() === '') {
-			$('#workoutNameContainer').addClass('has-danger');
-		} else { $('.form-group').removeClass('has-danger');
+		if($('#create-new-workout-form').valid()) {
 		createNewWorkout();
 		watchEndWorkout();
 		}
@@ -178,11 +177,7 @@ function renderNewExercise(workout) {
 function watchNewExercise(workout) {
 	$('#workout-exercise-form').off().on('click', '#add-workout-exercise-button', event => {
 		event.preventDefault();
-		if($('#exercise-muscle-group').val() === '') {
-			$('#exerciseMuscleGroupContainer').addClass('has-danger');
-		} else if($('#exercise-name').val() === '') {
-			$('#exerciseNameContainer').addClass('has-danger');
-		} else { $('.form-group').removeClass('has-danger');
+		if($('#workout-exercise-form').valid()) {
 		$.ajax({
 			method: "POST",
 			url: '/api/workouts/exercises',
@@ -217,7 +212,6 @@ function watchDeleteExercise() {
 			contentType: "application/json; charset=utf-8",
 			dataType : "json",
 			success: function(sets) {
-				console.log(sets);
 				deleteAllTheSets(sets);
 			},
 			beforeSend: function(xhr, settings) { 
@@ -356,13 +350,7 @@ function appendNewSet(sets) {
 function watchSetSubmit(exercise) {
 	$('#exercise-sets-form').off().on('click', '#add-set-button', event => {
 		event.preventDefault();
-		if($('#set-number').val() === '') {
-			$('#setNumberContainer').addClass('has-danger');
-		} else if($('#set-weight').val() === '') {
-			$('#setWeightContainer').addClass('has-danger');
-		} else if($('#set-reps').val() === '') {
-			$('#setRepsContainer').addClass('has-danger');
-		} else { $('.form-group').removeClass('has-danger');
+		if($('#exercise-sets-form').valid()) {
 		$.ajax({
 			method: "POST",
 			url: '/api/workouts/sets',
@@ -411,10 +399,12 @@ function clearSetsForm() {
 function watchFormToggle() {
 	$('#workout-exercise-form-container').on('click', '#toggle-form-button', event => {
 		event.preventDefault();
-		$('#setNumberContainer').toggleClass('hidden');
-		$('#setWeightContainer').toggleClass('hidden');
-		$('#setRepsContainer').toggleClass('hidden');
+		$('#set-number').toggleClass('hidden');
+		$('#set-weight').toggleClass('hidden');
+		$('#set-reps').toggleClass('hidden');
 		$('#add-set-button').toggleClass('hidden');
+		$('label').toggleClass('hidden');
+		$('.dropdown').toggleClass('hidden');
 		$('#next-exercise-button').toggleClass('hidden');
 		$('#exercise-sets-form').toggleClass('toggled');
 	});
@@ -426,11 +416,56 @@ function watchUserIcon() {
     });
 }
 
+function validateWorkoutForm() {
+	$("form[name='workoutExerciseForm']").validate({
+		rules: {
+			workoutParamsMuscleGroup: "required",
+			workoutParamsExerciseName: "required"
+		},
+
+		messages: {
+			workoutParamsMuscleGroup: "Please enter a workout name",
+			workoutParamsExerciseName: "Please enter an exercise name",
+		},
+	});
+}
+
+function validateSetsForm() {
+	$("form[name='workoutSetsForm']").validate({
+		rules: {
+			setNumber: "required",
+			setWeight: "required",
+			setReps: "required"
+		},
+
+		messages: {
+			setNumber: "Please enter a set number",
+			setWeight: "Please enter a set weight",
+			setReps: "please enter set reps"
+		},
+	});
+}
+
+function validateExerciseForm() {
+	$("form[name='workout']").validate({
+		rules: {
+			workoutName: "required",
+		},
+
+		messages: {
+			workoutName: "Please enter a workout name",
+		},
+	});
+}
+
 function handleCreateWorkout() {
 	showWorkoutForm();
 	watchNewWorkout();
 	watchFormToggle();
 	watchUserIcon();
+	validateWorkoutForm();
+	validateExerciseForm();
+	validateSetsForm();
 }
 
 $(handleCreateWorkout);

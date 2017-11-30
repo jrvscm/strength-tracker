@@ -66,6 +66,23 @@ form h2	{
 	margin: 10px;
 }
 
+.intro-message {
+	text-align: center;
+	margin-top: 5px;
+	font-size: 14px !important;
+
+}
+
+#logInButton {
+	width: 100%;
+}
+
+#signUpButton {
+	width: 100%;
+}
+
+
+
 @media screen and (max-device-width: 375px) and (max-device-height: 667px) {
 
 	#intro-container{

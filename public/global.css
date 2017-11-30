@@ -9,6 +9,20 @@ html, body {
 	width: 100%;
 }
 
+.error {
+	border:1px solid red;
+	color: red;
+	display: block;
+}
+
+.valid {
+	border: 1px solid green;
+}
+
+label {
+	border: none!important;
+}
+
 .hidden {
 	display: none;
 }

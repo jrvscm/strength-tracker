@@ -1,17 +1,10 @@
 function watchLogIn() {
 	$('#log-in').on('click', '#logInButton', event => {
 		event.preventDefault();
-
-		if($('#username').val() === '') {
-			$('#usernameLoginContainer').addClass('has-danger');
-		} else if($('#password').val().length < 10) {
-			$('#passwordLoginContainer').addClass('has-danger');
-		} else {
+		if($('#log-in').valid()) {
 		let uname = $('#username');
 		localStorage.setItem("username", uname.val());
 		sendLogIn();
-		$('#username').val('');
-		$('#password').val('');
 		}
 	});
 }
@@ -43,18 +36,9 @@ function sendLogIn() {
 }
 
 function watchSignUp() {
-	$('#sign-up').on('click', '#signUpButton', event => {
+	$('#sign-up-container').on('click', '#signUpButton', event => {
 		event.preventDefault();
-
-		if($('#firstNameSignUp').val() === '') {
-			$('#firstNameSignUpContainer').addClass('has-danger');
-		} else if($('#lastNameSignUp').val() === '') {
-			$('#lastNameSignUpContainer').addClass('has-danger');
-		} else if($('#userNameSignUp').val() === '') {
-			$('#userNameSignUpContainer').addClass('has-danger');
-		} else if($('#passwordSignUp').val().length < 10) {
-			$('#passwordSignUpContainer').addClass('has-danger');
-		} else {
+		if($('#sign-up').valid()) {
 		createNewUser();
 		}
 	});
@@ -70,10 +54,8 @@ function renderNewUser() {
 }
 
 function createNewUser() {
-	console.log($('#userNameSignUp').val());
 	let unameSignUp = $('#userNameSignUp');
 	localStorage.setItem("username", unameSignUp.val());
-	
 	$.ajax({
 		method: "POST",
 		url: '/api/users/',
@@ -131,12 +113,70 @@ function watchIntroClicks() {
 	
 }
 
+function watchWrongWayClicks() {
+	$('#log-in-container').on('click', '#signUpLink', event => {
+		event.preventDefault();
+		$('#log-in-section').fadeOut('fast').toggleClass('hidden');
+		$('#sign-up-section').fadeIn('fast').toggleClass('hidden');
+	});
 
+	$('#sign-up-section').on('click', '#logInLink', event => {
+		event.preventDefault();
+		$('#sign-up-section').fadeOut('fast').toggleClass('hidden');
+		$('#log-in-section').fadeIn('fast').toggleClass('hidden');
+	});
+}
+
+function watchSignUpSubmit() {
+	$("form[name='userSignUp']").validate({
+		rules: {
+			firstNameSignUp: "required",
+			lastNameSignUp: "required",
+			userNameSignUp: "required",
+			passwordSignUp: {
+				required: true,
+				minlength: 10
+			}
+		},
+
+		messages: {
+			firstNameSignUp: "Please enter your first name",
+			lastNameSignUp: "Please enter your last name",
+			userNameSignUp: "Please enter a valid username",
+			password: {
+				required: "Your password must be at least 10 characters long."
+			},
+		},
+	});
+}
+
+
+function watchLogInSubmit() {
+	$("form[name='login']").validate({
+		rules: {
+			username: "required",
+			password: {
+				required: true,
+				minlength: 10
+			}
+		},
+
+		messages: {
+			username: "Please enter a valid username",
+			password: {
+				required: "Your password must be at least 10 characters long."
+			},
+		},
+	});
+}
 
 function handleLogin() {
 	watchIntroClicks()
 	watchSignUp();
 	watchLogIn();
+	watchWrongWayClicks();
+	watchLogInSubmit();
+	watchSignUpSubmit();
 }
 
 $(handleLogin);

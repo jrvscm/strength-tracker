@@ -26,45 +26,37 @@
 		</section>
 		<section id="log-in-section" class="hidden center">
 			<div id="log-in-container" class="color-schema">
-				<form action="#" id="log-in" autocomplete="off" class="inner-container">
+				<form action="#" id="log-in" autocomplete="off" class="inner-container" name="login">
 					<h2>Log In</h2>
-					<div id="usernameLoginContainer" class="form-group">
 						<label for="username">Username: </label>
-						<input id="username" class="form-control" name="username" type="text" placeholder="eg. Ada" required />
-					</div>
-					<div id="passwordLoginContainer" class="form-group">
+						<input id="username" class="form-control" name="username" type="text" placeholder="eg. Ada" />
+					
 						<label for="password">Password: </label>
-						<input id="password" class="form-control" name="password" type="password" placeholder="eg. X8df!90EO" required />
-					</div>  
+						<input id="password" class="form-control" name="password" type="password" placeholder="eg. X8df!90EO" />
+
 						<button id="logInButton" type="submit" class="btn button-margin">Log In</button> 
+						<p class="intro-message">Don't have an account? <a id="signUpLink" href="#">Sign Up</a></p>
 				</form>
 			</div><!--log-in-container-->
 		</section>
 
 		<section id="sign-up-section" class ="hidden center">
 			<div id="sign-up-container" class="color-schema">
-				<form action="#" id="sign-up" autocomplete="off">
+				<form action="#" id="sign-up" autocomplete="off" name="userSignUp">
 						<h2>Sign Up</h2>
-					<div id="firstNameSignUpContainer" class="form-group">
 						<label for="firstNameSignUp">First Name</label>
-						<input id="firstNameSignUp" class="form-control" name="userNameSignUp" type="text" placeholder="eg. Jack" required />
-					</div>
+						<input id="firstNameSignUp" class="form-control" name="firstNameSignUp" type="text" placeholder="eg. Jack" required />
 
-					<div id="lastNameSignUpContainer" class="form-group">
 						<label for="lastNameSignUp">Last Name</label>
-						<input id="lastNameSignUp" class="form-control" name="userNameSignUp" required type="text" placeholder="eg. Theripper" required />
-					</div>
+						<input id="lastNameSignUp" class="form-control" name="lastNameSignUp" type="text" placeholder="eg. Theripper" required />
 
-					<div id="userNameSignUpContainer" class="form-group">
 						<label for="userNameSignUp">Username</label>
-						<input id="userNameSignUp" class="form-control" name="userNameSignUp" required type="text" placeholder="eg. SliceNDice" required />
-					</div>
+						<input id="userNameSignUp" class="form-control" name="userNameSignUp" type="text" placeholder="eg. SliceNDice" required />
 
-					<div id="passwordSignUpContainer" class="form-group">
 						<label for="passwordSignUp">Password</label>
-						<input id="passwordSignUp" class="form-control" name="passwordSignUp" type="password" placeholder="eg. wh0sNex7?!" required />
+						<input id="passwordSignUp" class="form-control" name="passwordSignUp" type="password" placeholder="eg. wh0sNex7?!" />
 						<button id="signUpButton" type="submit" class="btn button-margin">Sign Up</button>
-					</div>
+						<p class="intro-message">Already have an account? <a href="#" id="logInLink">Log in</a></p>
 				</form>
 			</div><!--sign-up-container-->
 		</section>	
@@ -73,6 +65,7 @@
   src="https://code.jquery.com/jquery-3.2.1.js"
   integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
   crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 <script type="text/javascript" src="index.js"></script>

@@ -213,7 +213,7 @@ input#exercise-name ul {
 
 /*-------------------iphone 6 plus flipped---------------?*/
 @media screen and (max-device-width: 736px) and (max-device-height: 414px) {
-		#navbar-toggle > a {
+	#navbar-toggle > a {
 		margin:0;
 	}
 

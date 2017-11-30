@@ -159,7 +159,7 @@ chart = new Chart(ctx, {
                 left: 50,
                 right: 50,
                 top: 10,
-                bottom:200
+                bottom:100
             }
         }
     }
