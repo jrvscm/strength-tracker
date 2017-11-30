@@ -29,8 +29,7 @@ function sendLogIn() {
 		getUserId();
 		},
 		error: function(xhr, status, error) {
-  			let err = eval("(" + xhr.responseText + ")");
-  			alert(err.Message);
+  		    	alert('Something went wrong');
 		}
 	}); //ajax
 }
@@ -67,8 +66,7 @@ function createNewUser() {
 			loginAfterUserCreated();
 		},
 		error: function(xhr, status, error) {
-  			var err = eval("(" + xhr.responseText + ")");
-  			alert(err.Message);
+  		    	alert('Something went wrong');
 		}
 	});
 }
@@ -94,8 +92,7 @@ $.ajax({
 			window.location.href = '/dashboard.html';
 		},
 		error: function(xhr, status, error) {
-  			let err = eval("(" + xhr.responseText + ")");
-  			alert(err.Message);
+  		    	alert('Something went wrong');
 		}
 	});
 }

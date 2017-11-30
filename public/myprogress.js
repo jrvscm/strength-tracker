@@ -57,8 +57,7 @@ function getExerciseData() {
             xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
         },
         error: function(xhr, status, error) {
-            let err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
+                alert('Something went wrong');
         }
     });
 }
@@ -78,8 +77,7 @@ function getTheExercises(workouts) {
                 xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
             },
             error: function(xhr, status, error) {
-                let err = eval("(" + xhr.responseText + ")");
-                alert(err.Message);
+                alert('Something went wrong');
             }
         });
     }
@@ -197,8 +195,7 @@ function getSetsForGraph(matchedExercises) {
                 xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
             },
             error: function(xhr, status, error) {
-                let err = eval("(" + xhr.responseText + ")");
-                alert(err.Message);
+                alert('Something went wrong');
             }
         });
     }

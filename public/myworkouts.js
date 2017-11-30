@@ -13,8 +13,7 @@ function getUserWorkouts() {
 			xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 		},
 		error: function(xhr, status, error) {
-  			let err = eval("(" + xhr.responseText + ")");
-  			alert(err.Message);
+  		    	alert('Something went wrong');
 		}
 	});
 }
@@ -46,8 +45,7 @@ function watchUserWorkoutList() {
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 			},
 			error: function(xhr, status, error) {
-  				let err = eval("(" + xhr.responseText + ")");
-  				alert(err.Message);
+  		    	alert('Something went wrong');
 			}
 		});
 	});
@@ -68,8 +66,7 @@ function getExercisesList(workoutID, workout) {
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 			},
 			error: function(xhr, status, error) {
-  				let err = eval("(" + xhr.responseText + ")");
-  				alert(err.Message);
+  		    	alert('Something went wrong');
 			}
 		});
 }
@@ -102,8 +99,7 @@ function getSets(exercises, workout) {
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 			},
 			error: function(xhr, status, error) {
-  				let err = eval("(" + xhr.responseText + ")");
-  				alert(err.Message);
+  		    	alert('Something went wrong');
 			}
 		});
 	}
@@ -125,8 +121,7 @@ function watchDelete(workout, exercises, sets) {
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 			},
 			error: function(xhr, status, error) {
-  				let err = eval("(" + xhr.responseText + ")");
-  				alert(err.Message);
+  		    	alert('Something went wrong');
 			}
 		});
 	}
@@ -147,8 +142,7 @@ function deleteExercises(exercises) {
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 			},
 			error: function(xhr, status, error) {
-  				let err = eval("(" + xhr.responseText + ")");
-  				alert(err.Message);
+  		    	alert('Something went wrong');
 			}
 		});
 	}
@@ -169,8 +163,7 @@ function deleteWorkout(workout) {
 				xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 			},
 			error: function(xhr, status, error) {
-  				let err = eval("(" + xhr.responseText + ")");
-  				alert(err.Message);
+  		    	alert('Something went wrong');
 			}
 		});
 }

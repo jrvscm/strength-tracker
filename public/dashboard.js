@@ -41,8 +41,7 @@ function getUserId() {
 			xhr.setRequestHeader('Authorization','Bearer ' + `${localStorage.getItem('authToken')}`); 
 		},
 		error: function(xhr, status, error) {
-  			let err = eval("(" + xhr.responseText + ")");
-  			alert(err.Message);
+  		    	alert('Something went wrong');
 		}
 	});
 }

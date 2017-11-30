@@ -99,7 +99,7 @@ form h2	{
 	#sign-up-container {
 		height: 50%;
 		width: 95%;
-		margin-top: 35%;
+		margin-top: 20% !important;
 	}
 
 	#sign-up-container form {
@@ -121,7 +121,7 @@ form h2	{
 	position: absolute;	
 	margin: auto;
 	padding-top: 0;
-	top:30px;
+	top:20px;
 	right:10px;
 	left:10px;
 	bottom:30px;
