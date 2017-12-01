@@ -3,7 +3,7 @@ function watchViewProgressBtn() {
 		getUserId();
 		setTimeout(function() {
 		window.location.href = '/myprogress.html';
-		},1000);
+		},500);
 	});
 }
 
@@ -12,7 +12,7 @@ function watchMyWorkoutsBtn() {
 		getUserId();
 		setTimeout(function() {
 		window.location.href = '/myworkouts.html';
-		}, 1000);
+		}, 500);
 	});
 }
 
@@ -21,7 +21,7 @@ function watchCreateWorkoutBtn() {
 		getUserId();
 		setTimeout(function() {
 		window.location.href = '/createworkout.html';
-		}, 1000);
+		}, 500);
 	});
 }
 
