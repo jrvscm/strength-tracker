@@ -174,7 +174,9 @@ function deleteWorkout(workout) {
 		deleteSets(sets);
 		deleteExercises(exercises);
 		deleteWorkout(workout);
+		setTimeout(function() {
 		window.location.href = '/myworkouts.html';
+	}, 1000);
 	});
 
 	$('#userWorkoutsListContainer').on('click', '#return-button', event => {
