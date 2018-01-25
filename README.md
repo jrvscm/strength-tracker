@@ -28,7 +28,7 @@ is headed.
 - Passwords are encrypted with Bcrypt.js.
 - Endpoints are controlled with Passport.js.
 
-## Mongodb/Mongoose/Mlab <br />
+### Mongodb/Mongoose/Mlab <br />
 The database is made up of 4 different models:
 Users, Workouts, Exercises, Sets. Each workout references a specific user, each exercise references a specific workout, and each
 set references a specific exercise. This allows the app the interlink all models while easily Creating, Finding, Updating, and Deleting.
